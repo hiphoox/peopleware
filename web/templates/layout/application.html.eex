@@ -9,23 +9,55 @@
 
     <title>Hello Phoenix!</title>
     <link rel="stylesheet" href="/css/phoenix.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="/js/jquery.restfulizer.js"></script>
+    <script>
+    $(function() {
+      $(".rest").click(function(d) {
+        $('form').submit(function(s) {
+          var input = $("<input>")
+          .attr("type", "hidden")
+          .attr("name", "csrf_token").val("<%= csrf_token(@conn) %>");
+          $(s.target).append($(input));
+        });
+      });
+      $(".rest").restfulizer({});
+
+    });
+    </script>
+
   </head>
 
-  <body>
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+  <body class="Site">
+
+    <header>
+      <div class="col-xs-6">
+        <div class="circle">
+          <br />
+          <H1>Registro de Curriculums</H1>
+        </div>
+
       </div>
 
+      <div class="col-xs-6 text-right">
+        <div id="header-links">
+          <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
+        </div>
+        <div id="header-links">
+          <a href="<%= profile_path(@conn, :new) %>">Agregar nuevo candidato</a>
+        </div>
+      </div>
+    </header>
+    <hr class="clear col-xs-12"/>
+
+    <main class="Site-content">
       <%= @inner %>
-
-      <div class="footer">
-        <p><a href="http://phoenixframework.org">phoenixframework.org</a></p>
+    </main>
+    <footer>
+      <div class="col-xs-6">
+        <a href="http://recluIT.com">RecluIT</a>
       </div>
-
-    </div> <!-- /container -->
+    </footer>
   </body>
 </html>

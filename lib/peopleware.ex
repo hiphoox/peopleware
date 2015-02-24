@@ -9,6 +9,7 @@ defmodule Peopleware do
     children = [
       # Start the endpoint when the application starts
       supervisor(Peopleware.Endpoint, []),
+      worker(Peopleware.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Peopleware.Worker, [arg1, arg2, arg3]),
     ]

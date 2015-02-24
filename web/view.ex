@@ -14,4 +14,9 @@ defmodule Peopleware.View do
   end
 
   # Functions defined here are available to all other views/templates
+  def csrf_token(conn) do
+    # Plug.CSRFProtection.get_csrf_token
+    ""
+  end
+
 end

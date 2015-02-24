@@ -1,0 +1,39 @@
+<div class="page-content col-xs-10 col-xs-offset-1">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre(s)</th>
+        <th>Apellido Materno</th>
+        <th>Apellido Paterno</th>
+        <th>Posición</th>
+    </thead>
+    <%= for profile <- @profiles do %>
+    <tr>
+      <td>
+        <a href="<%=profile_path(@conn, :show, profile.id) %>">
+          <%= profile.name %>
+        </a>
+      </td>
+      <td>
+        <%= profile.last_name %>
+      </td>
+      <td>
+        <%= profile.second_surname %>
+      </td>
+      <td>
+        <%= profile.position %>
+      </td>
+      <td>
+        <a href="<%=profile_path(@conn, :edit, profile.id) %>" class="btn btn-danger">
+          Editar
+        </a>
+
+        <a href="<%=profile_path(@conn, :delete, profile.id) %>" data-method="DELETE" class="rest btn btn-danger">
+          Eliminar
+        </a>
+
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
