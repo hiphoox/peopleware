@@ -23,6 +23,9 @@ config :peopleware, Peopleware.Endpoint,
 # Do not pring debug messages in production
 config :logger, level: :info
 
+config :peopleware, Peopleware.Repo,
+  url: "ecto://hiphoox:norber@localhost/peopleware"
+
 # ## Using releases
 #
 # If you are doing OTP releases, you need to instruct Phoenix
