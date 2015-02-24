@@ -36,7 +36,11 @@
       <input type="text" name="profile[info_medium]" class="form-control" value="<%= @profile.info_medium %>" />
 
       <label for="profile[state]">Estado</label>
-      <input type="text" name="profile[state]" class="form-control" value="<%= @profile.state %>" />
+      <select type="text" name="profile[state]" class="form-control" value="<%= @profile.state %>" >
+          <%= for state <- @states do %>
+            <option value="<%= state %>" <%= if state == "Distrito Federal", do: "selected" %>> <%= state %> </option>
+          <% end %>
+      </select>
 
       <label for="profile[contracting_schema]">Esquema de Contratación</label>
       <select type="text" name="profile[contracting_schema]" class="form-control" value="<%= @profile.contracting_schema %>" >

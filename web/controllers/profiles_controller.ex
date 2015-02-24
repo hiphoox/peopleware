@@ -25,6 +25,7 @@ defmodule Peopleware.ProfileController do
       conn
       |> assign(:profile, %Profile{})
       |> assign(:medios, ["cel", "mail", "tel"])
+      |> assign(:states, states)
       |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render "new.html"
   end
@@ -51,6 +52,7 @@ defmodule Peopleware.ProfileController do
       conn
       |> assign(:profile, p)
       |> assign(:medios, ["cel", "mail", "tel"])
+      |> assign(:states, states)
       |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render("new.html")
     end
@@ -71,6 +73,7 @@ defmodule Peopleware.ProfileController do
     conn
     |> assign(:profile, Peopleware.Repo.get(Peopleware.Profile, id))
     |> assign(:medios, ["cel", "mail", "tel"])
+    |> assign(:states, states)
     |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
     |> render("edit.html")
   end
@@ -110,4 +113,38 @@ defmodule Peopleware.ProfileController do
     redirect conn, to: profile_path(conn, :index)
   end
 
+
+  defp states do
+    ["Aguascalientes",
+    "Baja California",
+    "Campeche",
+    "Coahuila",
+    "Colima",
+    "Chiapas",
+    "Chihuahua",
+    "Distrito Federal",
+    "Durango",
+    "Guanajuato",
+    "Guerrero",
+    "Hidalgo",
+    "Jalisco",
+    "México",
+    "Michoacán",
+    "Morelos",
+    "Nayarit",
+    "Nuevo León",
+    "Oaxaca",
+    "Puebla",
+    "Querétaro",
+    "Quintana Roo",
+    "San Luis Potosí",
+    "Sinaloa",
+    "Sonora",
+    "Tabasco",
+    "Tamaulipas",
+    "Tlaxcala",
+    "Veracruz",
+    "Yucatán",
+    "Zacatecas"]
+  end
 end
