@@ -40,7 +40,11 @@
       <input type="text" name="profile[state]" class="form-control" value="<%= @profile.state %>" />
 
       <label for="profile[contracting_schema]">Esquema de Contratación</label>
-      <input type="text" name="profile[contracting_schema]" class="form-control" value="<%= @profile.contracting_schema %>" />
+      <select type="text" name="profile[contracting_schema]" class="form-control" value="<%= @profile.contracting_schema %>" >
+          <%= for contract <- @contractings do %>
+            <option value="<%= contract %>" <%= if contract == @profile.contracting_schema , do: "selected" %>> <%= contract %> </option>
+          <% end %>
+      </select>
 
     </div>
     <button type="submit" class="btn btn-primary">Save</button>

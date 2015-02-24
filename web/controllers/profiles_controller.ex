@@ -25,6 +25,7 @@ defmodule Peopleware.ProfileController do
       conn
       |> assign(:profile, %Profile{})
       |> assign(:medios, ["cel", "mail", "tel"])
+      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render "new.html"
   end
 
@@ -50,6 +51,7 @@ defmodule Peopleware.ProfileController do
       conn
       |> assign(:profile, p)
       |> assign(:medios, ["cel", "mail", "tel"])
+      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render("new.html")
     end
 
@@ -69,6 +71,7 @@ defmodule Peopleware.ProfileController do
     conn
     |> assign(:profile, Peopleware.Repo.get(Peopleware.Profile, id))
     |> assign(:medios, ["cel", "mail", "tel"])
+    |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
     |> render("edit.html")
   end
 
