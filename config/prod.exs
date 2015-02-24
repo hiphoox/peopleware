@@ -25,7 +25,7 @@ config :peopleware, Peopleware.Endpoint,
 config :logger, level: :info
 
 config :peopleware, Peopleware.Repo,
-  url: "ecto://hiphoox:norber@localhost/peopleware"
+  url: "ecto://hiphoox:norber0@localhost/peopleware"
 
 # ## Using releases
 #
