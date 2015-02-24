@@ -4,6 +4,7 @@ config :peopleware, Peopleware.Endpoint,
   url: [host: "example.com"],
   http: [port: System.get_env("PORT")],
   secret_key_base: "g/z3ICJVkXVPdNyUf0wFe52NMF49WHJrNG4VyrBdmasFgd/5JYIyV1Pcq9uoxhwO"
+  server: true
   
 # ## SSL Support
 #
