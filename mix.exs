@@ -25,6 +25,7 @@ defmodule Peopleware.Mixfile do
     [{:phoenix, "~> 0.9.0"},
      {:cowboy, "~> 1.0"},
      {:postgrex, "~> 0.6"},
-     {:ecto, "~>0.8.1"}]
+     {:ecto, "~>0.8.1"},
+     {:exrm, "~>0.15.0"}]
   end
 end
