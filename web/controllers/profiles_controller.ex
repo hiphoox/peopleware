@@ -24,6 +24,7 @@ defmodule Peopleware.ProfileController do
   def new(conn, _params) do
       conn
       |> assign(:profile, %Profile{})
+      |> assign(:medios, ["cel", "mail", "tel"])
       |> render "new.html"
   end
 
@@ -48,6 +49,7 @@ defmodule Peopleware.ProfileController do
                            }
       conn
       |> assign(:profile, p)
+      |> assign(:medios, ["cel", "mail", "tel"])
       |> render("new.html")
     end
 
@@ -66,6 +68,7 @@ defmodule Peopleware.ProfileController do
     {id, _} = Integer.parse(id)
     conn
     |> assign(:profile, Peopleware.Repo.get(Peopleware.Profile, id))
+    |> assign(:medios, ["cel", "mail", "tel"])
     |> render("edit.html")
   end
 

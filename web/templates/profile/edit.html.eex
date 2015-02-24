@@ -27,7 +27,11 @@
       <input type="text" name="profile[keywords]" class="form-control" value="<%= @profile.keywords %>" />
 
       <label for="profile[type_medium]">Medio de contacto</label>
-      <input type="text" name="profile[type_medium]" class="form-control" value="<%= @profile.type_medium %>" />
+      <select type="text" name="profile[type_medium]" class="form-control" value="<%= @profile.type_medium %>" >
+          <%= for medium <- @medios do %>
+            <option value="<%= medium %>" <%= if medium == @profile.type_medium, do: "selected" %>> <%= medium %> </option>
+          <% end %>
+      </select>
 
       <label for="profile[info_medium]">Info de contacto</label>
       <input type="text" name="profile[info_medium]" class="form-control" value="<%= @profile.info_medium %>" />
