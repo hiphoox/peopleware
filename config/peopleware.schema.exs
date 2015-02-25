@@ -18,11 +18,11 @@
       datatype: :atom,
       default: true
     ],
-    "peopleware.Elixir.Peopleware.Endpoint.pubsub.adapter": [
-      doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.pubsub.adapter here.",
-      to: "peopleware.Elixir.Peopleware.Endpoint.pubsub.adapter",
+    "peopleware.Elixir.Peopleware.Endpoint.server": [
+      doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.server here.",
+      to: "peopleware.Elixir.Peopleware.Endpoint.server",
       datatype: :atom,
-      default: Phoenix.PubSub.PG2
+      default: true
     ],
     "peopleware.Elixir.Peopleware.Endpoint.http.port": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.http.port here.",
@@ -34,7 +34,7 @@
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.cache_static_lookup here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.cache_static_lookup",
       datatype: :atom,
-      default: false
+      default: true
     ],
     "peopleware.Elixir.Peopleware.Repo.url": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Repo.url here.",
@@ -59,12 +59,6 @@
       default: [
         :request_id
       ]
-    ],
-    "phoenix.code_reloader": [
-      doc: "Provide documentation for phoenix.code_reloader here.",
-      to: "phoenix.code_reloader",
-      datatype: :atom,
-      default: true
     ]
   ],
   translations: [
