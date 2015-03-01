@@ -61,4 +61,9 @@ defmodule Peopleware.Profile  do
     "Yucatán",
     "Zacatecas"]
   end
+
+  def contractings do
+     ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"] 
+  end
+  
 end

@@ -21,10 +21,10 @@ defmodule Peopleware.ProfileController do
   It shows the seleted curriculum
   """
   def show(conn, %{"id" => id}) do
-    {id, _} = Integer.parse(id)
+    profile = profile_from_id(id)
     conn
-    |> assign(:profile, Peopleware.Repo.get(Profile, id))
-    |> render("show.html")
+      |> assign(:profile, profile)
+      |> render("show.html")
   end
   
   @doc """
@@ -40,10 +40,10 @@ defmodule Peopleware.ProfileController do
   It just returns the list of curriculums
   """
   def edit(conn, %{"id" => id}) do
-    {id, _} = Integer.parse(id)
+    profile = profile_from_id(id)
     conn
-    |> assign_params(Peopleware.Repo.get(Profile, id))
-    |> render("edit.html")
+      |> assign_params(profile)
+      |> render("edit.html")
   end
 
   @doc """
@@ -56,10 +56,7 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.insert(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      new_profile = profile_from_values(new_profile_values)
-      conn
-      |> assign_params(new_profile)
-      |> render("new.html")
+      return_same_page conn, new_profile_values, "new.html"
     end
   end
 
@@ -67,18 +64,13 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the save button when in the edit.html
   """
   def update(conn, %{"id" => id, "profile" => new_profile_values}) do
-    {id, _} = Integer.parse(id)
-    profile = Peopleware.Repo.get(Peopleware.Profile, id)
-    changeset = Profile.changeset profile, new_profile_values
+    changeset = Profile.changeset profile_from_id(id), new_profile_values
 
     if changeset.valid? do
       Peopleware.Repo.update(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      new_profile = profile_from_values(new_profile_values)
-      conn
-      |> assign_params(new_profile)
-      |> render("edit.html")
+      return_same_page conn, new_profile_values, "edit.html"
     end
   end
 
@@ -102,7 +94,7 @@ defmodule Peopleware.ProfileController do
       |> assign(:profile, profile)
       |> assign(:states, Profile.states)
       |> assign(:errors, [])
-      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])    
+      |> assign(:contractings, Profile.contractings)    
   end
 
   defp profile_from_values(profile_values) do
@@ -120,6 +112,18 @@ defmodule Peopleware.ProfileController do
                  state: profile_values["state"],
     contracting_schema: profile_values["contracting_schema"],
     }
+  end
+
+  defp profile_from_id(id) do
+    {id, _} = Integer.parse(id)
+    Peopleware.Repo.get(Peopleware.Profile, id)
+  end
+
+  defp return_same_page(conn, new_profile_values, page) do
+    new_profile = profile_from_values(new_profile_values)
+    conn
+    |> assign_params(new_profile)
+    |> render(page)
   end
 
 end
