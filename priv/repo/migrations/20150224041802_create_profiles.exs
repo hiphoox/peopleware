@@ -10,8 +10,9 @@ defmodule Peopleware.Repo.Migrations.CreateProfiles do
       add :position,           :string, size: 40
       add :resume,             :string, size: 100
       add :keywords,           :string, size: 50
-      add :type_medium,        :string, size: 40   # Celular, casa, correo electrónico
-      add :info_medium,        :string, size: 40
+      add :email,              :string, size: 40
+      add :tel,                :string, size: 10
+      add :cel,                :string, size: 10
       add :state,              :string, size: 40   # Lista de estados
       add :contracting_schema, :string, size: 40   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
 

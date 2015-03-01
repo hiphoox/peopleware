@@ -25,7 +25,8 @@ defmodule Peopleware.ProfileController do
       conn
       |> assign(:profile, %Profile{})
       |> assign(:medios, ["cel", "mail", "tel"])
-      |> assign(:states, states)
+      |> assign(:states, Profile.states)
+      |> assign(:errors, [])
       |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render "new.html"
   end
@@ -34,7 +35,7 @@ defmodule Peopleware.ProfileController do
     changeset = Profile.changeset %Profile{}, profile
 
     if changeset.valid? do
-      user = Peopleware.Repo.insert(changeset)
+      Peopleware.Repo.insert(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
       p = %Peopleware.Profile{name: profile["name"],  
@@ -44,16 +45,17 @@ defmodule Peopleware.ProfileController do
                         position: profile["position"],
                           resume: profile["resume"],
                         keywords: profile["keywords"],
-                     type_medium: profile["type_medium"],
-                     info_medium: profile["infor_medium"],
+                           email: profile["email"],
+                             cel: profile["cel"],
+                             tel: profile["tel"],
                            state: profile["state"],
               contracting_schema: profile["contracting_schema"],
                            }
       conn
       |> assign(:profile, p)
-      |> assign(:medios, ["cel", "mail", "tel"])
-      |> assign(:states, states)
+      |> assign(:states, Profile.states)
       |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
+      |> assign(:errors, changeset.errors)
       |> render("new.html")
     end
 
@@ -72,8 +74,8 @@ defmodule Peopleware.ProfileController do
     {id, _} = Integer.parse(id)
     conn
     |> assign(:profile, Peopleware.Repo.get(Peopleware.Profile, id))
-    |> assign(:medios, ["cel", "mail", "tel"])
-    |> assign(:states, states)
+    |> assign(:states, Profile.states)
+    |> assign(:errors, [])
     |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
     |> render("edit.html")
   end
@@ -95,13 +97,17 @@ defmodule Peopleware.ProfileController do
                         position: profile["position"],
                           resume: profile["resume"],
                         keywords: profile["keywords"],
-                     type_medium: profile["type_medium"],
-                     info_medium: profile["infor_medium"],
+                           email: profile["email"],
+                             cel: profile["cel"],
+                             tel: profile["tel"],
                            state: profile["state"],
               contracting_schema: profile["contracting_schema"],
                            }
       conn
       |> assign(:profile, p)
+      |> assign(:states, Profile.states)
+      |> assign(:errors, changeset.errors)
+      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
       |> render("edit.html")
     end
   end
@@ -113,38 +119,4 @@ defmodule Peopleware.ProfileController do
     redirect conn, to: profile_path(conn, :index)
   end
 
-
-  defp states do
-    ["Aguascalientes",
-    "Baja California",
-    "Campeche",
-    "Coahuila",
-    "Colima",
-    "Chiapas",
-    "Chihuahua",
-    "Distrito Federal",
-    "Durango",
-    "Guanajuato",
-    "Guerrero",
-    "Hidalgo",
-    "Jalisco",
-    "México",
-    "Michoacán",
-    "Morelos",
-    "Nayarit",
-    "Nuevo León",
-    "Oaxaca",
-    "Puebla",
-    "Querétaro",
-    "Quintana Roo",
-    "San Luis Potosí",
-    "Sinaloa",
-    "Sonora",
-    "Tabasco",
-    "Tamaulipas",
-    "Tlaxcala",
-    "Veracruz",
-    "Yucatán",
-    "Zacatecas"]
-  end
 end

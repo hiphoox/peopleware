@@ -9,8 +9,9 @@ defmodule Peopleware.Profile  do
     field :position,           :string
     field :resume,             :string
     field :keywords,           :string
-    field :type_medium,        :string   # Celular, casa, correo electrónico
-    field :info_medium,        :string
+    field :email,              :string
+    field :cel,                :string
+    field :tel,                :string
     field :state,              :string   # Lista de estados
     field :contracting_schema, :string   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
     timestamps
@@ -19,9 +20,45 @@ defmodule Peopleware.Profile  do
 
   def changeset(profile, params \\ nil) do
     params
-    |> cast(profile, ~w(name last_name last_salary position type_medium info_medium contracting_schema), ~w(state second_surname resume keywords))
-    #|> validate_format(:name, ~r/@/)
-    # |> validate_number(:age, more_than: 18)
-    # |> validate_unique(:email, Repo)
+    |> cast(profile, ~w(name last_name second_surname last_salary position email contracting_schema), ~w(tel cel state resume keywords))
+    |> validate_format(:email, ~r/@/)
+    |> update_change(:email, &String.downcase/1)
+    |> validate_unique(:email, on: Peopleware.Repo)
+    |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+    |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+  end
+
+  def states do
+    ["Aguascalientes",
+    "Baja California",
+    "Campeche",
+    "Coahuila",
+    "Colima",
+    "Chiapas",
+    "Chihuahua",
+    "Distrito Federal",
+    "Durango",
+    "Guanajuato",
+    "Guerrero",
+    "Hidalgo",
+    "Jalisco",
+    "México",
+    "Michoacán",
+    "Morelos",
+    "Nayarit",
+    "Nuevo León",
+    "Oaxaca",
+    "Puebla",
+    "Querétaro",
+    "Quintana Roo",
+    "San Luis Potosí",
+    "Sinaloa",
+    "Sonora",
+    "Tabasco",
+    "Tamaulipas",
+    "Tlaxcala",
+    "Veracruz",
+    "Yucatán",
+    "Zacatecas"]
   end
 end

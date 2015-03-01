@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Phoenix!</title>
+    <title>Captura de Curriculums</title>
     <link rel="stylesheet" href="/css/phoenix.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -37,9 +37,7 @@
           <br />
           <H1>Registro de Curriculums</H1>
         </div>
-
       </div>
-
       <div class="col-xs-6 text-right">
         <div id="header-links">
           <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
@@ -49,15 +47,19 @@
         </div>
       </div>
     </header>
+
     <hr class="clear col-xs-12"/>
 
     <main class="Site-content">
       <%= @inner %>
     </main>
+
     <footer>
       <div class="col-xs-6">
         <a href="http://recluIT.com">RecluIT</a>
       </div>
     </footer>
+
   </body>
+
 </html>
