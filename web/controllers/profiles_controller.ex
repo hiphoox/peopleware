@@ -49,31 +49,16 @@ defmodule Peopleware.ProfileController do
   @doc """
   Invoked when the user selects the save button when in the new.html
   """
-  def create(conn, %{"profile" => profile}) do
-    changeset = Profile.changeset %Profile{}, profile
+  def create(conn, %{"profile" => new_profile_values}) do
+    changeset = Profile.changeset %Profile{}, new_profile_values
 
     if changeset.valid? do
       Peopleware.Repo.insert(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      p = %Peopleware.Profile{name: profile["name"],  
-                       last_name: profile["last_name"],
-                  second_surname: profile["second_surname"],
-                     last_salary: profile["last_salary"],
-                        position: profile["position"],
-                          resume: profile["resume"],
-                        keywords: profile["keywords"],
-                           email: profile["email"],
-                             cel: profile["cel"],
-                             tel: profile["tel"],
-                           state: profile["state"],
-              contracting_schema: profile["contracting_schema"],
-                           }
+      new_profile = profile_from_values(new_profile_values)
       conn
-      |> assign(:profile, p)
-      |> assign(:states, Profile.states)
-      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
-      |> assign(:errors, changeset.errors)
+      |> assign_params(new_profile)
       |> render("new.html")
     end
   end
@@ -81,34 +66,18 @@ defmodule Peopleware.ProfileController do
   @doc """
   Invoked when the user selects the save button when in the edit.html
   """
-  def update(conn, %{"id" => id, "profile" => profile}) do
-
+  def update(conn, %{"id" => id, "profile" => new_profile_values}) do
     {id, _} = Integer.parse(id)
-    p = Peopleware.Repo.get(Peopleware.Profile, id)
-    changeset = Profile.changeset p, profile
+    profile = Peopleware.Repo.get(Peopleware.Profile, id)
+    changeset = Profile.changeset profile, new_profile_values
 
     if changeset.valid? do
       Peopleware.Repo.update(changeset)
-      redirect conn, to: profile_path(conn, :show, p.id)
+      redirect conn, to: profile_path(conn, :index)
     else
-      p = %Peopleware.Profile{name: profile["name"],  
-                       last_name: profile["last_name"],
-                  second_surname: profile["second_surname"],
-                     last_salary: profile["last_salary"],
-                        position: profile["position"],
-                          resume: profile["resume"],
-                        keywords: profile["keywords"],
-                           email: profile["email"],
-                             cel: profile["cel"],
-                             tel: profile["tel"],
-                           state: profile["state"],
-              contracting_schema: profile["contracting_schema"],
-                           }
+      new_profile = profile_from_values(new_profile_values)
       conn
-      |> assign(:profile, p)
-      |> assign(:states, Profile.states)
-      |> assign(:errors, changeset.errors)
-      |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])
+      |> assign_params(new_profile)
       |> render("edit.html")
     end
   end
@@ -123,6 +92,11 @@ defmodule Peopleware.ProfileController do
     redirect conn, to: profile_path(conn, :index)
   end
 
+
+  ####################
+  # Private functions
+  ####################
+
   defp assign_params(conn, profile) do
     conn
       |> assign(:profile, profile)
@@ -130,4 +104,22 @@ defmodule Peopleware.ProfileController do
       |> assign(:errors, [])
       |> assign(:contractings, ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"])    
   end
+
+  defp profile_from_values(profile_values) do
+    %Profile{
+                  name: profile_values["name"],  
+             last_name: profile_values["last_name"],
+        second_surname: profile_values["second_surname"],
+           last_salary: profile_values["last_salary"],
+              position: profile_values["position"],
+                resume: profile_values["resume"],
+              keywords: profile_values["keywords"],
+                 email: profile_values["email"],
+                   cel: profile_values["cel"],
+                   tel: profile_values["tel"],
+                 state: profile_values["state"],
+    contracting_schema: profile_values["contracting_schema"],
+    }
+  end
+
 end
