@@ -93,6 +93,7 @@ defmodule Peopleware.ProfileController do
     conn
       |> assign(:profile, profile)
       |> assign(:states, Profile.states)
+      |> assign(:errors, [])
       |> assign(:contractings, Profile.contractings)    
   end
 

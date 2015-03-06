@@ -22,8 +22,8 @@ tar xvf peopleware-0.0.1.tar.gz
 vim releases/0.0.1/peopleware.conf
 
 1) Recreate database
-psql -c "drop schema public cascade;"
-psql -c "create schema public;"
+psql -d peopleware -U peopleware -c "drop schema public cascade;"
+psql -d peopleware -U peopleware -c "create schema public;"
 psql -d peopleware -U peopleware -f peopleware.sql
 
 4) Start application
