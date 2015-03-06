@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: profiles; Type: TABLE; Schema: public; Owner: hiphoox; Tablespace: 
+-- Name: profiles; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
 --
 
 CREATE TABLE profiles (
@@ -39,7 +39,7 @@ CREATE TABLE profiles (
     last_name character varying(40),
     second_surname character varying(40),
     last_salary character varying(20),
-    "position" character varying(50),
+    position character varying(50),
     resume character varying(5000),
     keywords character varying(500),
     email character varying(50),
@@ -52,10 +52,10 @@ CREATE TABLE profiles (
 );
 
 
-ALTER TABLE profiles OWNER TO hiphoox;
+ALTER TABLE profiles OWNER TO peopleware;
 
 --
--- Name: profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: hiphoox
+-- Name: profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: peopleware
 --
 
 CREATE SEQUENCE profiles_id_seq
@@ -66,17 +66,17 @@ CREATE SEQUENCE profiles_id_seq
     CACHE 1;
 
 
-ALTER TABLE profiles_id_seq OWNER TO hiphoox;
+ALTER TABLE profiles_id_seq OWNER TO peopleware;
 
 --
--- Name: profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hiphoox
+-- Name: profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: peopleware
 --
 
 ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: hiphoox; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -85,17 +85,17 @@ CREATE TABLE schema_migrations (
 );
 
 
-ALTER TABLE schema_migrations OWNER TO hiphoox;
+ALTER TABLE schema_migrations OWNER TO peopleware;
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: hiphoox
+-- Name: id; Type: DEFAULT; Schema: public; Owner: peopleware
 --
 
 ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
 
 
 --
--- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: hiphoox; Tablespace: 
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
 --
 
 ALTER TABLE ONLY profiles
@@ -103,7 +103,7 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: hiphoox; Tablespace: 
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -111,12 +111,12 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: hiphoox
+-- Name: public; Type: ACL; Schema: -; Owner: peopleware
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM hiphoox;
-GRANT ALL ON SCHEMA public TO hiphoox;
+REVOKE ALL ON SCHEMA public FROM peopleware;
+GRANT ALL ON SCHEMA public TO peopleware;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
