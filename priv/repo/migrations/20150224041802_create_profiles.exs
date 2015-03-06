@@ -7,14 +7,14 @@ defmodule Peopleware.Repo.Migrations.CreateProfiles do
       add :last_name,          :string, size: 40
       add :second_surname,     :string, size: 40
       add :last_salary,        :string, size: 20
-      add :position,           :string, size: 40
-      add :resume,             :string, size: 100
-      add :keywords,           :string, size: 50
-      add :email,              :string, size: 40
+      add :position,           :string, size: 50
+      add :resume,             :string, size: 5000
+      add :keywords,           :string, size: 500
+      add :email,              :string, size: 50
       add :tel,                :string, size: 10
       add :cel,                :string, size: 10
-      add :state,              :string, size: 40   # Lista de estados
-      add :contracting_schema, :string, size: 40   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
+      add :state,              :string, size: 20   # Lista de estados
+      add :contracting_schema, :string, size: 30   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
 
       timestamps
     end

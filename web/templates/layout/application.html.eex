@@ -4,13 +4,79 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="description" content="Sitio de Captura de CVs">
+    <meta name="author" content="Norberto Ortigoza">
     <title>Captura de Curriculums</title>
-    <link rel="stylesheet" href="/css/phoenix.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.vertical-tabs.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <header>
+      <div class="col-xs-6">
+        <div class="circle">
+          <br />
+          <H3>Registro de Curriculums</H3>
+        </div>
+      </div>
+      <div class="col-xs-12 text-right">
+        <div id="header-links">
+          <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
+        </div>
+        <div id="header-links">
+          <a href="<%= profile_path(@conn, :new) %>">Agregar nuevo candidato</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="Site-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 bordertop">
+          <ul class="nav nav-tabs tabs-left">
+            <li class="">
+              <a href="#">Notificaciones <span class="badge">0</span></a>
+            </li>
+            <li>
+              <a href="#">Usuarios</a>
+            </li>
+            <li class="active">
+              <a href="#">Captura de CVs</a>
+            </li>
+            <li>
+              <a href="#">Busquedas</a>
+            </li>
+            <li>
+              <a href="#">Generar Word</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 bordertop">
+          <%= @inner %>
+        </div>
+
+      </div>
+    </div>
+    </main>
+
+    <footer>
+      <div class="col-xs-12">
+        <a href="http://recluIT.com">RecluIT</a>
+      </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.restfulizer.js"></script>
     <script>
     $(function() {
@@ -26,39 +92,6 @@
 
     });
     </script>
-
-  </head>
-
-  <body class="Site">
-
-    <header>
-      <div class="col-xs-6">
-        <div class="circle">
-          <br />
-          <H1>Registro de Curriculums</H1>
-        </div>
-      </div>
-      <div class="col-xs-6 text-right">
-        <div id="header-links">
-          <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
-        </div>
-        <div id="header-links">
-          <a href="<%= profile_path(@conn, :new) %>">Agregar nuevo candidato</a>
-        </div>
-      </div>
-    </header>
-
-    <hr class="clear col-xs-12"/>
-
-    <main class="Site-content">
-      <%= @inner %>
-    </main>
-
-    <footer>
-      <div class="col-xs-6">
-        <a href="http://recluIT.com">RecluIT</a>
-      </div>
-    </footer>
 
   </body>
 

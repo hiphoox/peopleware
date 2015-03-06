@@ -1,67 +1,117 @@
-  <label for="profile[name]">Nombre</label>
-  <input type="text" name="profile[name]" class="form-control" value="<%= @profile.name %>"/>
+<div class="form-group">
+  <div class="col-sm-6"> 
+  <label class="control-label" for="profile[name]">Nombre</label>
+  <input type="text" name="profile[name]" class="form-control" value="<%= @profile.name %>" required autofocus="autofocus"/>
   <%= if message = @errors[:name] do %>
-      <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" end %></div>
+      <div class="alert alert-danger" role="alert"> 
+     <%= if message == :required do; "Campo Obligatorio" end %>
+      </div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[last_name]">Apellido Paterno</label>
-  <input type="text" name="profile[last_name]" class="form-control" value="<%= @profile.last_name %>" />
+  <input type="text" name="profile[last_name]" class="form-control" value="<%= @profile.last_name %>" required/>
   <%= if message = @errors[:last_name] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[second_surname]">Apellido Materno</label>
-  <input type="text" name="profile[second_surname]" class="form-control" value="<%= @profile.second_surname %>" />
+  <input type="text" name="profile[second_surname]" class="form-control" value="<%= @profile.second_surname %>" required/>
   <%= if message = @errors[:second_surname] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[last_salary]">Último salario</label>
-  <input type="text" name="profile[last_salary]" class="form-control" value="<%= @profile.last_salary %>" />
+  <input type="text" name="profile[last_salary]" class="form-control" value="<%= @profile.last_salary %>" placeholder="Último salario percibido en la empresa anterior " required/>
   <%= if message = @errors[:last_salary] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[position]">Posición</label>
-  <input type="text" name="profile[position]" class="form-control" value="<%= @profile.position %>" />
+  <input type="text" name="profile[position]" class="form-control" value="<%= @profile.position %>" placeholder="Últmo puesto ocupado en la empresa anterior" required/>
   <%= if message = @errors[:position] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[resume]">Resumen</label>
-  <input type="text" name="profile[resume]" class="form-control" value="<%= @profile.resume %>" />
+  <textarea rows="4" cols="50" name="profile[resume]" class="form-control" placeholder="Poner un resumen de su CV en texto libre "> <%= @profile.resume %> </textarea>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[keywords]">Palabras claves</label>
-  <input type="text" name="profile[keywords]" class="form-control" value="<%= @profile.keywords %>" />
+  <input type="text" name="profile[keywords]" class="form-control" value="<%= @profile.keywords %>" placeholder="Poner palabras separadas por espacio, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."/>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[email]">Correo electrónico</label>
-  <input type="text" name="profile[email]" class="form-control" value="<%= @profile.email %>" />
+  <input type="text" name="profile[email]" class="form-control" value="<%= @profile.email %>" required/>
   <%= if message = @errors[:email] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :required do; "Campo Obligatorio" else "Cuenta de correo invalida" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[cel]">Celular</label>
-  <input type="text" name="profile[cel]" class="form-control" value="<%= @profile.cel %>" />
+  <input type="text" name="profile[cel]" class="form-control" value="<%= @profile.cel %>" placeholder="5544332211"/>
   <%= if message = @errors[:cel] do %>
       <div class="alert alert-danger" role="alert"> <%= if message == :format do; "El número debe ser de 8 o 10 digitos" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[tel]">Teléfono de Casa</label>
-  <input type="text" name="profile[tel]" class="form-control" value="<%= @profile.tel %>" />
+  <input type="text" name="profile[tel]" class="form-control" value="<%= @profile.tel %>" placeholder="5544332211"/>
   <%= if message = @errors[:tel] do %>
-      <div class="alert alert-danger" role="alert"> <%= if message == :format do; "El número debe ser de  8 o 10 digitos" end %></div>
+      <div class="alert alert-danger" role="alert"> <%= if message == :format do; "El número debe ser de 8 o 10 digitos" end %></div>
   <%= end %>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[state]">Estado</label>
   <select type="text" name="profile[state]" class="form-control" value="<%= @profile.state %>" >
       <%= for state <- @states do %>
         <option value="<%= state %>" <%= if state == @profile.state, do: "selected" %>> <%= state %> </option>
       <% end %>
   </select>
+  </div>
+</div>
 
+<div class="form-group">
+  <div class="col-sm-6"> 
   <label for="profile[contracting_schema]">Esquema de Contratación</label>
   <select type="text" name="profile[contracting_schema]" class="form-control" value="<%= @profile.contracting_schema %>" >
       <%= for contract <- @contractings do %>
         <option value="<%= contract %>" <%= if contract == @profile.contracting_schema, do: "selected" %>> <%= contract %> </option>
       <% end %>
   </select>
+  </div>
+</div>
