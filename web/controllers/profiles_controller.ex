@@ -56,7 +56,7 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.insert(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      return_same_page conn, new_profile_values, "new.html"
+      return_same_page conn, new_profile_values, changeset.errors, "new.html"
     end
   end
 
@@ -70,7 +70,7 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.update(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      return_same_page conn, new_profile_values, "edit.html"
+      return_same_page conn, new_profile_values, changeset.errors, "edit.html"
     end
   end
 
@@ -93,7 +93,6 @@ defmodule Peopleware.ProfileController do
     conn
       |> assign(:profile, profile)
       |> assign(:states, Profile.states)
-      |> assign(:errors, [])
       |> assign(:contractings, Profile.contractings)    
   end
 
@@ -119,10 +118,11 @@ defmodule Peopleware.ProfileController do
     Peopleware.Repo.get(Peopleware.Profile, id)
   end
 
-  defp return_same_page(conn, new_profile_values, page) do
+  defp return_same_page(conn, new_profile_values, errors, page) do
     new_profile = profile_from_values(new_profile_values)
     conn
     |> assign_params(new_profile)
+    |> assign(:errors, errors)
     |> render(page)
   end
 

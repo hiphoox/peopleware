@@ -21,8 +21,8 @@ defmodule Peopleware.Profile  do
   def changeset(profile, params \\ nil) do
     params
     |> cast(profile, ~w(name last_name second_surname last_salary position email contracting_schema), ~w(tel cel state resume keywords))
-    |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase/1)
+    |> validate_format(:email, ~r/@/)
     |> validate_unique(:email, on: Peopleware.Repo)
     |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
     |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)

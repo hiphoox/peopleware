@@ -55,13 +55,13 @@
   <label for="profile[state]">Estado</label>
   <select type="text" name="profile[state]" class="form-control" value="<%= @profile.state %>" >
       <%= for state <- @states do %>
-        <option value="<%= state %>" <%= if state == "Distrito Federal", do: "selected" %>> <%= state %> </option>
+        <option value="<%= state %>" <%= if state == @profile.state, do: "selected" %>> <%= state %> </option>
       <% end %>
   </select>
 
   <label for="profile[contracting_schema]">Esquema de Contratación</label>
   <select type="text" name="profile[contracting_schema]" class="form-control" value="<%= @profile.contracting_schema %>" >
       <%= for contract <- @contractings do %>
-        <option value="<%= contract %>" <%= if contract == "mixto", do: "selected" %>> <%= contract %> </option>
+        <option value="<%= contract %>" <%= if contract == @profile.contracting_schema, do: "selected" %>> <%= contract %> </option>
       <% end %>
   </select>
