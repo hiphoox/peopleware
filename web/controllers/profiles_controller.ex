@@ -32,7 +32,7 @@ defmodule Peopleware.ProfileController do
   """
   def new(conn, _params) do
       conn
-      |> assign_params(%Profile{})
+      |> assign_params(%Profile{}, [])
       |> render "new.html"
   end
 
@@ -42,7 +42,7 @@ defmodule Peopleware.ProfileController do
   def edit(conn, %{"id" => id}) do
     profile = profile_from_id(id)
     conn
-      |> assign_params(profile)
+      |> assign_params(profile, [])
       |> render("edit.html")
   end
 
@@ -70,7 +70,7 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.update(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      return_same_page conn, new_profile_values, changeset.errors, "edit.html"
+      return_same_page conn, new_profile_values, changeset.errors, "edit.html", id
     end
   end
 
@@ -89,16 +89,17 @@ defmodule Peopleware.ProfileController do
   # Private functions
   ####################
 
-  defp assign_params(conn, profile) do
+  defp assign_params(conn, profile, errors) do
     conn
       |> assign(:profile, profile)
       |> assign(:states, Profile.states)
-      |> assign(:errors, [])
+      |> assign(:errors, errors)
       |> assign(:contractings, Profile.contractings)    
   end
 
-  defp profile_from_values(profile_values) do
+  defp profile_from_values(profile_values, id) do
     %Profile{
+                    id: id,
                   name: profile_values["name"],  
              last_name: profile_values["last_name"],
         second_surname: profile_values["second_surname"],
@@ -119,11 +120,10 @@ defmodule Peopleware.ProfileController do
     Peopleware.Repo.get(Peopleware.Profile, id)
   end
 
-  defp return_same_page(conn, new_profile_values, errors, page) do
-    new_profile = profile_from_values(new_profile_values)
+  defp return_same_page(conn, new_profile_values, errors, page, id \\ 0) do
+    new_profile = profile_from_values(new_profile_values, id)
     conn
-    |> assign_params(new_profile)
-    |> assign(:errors, errors)
+    |> assign_params(new_profile, errors)
     |> render(page)
   end
 
