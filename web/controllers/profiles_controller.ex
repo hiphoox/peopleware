@@ -56,12 +56,13 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.insert(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      return_same_page conn, new_profile_values, changeset.errors, "new.html"
+      error_messages = get_error_messages(changeset.errors)
+      return_same_page conn, new_profile_values, error_messages, "new.html"
     end
   end
 
   @doc """
-  Invoked when the user selects the save button when in the edit.html
+  Invoked when the user selects the save button inside the edit.html
   """
   def update(conn, %{"id" => id, "profile" => new_profile_values}) do
     changeset = Profile.changeset profile_from_id(id), new_profile_values
@@ -70,12 +71,13 @@ defmodule Peopleware.ProfileController do
       Peopleware.Repo.update(changeset)
       redirect conn, to: profile_path(conn, :index)
     else
-      return_same_page conn, new_profile_values, changeset.errors, "edit.html", id
+      error_messages = get_error_messages(changeset.errors)
+      return_same_page conn, new_profile_values, error_messages, "edit.html", id
     end
   end
 
   @doc """
-  Invoked when the user selects the delete button when in the index.html
+  Invoked when the user selects the delete button inside the index.html
   """
   def delete(conn, %{"id" => id}) do
     {id, _} = Integer.parse(id)
@@ -125,6 +127,26 @@ defmodule Peopleware.ProfileController do
     conn
     |> assign_params(new_profile, errors)
     |> render(page)
+  end
+
+  defp get_error_messages(errors) do
+    Enum.map(errors, fn {k, v} -> {k, get_message(v)} end)
+  end
+
+  defp get_message(:required) do
+    "Campo Obligatorio" 
+  end
+
+  defp get_message(:unique) do
+    "Cuenta de correo ya registrada"
+  end
+
+  defp get_message(:format) do
+    "Formato incorrecto"
+  end
+
+  defp get_message(:length) do
+    "Longitud incorrecta"
   end
 
 end

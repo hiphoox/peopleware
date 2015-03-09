@@ -1,7 +1,7 @@
 <form class="form-horizontal user" action="<%= profile_path(@conn, :update, @profile.id) %>" method="post">
   <div class="form-group-sm">
 
-    <h4>Editar Curriculum</h4>
+    <h4>Curriculum: <%= @profile.id %></h4>
     <input type="hidden" name="csrf_token" value="<%= csrf_token(@conn) %>">
     <input type="hidden" name="_method" value="put">
 

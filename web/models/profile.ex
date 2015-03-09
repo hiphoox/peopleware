@@ -20,24 +20,24 @@ defmodule Peopleware.Profile  do
 
   def changeset(profile, params \\ nil) do
     params
-    |> cast(profile, ~w(name last_name second_surname last_salary position email contracting_schema), ~w(tel cel state resume keywords))
-    |> update_change(:email, &String.downcase/1)
-    |> validate_format(:email, ~r/@/)
-    |> validate_unique(:email, on: Peopleware.Repo)
-    |> validate_length(:name, max: 40)
-    |> validate_length(:last_name, max: 40)
-    |> validate_length(:second_surname, max: 40)
-    |> validate_length(:last_salary, max: 20)
-    |> validate_length(:position, max: 50)
-    |> validate_length(:resume, max: 5000)
-    |> validate_length(:keywords, max: 500)
-    |> validate_length(:email, max: 50)
-    |> validate_length(:tel, max: 10)
-    |> validate_length(:cel, max: 10)
-    |> validate_length(:state, max: 20)
-    |> validate_length(:contracting_schema, max: 30)
-    |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
-    |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+      |> cast(profile, ~w(name last_name last_salary position keywords email contracting_schema), ~w(second_surname tel cel state resume))
+      |> update_change(:email, &String.downcase/1)
+      |> validate_format(:email, ~r/@/)
+      |> validate_unique(:email, on: Peopleware.Repo)
+      |> validate_length(:name, max: 40)
+      |> validate_length(:last_name, max: 40)
+      |> validate_length(:second_surname, max: 40)
+      |> validate_length(:last_salary, max: 20)
+      |> validate_length(:position, max: 50)
+      |> validate_length(:resume, max: 5000)
+      |> validate_length(:keywords, max: 500)
+      |> validate_length(:email, max: 50)
+      |> validate_length(:tel, max: 15)
+      |> validate_length(:cel, max: 15)
+      |> validate_length(:state, max: 20)
+      |> validate_length(:contracting_schema, max: 30)
+      # |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+      # |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
   end
 
   def states do
@@ -54,7 +54,7 @@ defmodule Peopleware.Profile  do
     "Guerrero",
     "Hidalgo",
     "Jalisco",
-    "México",
+    "Estado de México",
     "Michoacán",
     "Morelos",
     "Nayarit",
@@ -71,7 +71,8 @@ defmodule Peopleware.Profile  do
     "Tlaxcala",
     "Veracruz",
     "Yucatán",
-    "Zacatecas"]
+    "Zacatecas",
+    "Extranjero"]
   end
 
   def contractings do

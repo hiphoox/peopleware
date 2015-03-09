@@ -39,8 +39,8 @@
 
   <body>
 
-    <header>
-      <div class="col-xs-6">
+    <header class="col-xs-offset-1">
+      <div class="col-xs-6" >
         <div class="circle">
           <br />
           <H3>Registro de Curriculums</H3>
@@ -56,38 +56,15 @@
       </div>
     </header>
 
-    <main class="Site-content">
-    <div class="container">
+    <main class="container col-xs-offset-1">
       <div class="row">
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 bordertop">
-          <ul class="nav nav-tabs tabs-left">
-            <li class="">
-              <a href="#">Notificaciones <span class="badge">0</span></a>
-            </li>
-            <li>
-              <a href="#">Usuarios</a>
-            </li>
-            <li class="active">
-              <a href="#">Captura de CVs</a>
-            </li>
-            <li>
-              <a href="#">Busquedas</a>
-            </li>
-            <li>
-              <a href="#">Generar Word</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 bordertop">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 bordertop ">
           <%= @inner %>
         </div>
-
       </div>
-    </div>
     </main>
 
-    <footer>
+    <footer class="col-xs-offset-1">
       <div class="col-xs-12">
         <a href="http://recluIT.com">RecluIT</a>
       </div>
