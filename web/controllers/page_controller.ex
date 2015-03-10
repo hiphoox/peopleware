@@ -1,5 +1,5 @@
 defmodule Peopleware.PageController do
-  use Phoenix.Controller
+  use Peopleware.Web, :controller
 
   plug :action
 

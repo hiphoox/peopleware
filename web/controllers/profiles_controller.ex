@@ -1,10 +1,10 @@
 defmodule Peopleware.ProfileController do
-  use Phoenix.Controller
-  require IEx
+  use Peopleware.Web, :controller
+  # require IEx
    
-  import Peopleware.Router.Helpers
   alias Peopleware.Profile
 
+  plug :scrub_params, "profile" when action in [:create, :update]
   plug :action
   
   @doc """
@@ -12,67 +12,66 @@ defmodule Peopleware.ProfileController do
   """
   def index(conn, _params) do
     # IEx.pry
+    profiles = Repo.all(Profile)
+    render conn, "index.html", profiles: profiles
+  end
+
+  @doc """
+  Setups everything we need to create a new profile 
+  """
+  def new(conn, _params) do
     conn
-    |> assign(:profiles, Peopleware.Repo.all(Profile))
-    |> render("index.html")
+    |> assign_params(%Profile{}, [])
+    |> render "new.html"
+  end
+
+  @doc """
+  Invoked when the user selects the save button when in the new.html
+  """
+  def create(conn, %{"profile" => profile_params}) do
+    changeset = Profile.changeset(%Profile{}, profile_params)
+
+    if changeset.valid? do
+      Repo.insert(changeset)
+      # |> put_flash(:info, "CV creado exitosamente.")
+      redirect(conn, to: profile_path(conn, :index))
+    else
+      error_messages = get_error_messages(changeset.errors)
+      return_same_page conn, profile_params, error_messages, "new.html"
+    end
   end
 
   @doc """
   It shows the seleted curriculum
   """
   def show(conn, %{"id" => id}) do
-    profile = profile_from_id(id)
-    conn
-      |> assign(:profile, profile)
-      |> render("show.html")
+    profile = Repo.get(Profile, id)
+    render conn, "show.html", profile: profile
   end
   
-  @doc """
-  Setups everything we need to create a new profile 
-  """
-  def new(conn, _params) do
-      conn
-      |> assign_params(%Profile{}, [])
-      |> render "new.html"
-  end
-
   @doc """
   It just returns the list of curriculums
   """
   def edit(conn, %{"id" => id}) do
-    profile = profile_from_id(id)
+    profile = Repo.get(Profile, id)
     conn
       |> assign_params(profile, [])
       |> render("edit.html")
   end
 
   @doc """
-  Invoked when the user selects the save button when in the new.html
-  """
-  def create(conn, %{"profile" => new_profile_values}) do
-    changeset = Profile.changeset %Profile{}, new_profile_values
-
-    if changeset.valid? do
-      Peopleware.Repo.insert(changeset)
-      redirect conn, to: profile_path(conn, :index)
-    else
-      error_messages = get_error_messages(changeset.errors)
-      return_same_page conn, new_profile_values, error_messages, "new.html"
-    end
-  end
-
-  @doc """
   Invoked when the user selects the save button inside the edit.html
   """
-  def update(conn, %{"id" => id, "profile" => new_profile_values}) do
-    changeset = Profile.changeset profile_from_id(id), new_profile_values
+  def update(conn, %{"id" => id, "profile" => profile_params}) do
+    profile = Repo.get(Profile, id)
+    changeset = Profile.changeset(profile, profile_params)
 
     if changeset.valid? do
-      Peopleware.Repo.update(changeset)
-      redirect conn, to: profile_path(conn, :index)
+      Repo.update(changeset)
+      redirect(conn, to: profile_path(conn, :index))
     else
       error_messages = get_error_messages(changeset.errors)
-      return_same_page conn, new_profile_values, error_messages, "edit.html", id
+      return_same_page conn, profile_params, error_messages, "edit.html", id
     end
   end
 
@@ -80,10 +79,11 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the delete button inside the index.html
   """
   def delete(conn, %{"id" => id}) do
-    {id, _} = Integer.parse(id)
-    q = Peopleware.Repo.get(Peopleware.Profile, id)
-    Peopleware.Repo.delete(q)
-    redirect conn, to: profile_path(conn, :index)
+    profile = Repo.get(Peopleware.Profile, id)
+    Repo.delete(profile)
+    conn
+    # |> put_flash(:info, "CV borrado exitosamente.")
+    |> redirect(to: profile_path(conn, :index))
   end
 
 
@@ -93,10 +93,10 @@ defmodule Peopleware.ProfileController do
 
   defp assign_params(conn, profile, errors) do
     conn
-      |> assign(:profile, profile)
-      |> assign(:states, Profile.states)
-      |> assign(:errors, errors)
-      |> assign(:contractings, Profile.contractings)    
+    |> assign(:profile, profile)
+    |> assign(:states, Profile.states)
+    |> assign(:errors, errors)
+    |> assign(:contractings, Profile.contractings)    
   end
 
   defp profile_from_values(profile_values, id) do
@@ -115,11 +115,6 @@ defmodule Peopleware.ProfileController do
                  state: profile_values["state"],
     contracting_schema: profile_values["contracting_schema"],
     }
-  end
-
-  defp profile_from_id(id) do
-    {id, _} = Integer.parse(id)
-    Peopleware.Repo.get(Peopleware.Profile, id)
   end
 
   defp return_same_page(conn, new_profile_values, errors, page, id \\ 0) do

@@ -15,17 +15,17 @@ defmodule Peopleware.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Peopleware, []},
-     applications: [:phoenix, :cowboy, :logger, :postgrex, :ecto]]
+     applications: [:phoenix, :cowboy, :logger]]
   end
 
   # Specifies your project dependencies
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.9.0"},
+    [{:phoenix, github: "phoenixframework/phoenix", override: true},
      {:cowboy, "~> 1.0"},
-     {:postgrex, "~> 0.6"},
-     {:ecto, "~>0.8.1"},
+     {:phoenix_ecto, "~> 0.1"},
+     {:postgrex, "~> 0.8"},
      {:exrm, "~>0.15.0"}]
   end
 end

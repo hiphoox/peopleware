@@ -1,5 +1,5 @@
 defmodule Peopleware.Profile  do
-  use Ecto.Model
+  use Peopleware.Web, :model
 
   schema "profiles" do
     field :name,               :string
@@ -17,11 +17,10 @@ defmodule Peopleware.Profile  do
     timestamps
   end
 
-
-  def changeset(profile, params \\ nil) do
-    params
-      |> cast(profile, ~w(name last_name last_salary position keywords email contracting_schema), ~w(second_surname tel cel state resume))
-      |> update_change(:email, &String.downcase/1)
+  def changeset(model, params \\ nil) do
+    model
+      |> cast(params, ~w(name last_name last_salary position keywords email contracting_schema), ~w(second_surname tel cel state resume))
+      # |> update_change(:email, &String.downcase/1)
       |> validate_format(:email, ~r/@/)
       |> validate_unique(:email, on: Peopleware.Repo)
       |> validate_length(:name, max: 40)
@@ -36,8 +35,8 @@ defmodule Peopleware.Profile  do
       |> validate_length(:cel, max: 15)
       |> validate_length(:state, max: 20)
       |> validate_length(:contracting_schema, max: 30)
-      # |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
-      # |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+      |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
+      |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
   end
 
   def states do

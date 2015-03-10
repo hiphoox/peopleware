@@ -1,3 +1,3 @@
 defmodule Peopleware.PageView do
-  use Peopleware.View
+  use Peopleware.Web, :view
 end

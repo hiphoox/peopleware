@@ -1,5 +1,5 @@
 defmodule Peopleware.ErrorView do
-  use Peopleware.View
+  use Peopleware.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found - 404"

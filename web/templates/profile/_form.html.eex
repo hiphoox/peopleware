@@ -59,6 +59,9 @@
   <div class="col-sm-6"> 
   <label for="profile[keywords]">Palabras claves *</label>
   <input type="text" name="profile[keywords]" class="form-control" value="<%= @profile.keywords %>" placeholder="Poner palabras separadas por espacio, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."/>
+  <%= if message = @errors[:keywords] do %>
+      <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <%= end %>
   </div>
 </div>
 
