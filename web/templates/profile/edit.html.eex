@@ -2,12 +2,11 @@
   <div class="form-group-sm">
 
     <h4>Curriculum: <%= @profile.id %></h4>
-    <input type="hidden" name="csrf_token" value="<%= csrf_token(@conn) %>">
     <input type="hidden" name="_method" value="put">
 
     <%= render "_form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
 
-    <div class="col-sm-6 btn-login"> 
+    <div class="col-sm-6 btn-login "> 
       <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 

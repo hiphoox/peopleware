@@ -51,7 +51,7 @@
 <div class="form-group">
   <div class="col-sm-6"> 
   <label for="profile[resume]">Resumen</label>
-  <textarea rows="4" cols="50" name="profile[resume]" class="form-control" placeholder="Poner un resumen de su CV en texto libre "> <%= @profile.resume %> </textarea>
+  <textarea rows="8" cols="50" name="profile[resume]" class="form-control" placeholder="Poner un resumen de su CV en texto libre "> <%= @profile.resume %> </textarea>
   </div>
 </div>
 

@@ -28,14 +28,8 @@
         <%= profile.email %>
       </td>
       <td>
-        <a href="<%=profile_path(@conn, :edit, profile.id) %>" class="btn btn-danger">
-          Editar
-        </a>
-
-        <a href="<%=profile_path(@conn, :delete, profile.id) %>" data-method="DELETE" class="rest btn btn-danger">
-          Eliminar
-        </a>
-
+        <a href="<%=profile_path(@conn, :edit, profile.id) %>" class="btn btn-danger">Editar</a>
+        <a href="<%=profile_path(@conn, :delete, profile.id) %>" data-method="DELETE" class="rest btn btn-danger">Eliminar</a>
       </td>
     </tr>
     <% end %>
