@@ -2,7 +2,7 @@
   <div class="form-group-sm">
 
     <h4>Nuevo Curriculum</h4>
-    <input type="hidden" name="csrf_token" value="<%= csrf_token(@conn) %>">
+    <input type="hidden" name="csrf_token" value="">
 
     <%= render "_form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
 

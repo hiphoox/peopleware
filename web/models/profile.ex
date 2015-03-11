@@ -39,6 +39,40 @@ defmodule Peopleware.Profile  do
       |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
   end
 
+  def profile_from_values(profile_values, id) do
+    %Peopleware.Profile{
+                        id: id,
+                      name: profile_values["name"],  
+                 last_name: profile_values["last_name"],
+            second_surname: profile_values["second_surname"],
+               last_salary: profile_values["last_salary"],
+                  position: profile_values["position"],
+                    resume: profile_values["resume"],
+                  keywords: profile_values["keywords"],
+                     email: profile_values["email"],
+                       cel: profile_values["cel"],
+                       tel: profile_values["tel"],
+                     state: profile_values["state"],
+        contracting_schema: profile_values["contracting_schema"],
+    }
+  end
+
+  def get_message(:required) do
+    "Campo Obligatorio" 
+  end
+
+  def get_message(:unique) do
+    "Cuenta de correo ya registrada"
+  end
+
+  def get_message(:format) do
+    "Formato incorrecto"
+  end
+
+  def get_message(:length) do
+    "Longitud incorrecta"
+  end
+
   def states do
     ["Aguascalientes",
     "Baja California",

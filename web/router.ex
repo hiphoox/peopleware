@@ -8,6 +8,10 @@ defmodule Peopleware.Router do
     # plug :protect_from_forgery
   end
 
+  # pipeline :auth do
+  #   plug Peopleware.Plug.Authentication
+  # end
+
   pipeline :api do
     plug :accepts, ~w(json)
   end

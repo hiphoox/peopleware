@@ -22,9 +22,6 @@ defmodule Peopleware.Web do
       # Import all HTML functions (forms, tags, etc)
       use Phoenix.HTML
 
-      def csrf_token(_vacio) do
-        ""
-      end
     end
   end
 

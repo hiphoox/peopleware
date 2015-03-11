@@ -19,7 +19,7 @@
         $('form').submit(function(s) {
           var input = $("<input>")
           .attr("type", "hidden")
-          .attr("name", "csrf_token").val("<%= csrf_token(@conn) %>");
+          .attr("name", "csrf_token").val("");
           $(s.target).append($(input));
         });
       });

@@ -1,18 +1,19 @@
 defmodule Peopleware.ProfileController do
   use Peopleware.Web, :controller
   # require IEx
-   
   alias Peopleware.Profile
 
+  plug :authenticate, :admin when action in [:create, :update]
   plug :scrub_params, "profile" when action in [:create, :update]
   plug :action
-  
+
   @doc """
   It just returns the list of all curriculums
   """
   def index(conn, _params) do
     # IEx.pry
     profiles = Repo.all(Profile)
+    # put_resp_header("Authorization: Token", "token=12345")
     render conn, "index.html", profiles: profiles
   end
 
@@ -91,6 +92,16 @@ defmodule Peopleware.ProfileController do
   # Private functions
   ####################
 
+  defp authenticate(conn, :admin) do
+    if Peopleware.Authentication.authenticated?(conn) do
+      conn
+    else
+      conn 
+      |> redirect(to: profile_path(conn, :index)) 
+      |> halt
+    end
+  end
+
   defp assign_params(conn, profile, errors) do
     conn
     |> assign(:profile, profile)
@@ -99,49 +110,15 @@ defmodule Peopleware.ProfileController do
     |> assign(:contractings, Profile.contractings)    
   end
 
-  defp profile_from_values(profile_values, id) do
-    %Profile{
-                    id: id,
-                  name: profile_values["name"],  
-             last_name: profile_values["last_name"],
-        second_surname: profile_values["second_surname"],
-           last_salary: profile_values["last_salary"],
-              position: profile_values["position"],
-                resume: profile_values["resume"],
-              keywords: profile_values["keywords"],
-                 email: profile_values["email"],
-                   cel: profile_values["cel"],
-                   tel: profile_values["tel"],
-                 state: profile_values["state"],
-    contracting_schema: profile_values["contracting_schema"],
-    }
-  end
-
   defp return_same_page(conn, new_profile_values, errors, page, id \\ 0) do
-    new_profile = profile_from_values(new_profile_values, id)
+    new_profile = Profile.profile_from_values(new_profile_values, id)
     conn
     |> assign_params(new_profile, errors)
     |> render(page)
   end
 
   defp get_error_messages(errors) do
-    Enum.map(errors, fn {k, v} -> {k, get_message(v)} end)
-  end
-
-  defp get_message(:required) do
-    "Campo Obligatorio" 
-  end
-
-  defp get_message(:unique) do
-    "Cuenta de correo ya registrada"
-  end
-
-  defp get_message(:format) do
-    "Formato incorrecto"
-  end
-
-  defp get_message(:length) do
-    "Longitud incorrecta"
+    Enum.map(errors, fn {k, v} -> {k, Profile.get_message(v)} end)
   end
 
 end
