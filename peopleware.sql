@@ -39,7 +39,7 @@ CREATE TABLE profiles (
     last_name character varying(40),
     second_surname character varying(40),
     last_salary character varying(20),
-    position character varying(50),
+    "position" character varying(50),
     resume character varying(5000),
     keywords character varying(500),
     email character varying(50),
@@ -88,10 +88,59 @@ CREATE TABLE schema_migrations (
 ALTER TABLE schema_migrations OWNER TO peopleware;
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    username character varying(255),
+    first_name character varying(255),
+    last_name character varying(255),
+    password character varying(255),
+    email character varying(255),
+    is_staff boolean DEFAULT false,
+    is_active boolean DEFAULT false,
+    is_superuser boolean DEFAULT false,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE users OWNER TO peopleware;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: peopleware
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO peopleware;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: peopleware
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: peopleware
 --
 
 ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: peopleware
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
@@ -108,6 +157,14 @@ ALTER TABLE ONLY profiles
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --
