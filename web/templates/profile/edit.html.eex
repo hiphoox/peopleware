@@ -1,14 +1,17 @@
-<form class="form-horizontal user" action="<%= profile_path(@conn, :update, @profile.id) %>" method="post">
+<h4>Curriculum: <%= @profile.id %></h4>
+
+<form action="<%= profile_path(@conn, :update, @profile.id) %>" method="post">
   <div class="form-group-sm">
 
-    <h4>Curriculum: <%= @profile.id %></h4>
     <input type="hidden" name="_method" value="put">
 
-    <%= render "_form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
+    <%= render "form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
 
-    <div class="col-sm-6 btn-login "> 
+    <div class="col-sm-12 btn-login "> 
       <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 
   </div>    
 </form>
+
+<%= link "Regresar", to: profile_path(@conn, :index) %>

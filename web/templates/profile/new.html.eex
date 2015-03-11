@@ -1,14 +1,16 @@
-<form class="form-horizontal user" action="<%= profile_path(@conn, :create) %>" method="post">
+<h4>Nuevo Curriculum</h4>
+
+<form action="<%= profile_path(@conn, :create) %>" method="post">
   <div class="form-group-sm">
 
-    <h4>Nuevo Curriculum</h4>
     <input type="hidden" name="csrf_token" value="">
 
-    <%= render "_form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
+    <%= render "form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
 
-    <div class="col-sm-6 btn-login"> 
+    <div class="col-sm-12 btn-login"> 
       <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
-
-  </div>    
+  </div>
 </form>
+
+<%= link "Regresar", to: profile_path(@conn, :index) %>

@@ -34,4 +34,14 @@
     </tr>
     <% end %>
   </table>
+
+  <div class="col-xs-12 text-center">
+    <div id="header-links">
+      <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
+    </div>
+    <div id="header-links">
+      <a href="<%= profile_path(@conn, :new) %>">Agregar nuevo candidato</a>
+    </div>
+  </div>
+
 </div>

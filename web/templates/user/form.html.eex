@@ -1,0 +1,97 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <div class="form-group-sm">
+
+  <%= if @changeset.errors != [] do %>
+    <p style="color: red">Oops, something went wrong!</p>
+  <% end %>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label class="control-label">
+      <span>Username:</span>
+      <%= text_input f, :username %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Apellido Paterno:</span>
+      <%= text_input f, :first_name %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Apellido Materno:</span>
+      <%= text_input f, :last_name %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Password:</span>
+      <%= text_input f, :password %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Confirmación Password:</span>
+      <%= text_input f, :password_confirmation %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Correo:</span>
+      <%= text_input f, :email %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Staff:</span>
+      <%= checkbox f, :is_staff %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Activo:</span>
+      <%= checkbox f, :is_active %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <label>
+      <span>Super Usuario:</span>
+      <%= checkbox f, :is_superuser %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-6"> 
+    <%= submit "Submit" %>
+  </div>
+</div>
+
+</div>    
+
+<% end %>

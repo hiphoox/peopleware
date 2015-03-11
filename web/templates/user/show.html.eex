@@ -1,0 +1,52 @@
+<h2>Usuario</h2>
+
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </li>
+
+  <li>
+    <strong>Nombre:</strong>
+    <%= @user.first_name %>
+  </li>
+
+  <li>
+    <strong>Apellido Paterno:</strong>
+    <%= @user.last_name %>
+  </li>
+
+  <li>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </li>
+
+  <li>
+    <strong>Confirmación Password:</strong>
+    <%= @user.password_confirmation %>
+  </li>
+
+  <li>
+    <strong>Correo:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Staff:</strong>
+    <%= @user.is_staff %>
+  </li>
+
+  <li>
+    <strong>Activo:</strong>
+    <%= @user.is_active %>
+  </li>
+
+  <li>
+    <strong>Es Super Usuario:</strong>
+    <%= @user.is_superuser %>
+  </li>
+
+</ul>
+
+<%= link "Regresar", to: user_path(@conn, :index) %>

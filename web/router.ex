@@ -19,8 +19,10 @@ defmodule Peopleware.Router do
   scope "/", Peopleware do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", LoginController, :index
+    post "/login", LoginController, :login
     resources "/profiles", ProfileController
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.
