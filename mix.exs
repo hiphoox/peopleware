@@ -15,7 +15,7 @@ defmodule Peopleware.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Peopleware, []},
-     applications: [:phoenix, :cowboy, :logger]]
+     applications: [:phoenix, :cowboy, :logger, :postgrex, :phoenix_ecto]]
   end
 
   # Specifies your project dependencies

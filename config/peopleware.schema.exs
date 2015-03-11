@@ -34,7 +34,7 @@
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.http.port here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.http.port",
       datatype: :binary,
-      default: nil
+      default: 4000
     ],
     "peopleware.Elixir.Peopleware.Endpoint.server": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.server here.",
