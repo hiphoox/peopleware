@@ -1,17 +1,9 @@
 <h4>Curriculum: <%= @profile.id %></h4>
 
-<form action="<%= profile_path(@conn, :update, @profile.id) %>" method="post">
-  <div class="form-group-sm">
-
-    <input type="hidden" name="_method" value="put">
-
-    <%= render "form.html", profile: @profile, states: @states, contractings: @contractings, errors: @errors %>
-
-    <div class="col-sm-12 btn-login "> 
-      <button type="submit" class="btn btn-primary">Salvar</button>
-    </div>
-
-  </div>    
-</form>
+<%= render "form.html", changeset: @changeset,
+                        action: profile_path(@conn, :update, @profile),
+                        states: @states,
+                        contractings: @contractings,
+                        errors: @errors %>
 
 <%= link "Regresar", to: profile_path(@conn, :index) %>

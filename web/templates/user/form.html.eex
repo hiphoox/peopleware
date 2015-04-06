@@ -6,7 +6,7 @@
   <% end %>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label class="control-label">
       <span>Username:</span>
       <%= text_input f, :username %>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Apellido Paterno:</span>
       <%= text_input f, :first_name %>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Apellido Materno:</span>
       <%= text_input f, :last_name %>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Password:</span>
       <%= text_input f, :password %>
@@ -42,7 +42,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Confirmación Password:</span>
       <%= text_input f, :password_confirmation %>
@@ -51,7 +51,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Correo:</span>
       <%= text_input f, :email %>
@@ -60,7 +60,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Staff:</span>
       <%= checkbox f, :is_staff %>
@@ -69,7 +69,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Activo:</span>
       <%= checkbox f, :is_active %>
@@ -78,7 +78,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <label>
       <span>Super Usuario:</span>
       <%= checkbox f, :is_superuser %>
@@ -87,11 +87,11 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-6"> 
+  <div class="col-sm-6">
     <%= submit "Submit" %>
   </div>
 </div>
 
-</div>    
+</div>
 
 <% end %>

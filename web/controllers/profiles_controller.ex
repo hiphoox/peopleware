@@ -18,11 +18,12 @@ defmodule Peopleware.ProfileController do
   end
 
   @doc """
-  Setups everything we need to create a new profile 
+  Setups everything we need to create a new profile
   """
   def new(conn, _params) do
+    changeset = Profile.changeset(%Profile{})
     conn
-    |> assign_params(%Profile{}, [])
+    |> assign_params(changeset, [])
     |> render "new.html"
   end
 
@@ -49,15 +50,16 @@ defmodule Peopleware.ProfileController do
     profile = Repo.get(Profile, id)
     render conn, "show.html", profile: profile
   end
-  
+
   @doc """
   It just returns the list of curriculums
   """
   def edit(conn, %{"id" => id}) do
     profile = Repo.get(Profile, id)
+    changeset = Profile.changeset(profile)
     conn
-      |> assign_params(profile, [])
-      |> render("edit.html")
+      |> assign_params(changeset, [])
+      |> render "edit.html", profile: profile
   end
 
   @doc """
@@ -96,18 +98,18 @@ defmodule Peopleware.ProfileController do
     if Peopleware.Authentication.authenticated?(conn) do
       conn
     else
-      conn 
-      |> redirect(to: profile_path(conn, :index)) 
+      conn
+      |> redirect(to: profile_path(conn, :index))
       |> halt
     end
   end
 
-  defp assign_params(conn, profile, errors) do
+  defp assign_params(conn, changeset, errors) do
     conn
-    |> assign(:profile, profile)
+    |> assign(:changeset, changeset)
     |> assign(:states, Profile.states)
     |> assign(:errors, errors)
-    |> assign(:contractings, Profile.contractings)    
+    |> assign(:contractings, Profile.contractings)
   end
 
   defp return_same_page(conn, new_profile_values, errors, page, id \\ 0) do
