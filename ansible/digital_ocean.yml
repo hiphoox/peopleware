@@ -3,7 +3,7 @@
 - name: Actualizar aplicación de peopleware en digital ocean
   hosts: peopleware
   tasks:
-    - command: deployments/bin/peopleware stop removes=deployments
+    - command: deployments/bin/peopleware stop removes=deployments/bin/peopleware
       ignore_errors: True
     - command: chmod -R 777 deployments removes=deployments
     - command: rm -r deployments removes=deployments
@@ -13,5 +13,5 @@
       args:
         chdir: deployments/
     - copy: src=peopleware.digital.conf dest=/usr/home/freebsd/deployments/releases/0.0.1/peopleware.conf
-    - command: deployments/bin/peopleware start removes=deployments
+    - command: deployments/bin/peopleware start removes=deployments/bin/peopleware
       ignore_errors: True
