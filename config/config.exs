@@ -10,6 +10,7 @@ config :peopleware, Peopleware.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "g/z3ICJVkXVPdNyUf0wFe52NMF49WHJrNG4VyrBdmasFgd/5JYIyV1Pcq9uoxhwO",
   debug_errors: false,
+  root: Path.expand("..", __DIR__),
   pubsub: [name: Peopleware.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

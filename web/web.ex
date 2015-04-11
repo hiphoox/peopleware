@@ -18,6 +18,7 @@ defmodule Peopleware.Web do
 
       # Import URL helpers from the router
       import Peopleware.Router.Helpers
+      import Phoenix.Controller, only: [get_flash: 2]
 
       # Import all HTML functions (forms, tags, etc)
       use Phoenix.HTML

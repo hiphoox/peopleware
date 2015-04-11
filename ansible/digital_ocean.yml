@@ -1,0 +1,17 @@
+---
+
+- name: Actualizar aplicación de peopleware en digital ocean
+  hosts: peopleware
+  tasks:
+    - command: deployments/bin/peopleware stop removes=deployments
+      ignore_errors: True
+    - command: chmod -R 777 deployments removes=deployments
+    - command: rm -r deployments removes=deployments
+    - command: mkdir deployments
+    - copy: src=../rel/peopleware/peopleware-0.0.1.tar.gz dest=/usr/home/freebsd/deployments
+    - command: tar xvf peopleware-0.0.1.tar.gz
+      args:
+        chdir: deployments/
+    - copy: src=peopleware.digital.conf dest=/usr/home/freebsd/deployments/releases/0.0.1/peopleware.conf
+    - command: deployments/bin/peopleware start removes=deployments
+      ignore_errors: True
