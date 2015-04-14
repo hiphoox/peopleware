@@ -1,119 +1,95 @@
-<%= form_for @changeset, @action, fn f -> %>
-<div class="form-group-sm">
-
-  <div class="form-group">
-    <div class="col-sm-6">
+<%= form_for @changeset, @action, [class: "col-sm-12"], fn f -> %>
+  <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[name]">Nombre *</label>
-    <%= text_input f, :name, [class: :"form-control", autofocus: :autofocus]%>
-    <%= if message = @errors[:name] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+    <%= text_input f, :name, class: "form-control", autofocus: :autofocus%>
+    <%= if message = @changeset.errors[:name] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[last_name]">Apellido Paterno *</label>
-    <%= text_input f, :last_name, [class: :"form-control"]%>
-    <%= if message = @errors[:last_name] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[last_name]">Apellido Paterno *</label>
+    <%= text_input f, :last_name, class: "form-control"%>
+    <%= if message = @changeset.errors[:last_name] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[second_surname]">Apellido Materno</label>
-    <%= text_input f, :second_surname, [class: :"form-control"]%>
-    <%= if message = @errors[:second_surname] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[second_surname]">Apellido Materno</label>
+    <%= text_input f, :second_surname, class: "form-control"%>
+    <%= if message = @changeset.errors[:second_surname] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[last_salary]">Último salario *</label>
-    <%= text_input f, :last_salary, [class: :"form-control", placeholder: "Último salario percibido en la empresa anterior"]%>
-    <%= if message = @errors[:last_salary] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[email]">Correo electrónico *</label>
+    <%= email_input f, :email, class: "form-control"%>
+    <%= if message = @changeset.errors[:email] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[position]">Posición *</label>
-    <%= text_input f, :position, [class: :"form-control", placeholder: "Últmo puesto ocupado en la empresa anterior"]%>
-    <%= if message = @errors[:position] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[cel]">Celular</label>
+    <%= text_input f, :cel, class: "form-control", placeholder: "(52)5544332211"%>
+    <%= if message = @changeset.errors[:cel] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[resume]">Resumen</label>
-    <%= text_input f, :position, [class: :"form-control", placeholder: :"Poner un resumen de su CV en texto libre "] %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[keywords]">Palabras claves *</label>
-    <%= text_input f, :keywords, [class: :"form-control", placeholder: "Poner palabras separadas por espacio, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."]%>
-    <%= if message = @errors[:keywords] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[tel]">Teléfono de Casa</label>
+    <%= text_input f, :tel, class: "form-control", placeholder: "(52)5544332211"%>
+    <%= if message = @changeset.errors[:tel] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[email]">Correo electrónico *</label>
-    <%= text_input f, :email, [class: :"form-control"]%>
-    <%= if message = @errors[:email] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[state]">Estado de Residencia</label>
+    <%= select f, :state, Peopleware.Profile.states, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[position]">Posición *</label>
+    <%= text_input f, :position, class: "form-control", placeholder: "Últmo puesto ocupado en la empresa anterior"%>
+    <%= if message = @changeset.errors[:position] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[cel]">Celular</label>
-    <%= text_input f, :cel, [class: :"form-control", placeholder: "5544332211"]%>
-    <%= if message = @errors[:cel] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[last_salary]">Último salario *</label>
+    <%= number_input f, :last_salary, class: "form-control", placeholder: "Último salario percibido en la empresa anterior"%>
+    <%= if message = @changeset.errors[:last_salary] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[tel]">Teléfono de Casa</label>
-    <%= text_input f, :tel, [class: :"form-control", placeholder: "5544332211"]%>
-    <%= if message = @errors[:tel] do %>
-        <div class="alert alert-danger" role="alert"> <%= message %> </div>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[contracting_schema]">Esquema de Contratación *</label>
+    <%= select f, :contracting_schema, Peopleware.Profile.contractings, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-12">
+    <label class="control-label" for="changeset[resume]">Resumen</label>
+    <%= textarea f, :resume, class: "form-control", rows: "20", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
+    <%= if message = @changeset.errors[:resume] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
     <%= end %>
-    </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[state]">Estado de Residencia</label>
-    <%= select f, :state, @states, [class: :"form-control"]%>
-    </div>
+  <div class="form-group col-sm-12">
+    <label class="control-label" for="changeset[keywords]">Palabras claves *</label>
+    <%= text_input f, :keywords, class: "form-control", placeholder: "Poner palabras separadas por espacio, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."%>
+    <%= if message = @changeset.errors[:keywords] do %>
+        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
+    <%= end %>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-6">
-    <label for="changeset[contracting_schema]">Esquema de Contratación *</label>
-    <%= select f, :contracting_schema, @contractings, [class: :"form-control"]%>
-    </div>
+  <div class="form-group col-sm-2 ">
+    <%= submit "Salvar", class: "form-control btn-primary btn-xs" %>
   </div>
-
-  <div class="col-sm-12 btn-login">
-    <%= submit "Salvar", [class: :"btn btn-primary"] %>
-  </div>
-</div>
 <% end %>

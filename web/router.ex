@@ -5,7 +5,7 @@ defmodule Peopleware.Router do
     plug :accepts, ~w(html)
     plug :fetch_session
     plug :fetch_flash
-    # plug :protect_from_forgery
+    plug :protect_from_forgery
   end
 
   # pipeline :auth do

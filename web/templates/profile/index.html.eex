@@ -1,5 +1,6 @@
-<div class="page-content col-xs-12 ">
-  <table class="table table-striped">
+<h3>Lista de Curriculums</h3>
+
+  <table class="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -7,41 +8,28 @@
         <th>Apellido Materno</th>
         <th>Apellido Paterno</th>
         <th>Correo</th>
+        <th></th>
+      </tr>
     </thead>
+
+    <tbody>
     <%= for profile <- @profiles do %>
     <tr>
-      <td>
-          <%= profile.id %>
-      </td>
-      <td>
-        <a href="<%=profile_path(@conn, :show, profile.id) %>">
-          <%= profile.name %>
-        </a>
-      </td>
-      <td>
-        <%= profile.last_name %>
-      </td>
-      <td>
-        <%= profile.second_surname %>
-      </td>
-      <td>
-        <%= profile.email %>
-      </td>
-      <td>
-        <a href="<%=profile_path(@conn, :edit, profile.id) %>" class="btn btn-danger">Editar</a>
-        <a href="<%=profile_path(@conn, :delete, profile.id) %>" data-method="DELETE" class="rest btn btn-danger">Eliminar</a>
+      <td> <%= profile.id %> </td>
+      <td> <%= link profile.name, to: profile_path(@conn, :show, profile) %> </td>
+      <td> <%= profile.last_name %> </td>
+      <td> <%= profile.second_surname %> </td>
+      <td> <%= profile.email %> </td>
+
+      <td class="text-right">
+        <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %>
+        <%= link "Borrar", to: profile_path(@conn, :delete, profile), method: :delete, class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
     <% end %>
+    </tbody>
   </table>
 
-  <div class="col-xs-12 text-center">
-    <div id="header-links">
-      <a href="<%= profile_path(@conn, :index) %>">Lista de CVs</a>
-    </div>
-    <div id="header-links">
-      <a href="<%= profile_path(@conn, :new) %>">Agregar nuevo candidato</a>
-    </div>
-  </div>
+  <%= link "Agregar nuevo CV", to: profile_path(@conn, :new), class: "btn btn-primary" %>
 
-</div>
+

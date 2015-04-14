@@ -1,97 +1,62 @@
-<%= form_for @changeset, @action, fn f -> %>
-  <div class="form-group-sm">
+<%= form_for @changeset, @action, [class: "col-sm-12"], fn f -> %>
 
+  <div class="form-group col-sm-12">
   <%= if @changeset.errors != [] do %>
-    <p style="color: red">Oops, something went wrong!</p>
+    <div class="alert alert-danger" role="alert">
+    <%= for {_, error} <- @changeset.errors do %>
+      <p> <%= error %> </p>
+    <% end %>
+    </div>
   <% end %>
-
-<div class="form-group">
-  <div class="col-sm-6">
-    <label class="control-label">
-      <span>Username:</span>
-      <%= text_input f, :username %>
-    </label>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Apellido Paterno:</span>
-      <%= text_input f, :first_name %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Username </label>
+    <%= text_input f, :username, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Apellido Materno:</span>
-      <%= text_input f, :last_name %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Apellido Paterno </label>
+    <%= text_input f, :name, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Password:</span>
-      <%= text_input f, :password %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Apellido Materno </label>
+      <%= text_input f, :last_name, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Confirmación Password:</span>
-      <%= text_input f, :password_confirmation %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Contraseña </label>
+    <%= text_input f, :password, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Correo:</span>
-      <%= text_input f, :email %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Confirmar Contraseña </label>
+    <%= text_input f, :password_confirmation, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Staff:</span>
-      <%= checkbox f, :is_staff %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Correo </label>
+    <%= text_input f, :email, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Activo:</span>
-      <%= checkbox f, :is_active %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Staff </label>
+    <%= checkbox f, :is_staff, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <label>
-      <span>Super Usuario:</span>
-      <%= checkbox f, :is_superuser %>
-    </label>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Activo </label>
+    <%= checkbox f, :is_active, class: "form-control" %>
   </div>
-</div>
 
-<div class="form-group">
-  <div class="col-sm-6">
-    <%= submit "Submit" %>
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Admin </label>
+    <%= checkbox f, :is_superuser, class: "form-control" %>
   </div>
-</div>
 
-</div>
+  <div class="form-group col-sm-2">
+    <%= submit "Salvar", class: "form-control btn-primary btn-xs" %>
+  </div>
 
 <% end %>

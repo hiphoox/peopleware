@@ -1,4 +1,4 @@
-<h2>Usuario</h2>
+<h3>Usuario</h3>
 
 <ul>
 
@@ -9,7 +9,7 @@
 
   <li>
     <strong>Nombre:</strong>
-    <%= @user.first_name %>
+    <%= @user.name %>
   </li>
 
   <li>
@@ -20,11 +20,6 @@
   <li>
     <strong>Password:</strong>
     <%= @user.password %>
-  </li>
-
-  <li>
-    <strong>Confirmación Password:</strong>
-    <%= @user.password_confirmation %>
   </li>
 
   <li>
@@ -43,7 +38,7 @@
   </li>
 
   <li>
-    <strong>Es Super Usuario:</strong>
+    <strong>Super Usuario:</strong>
     <%= @user.is_superuser %>
   </li>
 

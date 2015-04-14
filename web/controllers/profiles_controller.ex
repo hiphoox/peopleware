@@ -22,9 +22,7 @@ defmodule Peopleware.ProfileController do
   """
   def new(conn, _params) do
     changeset = Profile.changeset(%Profile{})
-    conn
-    |> assign_params(changeset, [])
-    |> render "new.html"
+    render conn, "new.html", changeset: changeset
   end
 
   @doc """
@@ -38,8 +36,7 @@ defmodule Peopleware.ProfileController do
       # |> put_flash(:info, "CV creado exitosamente.")
       redirect(conn, to: profile_path(conn, :index))
     else
-      error_messages = get_error_messages(changeset.errors)
-      return_same_page conn, profile_params, error_messages, "new.html"
+      render conn, "new.html", changeset: changeset
     end
   end
 
@@ -57,9 +54,7 @@ defmodule Peopleware.ProfileController do
   def edit(conn, %{"id" => id}) do
     profile = Repo.get(Profile, id)
     changeset = Profile.changeset(profile)
-    conn
-      |> assign_params(changeset, [])
-      |> render "edit.html", profile: profile
+    render conn, "edit.html", profile: profile, changeset: changeset
   end
 
   @doc """
@@ -73,8 +68,7 @@ defmodule Peopleware.ProfileController do
       Repo.update(changeset)
       redirect(conn, to: profile_path(conn, :index))
     else
-      error_messages = get_error_messages(changeset.errors)
-      return_same_page conn, profile_params, error_messages, "edit.html", id
+      render conn, "edit.html", profile: profile, changeset: changeset
     end
   end
 
@@ -82,10 +76,10 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the delete button inside the index.html
   """
   def delete(conn, %{"id" => id}) do
-    profile = Repo.get(Peopleware.Profile, id)
+    profile = Repo.get(Profile, id)
     Repo.delete(profile)
     conn
-    # |> put_flash(:info, "CV borrado exitosamente.")
+    |> put_flash(:info, "CV borrado exitosamente.")
     |> redirect(to: profile_path(conn, :index))
   end
 
@@ -102,25 +96,6 @@ defmodule Peopleware.ProfileController do
       |> redirect(to: profile_path(conn, :index))
       |> halt
     end
-  end
-
-  defp assign_params(conn, changeset, errors) do
-    conn
-    |> assign(:changeset, changeset)
-    |> assign(:states, Profile.states)
-    |> assign(:errors, errors)
-    |> assign(:contractings, Profile.contractings)
-  end
-
-  defp return_same_page(conn, new_profile_values, errors, page, id \\ 0) do
-    new_profile = Profile.profile_from_values(new_profile_values, id)
-    conn
-    |> assign_params(new_profile, errors)
-    |> render(page)
-  end
-
-  defp get_error_messages(errors) do
-    Enum.map(errors, fn {k, v} -> {k, Profile.get_message(v)} end)
   end
 
 end

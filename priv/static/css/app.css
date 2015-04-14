@@ -5186,39 +5186,34 @@ form.link, form.button {
   border-top: 1px solid #e5e5e5; }
 
 /* Customize container */
-@media (min-width: 768px) {
-  /* line 53, stdin */
-  .container {
-    max-width: 730px; } }
-
-/* line 57, stdin */
+/* line 56, stdin */
 .container-narrow > hr {
   margin: 30px 0; }
 
 /* Main marketing message */
-/* line 62, stdin */
+/* line 61, stdin */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5; }
 
 /* Supporting marketing content */
-/* line 68, stdin */
+/* line 67, stdin */
 .marketing {
   margin: 35px 0; }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
-  /* line 77, stdin */
+  /* line 76, stdin */
   .header, .marketing, .footer {
     padding-right: 0;
     padding-left: 0; }
   /* Space out the masthead */
-  /* line 82, stdin */
+  /* line 81, stdin */
   .header {
     margin-bottom: 30px; }
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 86, stdin */
+  /* line 85, stdin */
   .jumbotron {
     border-bottom: 0; } }
 

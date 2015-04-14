@@ -3,7 +3,7 @@ defmodule Peopleware.User do
 
   schema "users" do
     field :username, :string
-    field :first_name, :string
+    field :name, :string
     field :last_name, :string
     field :password, :string
     field :password_confirmation, :string, virtual: true
@@ -15,6 +15,9 @@ defmodule Peopleware.User do
     timestamps
   end
 
+  @required_fields ~w(username name last_name password password_confirmation email )
+  @optional_fields ~w(is_staff is_active is_superuser)
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -22,7 +25,7 @@ defmodule Peopleware.User do
   with no validation performed.
   """
   def changeset(model, params \\ nil) do
-    cast(model, params, ~w(username first_name last_name password email is_staff is_active is_superuser), ~w(password_confirmation))
+    cast(model, params, @required_fields, @optional_fields)
   end
 
   def get_by_email(email) do

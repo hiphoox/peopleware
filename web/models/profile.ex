@@ -5,7 +5,7 @@ defmodule Peopleware.Profile  do
     field :name,               :string
     field :last_name,          :string
     field :second_surname,     :string
-    field :last_salary,        :string
+    field :last_salary,        :integer
     field :position,           :string
     field :resume,             :string
     field :keywords,           :string
@@ -17,60 +17,29 @@ defmodule Peopleware.Profile  do
     timestamps
   end
 
+ @required_fields ~w(name last_name last_salary position keywords email contracting_schema)
+ @optional_fields ~w(second_surname tel cel state resume)
+
   def changeset(model, params \\ nil) do
     model
-      |> cast(params, ~w(name last_name last_salary position keywords email contracting_schema), ~w(second_surname tel cel state resume))
-      # |> update_change(:email, &String.downcase/1)
-      |> validate_format(:email, ~r/@/)
-      |> validate_unique(:email, on: Peopleware.Repo)
-      |> validate_length(:name, max: 40)
-      |> validate_length(:last_name, max: 40)
-      |> validate_length(:second_surname, max: 40)
-      |> validate_length(:last_salary, max: 20)
-      |> validate_length(:position, max: 50)
-      |> validate_length(:resume, max: 5000)
-      |> validate_length(:keywords, max: 500)
-      |> validate_length(:email, max: 50)
-      |> validate_length(:tel, max: 15)
-      |> validate_length(:cel, max: 15)
-      |> validate_length(:state, max: 20)
-      |> validate_length(:contracting_schema, max: 30)
-      |> validate_format(:tel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
-      |> validate_format(:cel, ~r/^(?:[0-9]\x20?){7,9}[0-9]$/)
-  end
-
-  def profile_from_values(profile_values, id) do
-    %Peopleware.Profile{
-                        id: id,
-                      name: profile_values["name"],  
-                 last_name: profile_values["last_name"],
-            second_surname: profile_values["second_surname"],
-               last_salary: profile_values["last_salary"],
-                  position: profile_values["position"],
-                    resume: profile_values["resume"],
-                  keywords: profile_values["keywords"],
-                     email: profile_values["email"],
-                       cel: profile_values["cel"],
-                       tel: profile_values["tel"],
-                     state: profile_values["state"],
-        contracting_schema: profile_values["contracting_schema"],
-    }
-  end
-
-  def get_message(:required) do
-    "Campo Obligatorio" 
-  end
-
-  def get_message(:unique) do
-    "Cuenta de correo ya registrada"
-  end
-
-  def get_message(:format) do
-    "Formato incorrecto"
-  end
-
-  def get_message(:length) do
-    "Longitud incorrecta"
+    |> cast(params, @required_fields, @optional_fields)
+    # |> update_change(:email, &String.downcase/1)
+    |> validate_format(:email, ~r/@/, message: "Formato Inválido")
+    |> validate_unique(:email, on: Peopleware.Repo, message: "Cuenta de correo ya registrada")
+    |> validate_length(:name, max: 40, message: "Debe ser máximo de 40 caracteres")
+    |> validate_length(:last_name, max: 40, message: "Debe ser máximo de 40 caracteres")
+    |> validate_length(:second_surname, max: 40, message: "Debe ser máximo de 40 caracteres")
+    |> validate_inclusion(:last_salary, 0..200_000, message: "Cantidad inválida")
+    |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
+    |> validate_length(:resume, max: 12000, message: "Debe ser máximo de 12000 caracteres")
+    |> validate_length(:keywords, max: 500, message: "Debe ser máximo de 500 caracteres")
+    |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
+    |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
+    |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
+    |> validate_length(:state, max: 20, message: "Debe ser máximo de 20 caracteres")
+    |> validate_length(:contracting_schema, max: 30, message: "Debe ser máximo de 30 caracteres")
+    |> validate_format(:tel, ~r/^\(\d{2}\) ?\d{6}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/, message: "Formato Inválido")
+    |> validate_format(:cel, ~r/^\(\d{2}\) ?\d{6}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/, message: "Formato Inválido")
   end
 
   def states do
@@ -109,7 +78,7 @@ defmodule Peopleware.Profile  do
   end
 
   def contractings do
-     ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"] 
+     ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
   end
-  
+
 end

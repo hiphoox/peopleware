@@ -1,9 +1,6 @@
-<h4>Nuevo Curriculum</h4>
+<h3>Nuevo Curriculum</h3>
 
 <%= render "form.html", changeset: @changeset,
-                        action: profile_path(@conn, :create),
-                        states: @states,
-                        contractings: @contractings,
-                        errors: @errors %>
+                        action: profile_path(@conn, :create) %>
 
 <%= link "Regresar", to: profile_path(@conn, :index) %>

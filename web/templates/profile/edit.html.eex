@@ -1,9 +1,6 @@
-<h4>Curriculum: <%= @profile.id %></h4>
+<h3>Curriculum: <%= @profile.id %></h3>
 
 <%= render "form.html", changeset: @changeset,
-                        action: profile_path(@conn, :update, @profile),
-                        states: @states,
-                        contractings: @contractings,
-                        errors: @errors %>
+                        action: profile_path(@conn, :update, @profile) %>
 
 <%= link "Regresar", to: profile_path(@conn, :index) %>
