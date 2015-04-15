@@ -2,6 +2,7 @@ defmodule Peopleware.ProfileController do
   use Peopleware.Web, :controller
   # require IEx
   alias Peopleware.Profile
+  alias Peopleware.User
 
   plug :authenticate, :admin when action in [:create, :update]
   plug :scrub_params, "profile" when action in [:create, :update]
@@ -21,7 +22,12 @@ defmodule Peopleware.ProfileController do
   Setups everything we need to create a new profile
   """
   def new(conn, _params) do
-    changeset = Profile.changeset(%Profile{})
+    user = Repo.get(User, 1)
+    profile = %Profile{name: user.name,
+                       last_name: user.last_name,
+                       second_surname: user.second_surname,
+                       user: user}
+    changeset = Profile.changeset(profile)
     render conn, "new.html", changeset: changeset
   end
 
@@ -29,13 +35,13 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the save button when in the new.html
   """
   def create(conn, %{"profile" => profile_params}) do
-    changeset = Profile.changeset(%Profile{}, profile_params)
-
+    changeset = Profile.changeset(%Profile{user_id: 1}, profile_params)
     if changeset.valid? do
       Repo.insert(changeset)
       # |> put_flash(:info, "CV creado exitosamente.")
       redirect(conn, to: profile_path(conn, :index))
     else
+      IO.inspect changeset.errors
       render conn, "new.html", changeset: changeset
     end
   end

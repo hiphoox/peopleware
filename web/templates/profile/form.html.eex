@@ -1,26 +1,17 @@
 <%= form_for @changeset, @action, [class: "col-sm-12"], fn f -> %>
   <div class="form-group col-sm-4">
-    <label class="control-label" for="changeset[name]">Nombre *</label>
+    <label class="control-label" for="changeset[name]">Nombre </label>
     <%= text_input f, :name, class: "form-control", autofocus: :autofocus%>
-    <%= if message = @changeset.errors[:name] do %>
-        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
-    <%= end %>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label" for="changeset[last_name]">Apellido Paterno *</label>
+    <label class="control-label" for="changeset[last_name]">Apellido Paterno </label>
     <%= text_input f, :last_name, class: "form-control"%>
-    <%= if message = @changeset.errors[:last_name] do %>
-        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
-    <%= end %>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[second_surname]">Apellido Materno</label>
     <%= text_input f, :second_surname, class: "form-control"%>
-    <%= if message = @changeset.errors[:second_surname] do %>
-        <div class="alert alert-danger" role="alert"> <%= translate(message) %> </div>
-    <%= end %>
   </div>
 
   <div class="form-group col-sm-4">
@@ -31,7 +22,7 @@
     <%= end %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-2">
     <label class="control-label" for="changeset[cel]">Celular</label>
     <%= text_input f, :cel, class: "form-control", placeholder: "(52)5544332211"%>
     <%= if message = @changeset.errors[:cel] do %>
@@ -39,7 +30,7 @@
     <%= end %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-2">
     <label class="control-label" for="changeset[tel]">Teléfono de Casa</label>
     <%= text_input f, :tel, class: "form-control", placeholder: "(52)5544332211"%>
     <%= if message = @changeset.errors[:tel] do %>
@@ -69,8 +60,8 @@
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label" for="changeset[contracting_schema]">Esquema de Contratación *</label>
-    <%= select f, :contracting_schema, Peopleware.Profile.contractings, class: "form-control btn-xs"%>
+    <label class="control-label" for="changeset[contract_schema]">Esquema de Contratación *</label>
+    <%= select f, :contract_schema, Peopleware.Profile.contractings, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-12">

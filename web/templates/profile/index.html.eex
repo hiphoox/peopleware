@@ -8,6 +8,7 @@
         <th>Apellido Materno</th>
         <th>Apellido Paterno</th>
         <th>Correo</th>
+        <th>Posición</th>
         <th></th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
       <td> <%= profile.last_name %> </td>
       <td> <%= profile.second_surname %> </td>
       <td> <%= profile.email %> </td>
+      <td> <%= profile.position %> </td>
 
       <td class="text-right">
         <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %>

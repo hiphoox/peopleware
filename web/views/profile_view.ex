@@ -3,7 +3,7 @@ defmodule Peopleware.ProfileView do
 
   def translate(message) do
     case message do
-      {m,d} -> m
+      {m,_d} -> m
       "can't be blank" -> "no puede estar vacio"
           m -> m
     end

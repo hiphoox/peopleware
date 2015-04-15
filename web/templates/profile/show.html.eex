@@ -59,7 +59,7 @@
 
   <li>
     <strong>Esquema de Contratación:</strong>
-    <%= @profile.contracting_schema %>
+    <%= @profile.contract_schema %>
   </li>
   </ul>
 

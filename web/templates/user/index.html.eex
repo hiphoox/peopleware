@@ -3,8 +3,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Username</th>
+      <th>Nombre(s)</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
       <th>Correo</th>
+      <th>Confirmado</th>
       <th>Staff</th>
       <th>Activo</th>
       <th>Superuser</th>
@@ -15,8 +18,11 @@
   <tbody>
   <%= for user <- @users do %>
   <tr>
-    <td> <%= link user.username, to: user_path(@conn, :show, user) %> </td>
+    <td> <%= link user.name, to: user_path(@conn, :show, user) %> </td>
+    <td> <%= user.last_name %> </td>
+    <td> <%= user.second_surname %> </td>
     <td> <%= user.email %> </td>
+    <td> <%= user.confirmed %> </td>
     <td> <%= user.is_staff %> </td>
     <td> <%= user.is_active %> </td>
     <td> <%= user.is_superuser %> </td>
@@ -30,4 +36,4 @@
   </tbody>
 </table>
 
-<%= link "Agregar usuario", to: user_path(@conn, :new), class: "btn btn-primary" %>
+<%= link "Agregar usuario", to: user_path(@conn, :new), class: "btn btn-primary btn-xs" %>

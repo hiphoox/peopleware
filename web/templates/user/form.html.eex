@@ -11,18 +11,23 @@
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label"> Username </label>
-    <%= text_input f, :username, class: "form-control" %>
-  </div>
-
-  <div class="form-group col-sm-4">
-    <label class="control-label"> Apellido Paterno </label>
+    <label class="control-label"> Nombre </label>
     <%= text_input f, :name, class: "form-control" %>
   </div>
 
   <div class="form-group col-sm-4">
+    <label class="control-label"> Apellido Paterno </label>
+    <%= text_input f, :last_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-sm-4">
     <label class="control-label"> Apellido Materno </label>
-      <%= text_input f, :last_name, class: "form-control" %>
+      <%= text_input f, :second_surname, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label"> Correo </label>
+    <%= text_input f, :email, class: "form-control" %>
   </div>
 
   <div class="form-group col-sm-4">
@@ -32,30 +37,35 @@
 
   <div class="form-group col-sm-4">
     <label class="control-label"> Confirmar Contraseña </label>
-    <%= text_input f, :password_confirmation, class: "form-control" %>
+    <%= text_input f, :password_conf, class: "form-control" %>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label"> Correo </label>
-    <%= text_input f, :email, class: "form-control" %>
+    <label class="control-label"> Token de Reset </label>
+    <%= text_input f, :reset_token, class: "form-control" %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-2">
+    <label class="control-label"> Confirmado </label>
+    <%= checkbox f, :confirmed, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-sm-2">
     <label class="control-label"> Staff </label>
     <%= checkbox f, :is_staff, class: "form-control" %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-2">
     <label class="control-label"> Activo </label>
     <%= checkbox f, :is_active, class: "form-control" %>
   </div>
 
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-2">
     <label class="control-label"> Admin </label>
     <%= checkbox f, :is_superuser, class: "form-control" %>
   </div>
 
-  <div class="form-group col-sm-2">
+  <div class="form-group col-sm-1">
     <%= submit "Salvar", class: "form-control btn-primary btn-xs" %>
   </div>
 

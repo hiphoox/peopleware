@@ -3,11 +3,6 @@
 <ul>
 
   <li>
-    <strong>Username:</strong>
-    <%= @user.username %>
-  </li>
-
-  <li>
     <strong>Nombre:</strong>
     <%= @user.name %>
   </li>
@@ -18,13 +13,28 @@
   </li>
 
   <li>
-    <strong>Password:</strong>
-    <%= @user.password %>
+    <strong>Apellido Materno:</strong>
+    <%= @user.second_surname %>
   </li>
 
   <li>
     <strong>Correo:</strong>
     <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </li>
+
+  <li>
+    <strong>Token de Recuperación:</strong>
+    <%= @user.reset_token %>
+  </li>
+
+  <li>
+    <strong>Confirmado:</strong>
+    <%= @user.confirmed %>
   </li>
 
   <li>
