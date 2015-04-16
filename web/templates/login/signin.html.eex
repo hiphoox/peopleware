@@ -2,7 +2,7 @@
   <div class="col-xs-offset-2 col-xs-12 col-sm-12 col-md-12 col-lg-6 left-side">
 
     <h3>Bienvenido</h3>
-    <a href="#">¿Aún no tienes una cuenta?</a>
+    <a href="/signup">¿Aún no tienes una cuenta?</a>
 
     <div class="col-sm-6">
       <%= form_for @changeset, "/login", fn f -> %>

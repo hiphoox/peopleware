@@ -14,6 +14,25 @@ defmodule Peopleware.LoginController do
     render conn, "signin.html", changeset: changeset
   end
 
+  def signup(conn, _params) do
+    changeset = User.changeset(%User{})
+    render conn, "signup.html", changeset: changeset
+  end
+
+  def create(conn, %{"user" => user_params}) do
+    changeset = User.changeset(%User{}, user_params)
+
+    if changeset.valid? do
+      Repo.insert(changeset)
+
+      conn
+      |> put_flash(:info, "User created succesfully.")
+      |> redirect(to: login_path(conn, :index))
+    else
+      render conn, "signup.html", changeset: changeset
+    end
+  end
+
   def login(conn, %{"user" => user_params}) do
     alias Peopleware.Authentication, as: Auth
     email = user_params["email"]

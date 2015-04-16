@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="col-xs-offset-2 col-xs-12 col-sm-12 col-md-12 col-lg-6 left-side">
+
+    <h3>Bienvenido</h3>
+    <a href="#">¿Aún no tienes una cuenta?</a>
+
+    <div class="col-sm-6">
+      <%= form_for @changeset, "/login", fn f -> %>
+      <%= if @changeset.errors != [] do %>
+        <p style="color: red">Correo o contraseña incorrecta</p>
+      <% end %>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Correo </label>
+        <%= text_input f, :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Contraseña </label>
+        <%= text_input f, :password, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Confirmar Contraseña </label>
+        <%= text_input f, :password_conf, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-1">
+        <%= submit "Salvar", class: "form-control btn-primary btn-xs" %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Nombre </label>
+        <%= text_input f, :name, class: "form-control", autofocus: "autofocus" %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Apellido Paterno </label>
+        <%= text_input f, :last_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label class="control-label"> Apellido Materno </label>
+          <%= text_input f, :second_surname, class: "form-control" %>
+      </div>
+
+
+      <% end %>
+      </div>
+
+  </div>
+</div>
+
