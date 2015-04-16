@@ -39,6 +39,16 @@ defmodule Peopleware.Profile  do
     |> validate_format(:cel, ~r/^\(\d{2}\) ?\d{6}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/, message: "Formato Inválido")
   end
 
+  def get_by_user_type(user) do
+    if user.is_staff do
+      query = Peopleware.Profile
+    else
+      query = from profile in Peopleware.Profile,
+             where: profile.user_id == ^user.id
+    end
+    Peopleware.Repo.all(query)
+  end
+
   def contractings do
      ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
   end

@@ -18,9 +18,11 @@
         <br />
         <H2>Registro de Curriculums</H2>
       </div>
+      <%= if Peopleware.LoginController.get_userid(@conn) do %>
       <div class="col-xs-12 text-right">
-        <a href="http://recluIT.com">RecluIT</a>
+        <a href="/logout">Salir de sesión</a>
       </div>
+      <%= end %>
     </header>
 
     <main>

@@ -26,7 +26,6 @@ defmodule Peopleware.UserController do
       |> put_flash(:info, "User created succesfully.")
       |> redirect(to: user_path(conn, :index))
     else
-      IO.inspect changeset.errors
       render conn, "new.html", changeset: changeset
     end
   end

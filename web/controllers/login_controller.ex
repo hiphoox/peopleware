@@ -5,39 +5,45 @@ defmodule Peopleware.LoginController do
   plug :action
 
   def index(conn, _params) do
+    user_id = get_userid(conn)
+    render conn, "index.html"
+  end
+
+  def signin(conn, _params) do
     changeset = User.changeset(%User{})
-    render conn, "index.html", changeset: changeset, action: "/login"
+    render conn, "signin.html", changeset: changeset
   end
-  
-  def login(conn, params) do
 
-    user = User.get_by_email(params["email"])
-    if isValid(user, params["password"]) do
+  def login(conn, %{"user" => user_params}) do
+    alias Peopleware.Authentication, as: Auth
+    email = user_params["email"]
+    password = user_params["password"]
+
+    if user = Auth.validate_credentials(email, password) do
       page_path = page_path_for_user(conn, user)
-      redirect(conn, to: page_path)      
+      conn = put_session(conn, :user_id, user.id)
+      redirect(conn, to: page_path)
     else
-      changeset = User.changeset(%User{})
-      changeset = Ecto.Changeset.add_error(changeset, :login, :failed)
-      render conn, "index.html", changeset: changeset, action: "/login"
+      changeset = User.changeset(%User{}, user_params)
+      render conn, "signin.html", changeset: changeset
     end
   end
 
-  def isValid(user, password) do
-    case user do
-      nil ->
-        false
-      user ->
-        user.password == password
-    end
+  def logout(conn, _params) do
+    conn = put_session(conn, :user_id, nil)
+    redirect(conn, to: login_path(conn, :index))
   end
 
   def page_path_for_user(conn, user) do
     if user.is_staff do
-      profile_path(conn, :index)
-    else
       user_path(conn, :index)
+    else
+      profile_path(conn, :index)
     end
   end
-  
-    
+
+  def get_userid(conn) do
+    get_session(conn, :user_id)
+  end
+
 end

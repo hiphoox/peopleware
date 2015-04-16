@@ -4,7 +4,6 @@ defmodule Peopleware.ProfileController do
   alias Peopleware.Profile
   alias Peopleware.User
 
-  plug :authenticate, :admin when action in [:create, :update]
   plug :scrub_params, "profile" when action in [:create, :update]
   plug :action
 
@@ -13,7 +12,9 @@ defmodule Peopleware.ProfileController do
   """
   def index(conn, _params) do
     # IEx.pry
-    profiles = Repo.all(Profile)
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+    profiles = Profile.get_by_user_type(user)
     # put_resp_header("Authorization: Token", "token=12345")
     render conn, "index.html", profiles: profiles
   end
@@ -22,7 +23,8 @@ defmodule Peopleware.ProfileController do
   Setups everything we need to create a new profile
   """
   def new(conn, _params) do
-    user = Repo.get(User, 1)
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
     profile = %Profile{name: user.name,
                        last_name: user.last_name,
                        second_surname: user.second_surname,
@@ -35,7 +37,8 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the save button when in the new.html
   """
   def create(conn, %{"profile" => profile_params}) do
-    changeset = Profile.changeset(%Profile{user_id: 1}, profile_params)
+    user_id = get_session(conn, :user_id)
+    changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
     if changeset.valid? do
       Repo.insert(changeset)
       # |> put_flash(:info, "CV creado exitosamente.")
@@ -87,21 +90,6 @@ defmodule Peopleware.ProfileController do
     conn
     |> put_flash(:info, "CV borrado exitosamente.")
     |> redirect(to: profile_path(conn, :index))
-  end
-
-
-  ####################
-  # Private functions
-  ####################
-
-  defp authenticate(conn, :admin) do
-    if Peopleware.Authentication.authenticated?(conn) do
-      conn
-    else
-      conn
-      |> redirect(to: profile_path(conn, :index))
-      |> halt
-    end
   end
 
 end
