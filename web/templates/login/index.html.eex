@@ -1,18 +1,14 @@
 <div class="container-fluid">
   <div class="col-xs-offset-2 col-xs-12 col-sm-12 col-md-12 col-lg-6 left-side">
 
-    <h3>Bienvenido</h3>
+    <h3>¡Bienvenido!</h3>
 
     <div class="col-sm-12">
-      <a href="/signin">Empieza a capturar tu CV!</a>
+      <a href="/signin">Empieza a capturar tu CV</a>
     </div>
 
     <div class="col-sm-12">
       <a class="pull-right" href="/signup">¿Aún no tienes una cuenta?</a>
-    </div>
-
-    <div class="col-sm-12">
-      <a class="pull-right" href="/forget">¿Has olvidado tu contraseña?</a>
     </div>
 
   </div>

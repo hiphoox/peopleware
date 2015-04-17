@@ -15,11 +15,12 @@ defmodule Peopleware.Profile  do
     field       :tel,             :string
     field       :state,           :string   # Lista de estados
     field       :contract_schema, :string   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
+    field       :cv_file,         :binary
     timestamps
   end
 
  @required_fields ~w(user_id name last_name second_surname last_salary position keywords email contract_schema)
- @optional_fields ~w(tel cel state resume)
+ @optional_fields ~w(tel cel state resume )
 
   def changeset(model, params \\ nil) do
     model

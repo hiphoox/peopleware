@@ -27,6 +27,7 @@ defmodule Peopleware.Router do
     get "/logout", LoginController, :logout
     get "/signup", LoginController, :signup
     post "/create", LoginController, :create
+    get "/forget", LoginController, :forget
   end
 
   scope "/admin", Peopleware do

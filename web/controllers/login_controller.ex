@@ -5,7 +5,6 @@ defmodule Peopleware.LoginController do
   plug :action
 
   def index(conn, _params) do
-    user_id = get_userid(conn)
     render conn, "index.html"
   end
 
@@ -53,7 +52,16 @@ defmodule Peopleware.LoginController do
     redirect(conn, to: login_path(conn, :index))
   end
 
-  def page_path_for_user(conn, user) do
+  def forget(conn, _params) do
+    changeset = User.changeset(%User{})
+    render conn, "forget.html", changeset: changeset
+  end
+
+
+################################
+# Private API
+
+  defp page_path_for_user(conn, user) do
     if user.is_staff do
       user_path(conn, :index)
     else

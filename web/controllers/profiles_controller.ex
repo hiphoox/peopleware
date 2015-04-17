@@ -72,6 +72,7 @@ defmodule Peopleware.ProfileController do
   def update(conn, %{"id" => id, "profile" => profile_params}) do
     profile = Repo.get(Profile, id)
     changeset = Profile.changeset(profile, profile_params)
+    IO.inspect profile_params
 
     if changeset.valid? do
       Repo.update(changeset)

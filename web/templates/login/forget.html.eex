@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="col-xs-offset-2 col-xs-12 col-sm-12 col-md-12 col-lg-6 left-side">
+
+    <h3>Recuperación de Contraseña</h3>
+
+    <div class="col-sm-6">
+      <%= form_for @changeset, "/login", fn f -> %>
+      <%= if @changeset.errors != [] do %>
+        <p style="color: red">Correo o contraseña incorrecta</p>
+      <% end %>
+
+      <div class="form-group ">
+        <label class="control-label">Dirección de correo electrónico</label>
+        <%= email_input f, :email, class: "form-control", placeholder: "Dirección de correo electrónico", autofocus: "autofocus" %>
+      </div>
+
+      <div class="btn-login ">
+        <button class="btn btn-primary btn-xs" type="submit">Reiniciar contraseña</button>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
