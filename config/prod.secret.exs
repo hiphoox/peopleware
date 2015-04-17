@@ -10,5 +10,5 @@ config :peopleware, Peopleware.Endpoint,
 config :peopleware, Peopleware.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "hiphoox",
-  password: "",
+  password: "norber0",
   database: "peopleware"
