@@ -17,8 +17,8 @@ defmodule Peopleware.User do
     timestamps
   end
 
-  @required_fields ~w(name last_name second_surname email password )
-  @optional_fields ~w(reset_token password_conf confirmed is_staff is_active is_superuser)
+  @required_fields ~w(name last_name email password )
+  @optional_fields ~w(reset_token second_surname password_conf confirmed is_staff is_active is_superuser)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

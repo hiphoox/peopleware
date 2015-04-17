@@ -1,6 +1,5 @@
 defmodule Peopleware.UserController do
   use Peopleware.Web, :controller
-
   alias Peopleware.User
 
   plug :scrub_params, "user" when action in [:create, :update]

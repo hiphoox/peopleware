@@ -19,8 +19,8 @@ defmodule Peopleware.Profile  do
     timestamps
   end
 
- @required_fields ~w(user_id name last_name second_surname last_salary position keywords email contract_schema)
- @optional_fields ~w(tel cel state resume )
+ @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema)
+ @optional_fields ~w(tel cel state resume second_surname )
 
   def changeset(model, params \\ nil) do
     model

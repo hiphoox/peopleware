@@ -2,6 +2,7 @@ defmodule Peopleware.LoginController do
   use Peopleware.Web, :controller
   alias Peopleware.User
 
+  plug :scrub_params, "user" when action in [:create]
   plug :action
 
   def index(conn, _params) do

@@ -1,6 +1,14 @@
 defmodule Peopleware.ProfileView do
   use Peopleware.Web, :view
 
+  def translate_error({:name, message}) do
+    "* El nombre " <> translate(message)
+  end
+
+  def translate_error({:last_name, message}) do
+    "* El apellido paterno " <> translate(message)
+  end
+
   def translate_error({:email, message}) do
     "* El correo " <> translate(message)
   end
