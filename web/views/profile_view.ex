@@ -37,6 +37,10 @@ defmodule Peopleware.ProfileView do
     "* Las palabras claves " <> translate_plural(message)
   end
 
+  def translate_error({:cv_file, message}) do
+    "* El Archivo " <> translate_plural(message)
+  end
+
   def translate(message) do
     case message do
       {m,_d} -> m

@@ -40,11 +40,9 @@ defmodule Peopleware.ProfileController do
     user_id = get_session(conn, :user_id)
     changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
     if changeset.valid? do
-      Repo.insert(changeset)
-      # |> put_flash(:info, "CV creado exitosamente.")
+      upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       redirect(conn, to: profile_path(conn, :index))
     else
-      IO.inspect changeset.errors
       render conn, "new.html", changeset: changeset
     end
   end
@@ -70,12 +68,11 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the save button inside the edit.html
   """
   def update(conn, %{"id" => id, "profile" => profile_params}) do
-    profile = Repo.get(Profile, id)
+    profile = Profile.get_by_id(id)
     changeset = Profile.changeset(profile, profile_params)
-    IO.inspect profile_params
 
     if changeset.valid? do
-      Repo.update(changeset)
+      upload_file_and_save(changeset, profile, get_file_to_upload(profile_params))
       redirect(conn, to: profile_path(conn, :index))
     else
       render conn, "edit.html", profile: profile, changeset: changeset
@@ -91,6 +88,70 @@ defmodule Peopleware.ProfileController do
     conn
     |> put_flash(:info, "CV borrado exitosamente.")
     |> redirect(to: profile_path(conn, :index))
+  end
+
+
+######################################################
+### Private API
+
+  @doc """
+    Da de alta un cv pero sin archivo
+  """
+  defp upload_file_and_save(changeset, nil, nil) do
+    Repo.insert(changeset)
+  end
+
+  @doc """
+    Da de alta un CV nuevo con archivo
+  """
+  defp upload_file_and_save(changeset, nil, file) do
+    changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
+    profile = Repo.insert(changeset)
+    file = %{file | profile_id: profile.id}
+    Repo.insert(file)
+  end
+
+  @doc """
+    Actualiza un CV sin archivo
+  """
+  defp upload_file_and_save(changeset, _, nil) do
+    Repo.update(changeset)
+  end
+
+  @doc """
+    Actualiza un CV con archivo
+  """
+  defp upload_file_and_save(changeset, profile, file) do
+    changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
+
+    if profile.cv_file do #El profile ya tiene un archivo asociado
+      cv_file = %{profile.cv_file |
+                          file_name:    file.file_name,
+                          file_size:    file.file_size,
+                          content_type: file.content_type,
+                          content:      file.content}
+      Repo.transaction(fn ->
+        Repo.update(cv_file)
+        Repo.update(changeset)
+      end)
+    else  # El profile todavía no tiene un archivo asociado
+      file = %{file | profile_id: profile.id}
+      Repo.transaction(fn ->
+        Repo.insert(file)
+        Repo.update(changeset)
+      end)
+    end
+  end
+
+  defp get_file_to_upload(%{"cv_file" => file}) do
+    %Plug.Upload{path: path, content_type: content_type, filename: file_name} = file
+    {:ok, %File.Stat{size: file_size}} = File.stat(path)
+    {:ok, content} = File.read(path)
+    %Peopleware.File{file_name: file_name, file_size: file_size, content_type: content_type, content: content}
+  end
+
+  defp get_file_to_upload(_param) do
+    nil
   end
 
 end

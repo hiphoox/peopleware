@@ -3,6 +3,7 @@ defmodule Peopleware.Profile  do
 
   schema "profiles" do
     belongs_to  :user,            Peopleware.User
+    has_one     :cv_file,         Peopleware.File
     field       :name,            :string
     field       :last_name,       :string
     field       :second_surname,  :string
@@ -15,12 +16,12 @@ defmodule Peopleware.Profile  do
     field       :tel,             :string
     field       :state,           :string   # Lista de estados
     field       :contract_schema, :string   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
-    field       :cv_file,         :binary
+    field       :cv_file_name,    :string
     timestamps
   end
 
  @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema)
- @optional_fields ~w(tel cel state resume second_surname )
+ @optional_fields ~w(tel cel state resume second_surname)
 
   def changeset(model, params \\ nil) do
     model
@@ -48,6 +49,10 @@ defmodule Peopleware.Profile  do
              where: profile.user_id == ^user.id
     end
     Peopleware.Repo.all(query)
+  end
+
+  def get_by_id(id) do
+    Peopleware.Repo.get from(p in Peopleware.Profile, preload: [:cv_file]), id
   end
 
   def contractings do
