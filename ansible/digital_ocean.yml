@@ -14,8 +14,9 @@
         chdir: deployments/
     - copy: src=peopleware.digital.conf dest=/usr/home/freebsd/deployments/releases/0.0.1/peopleware.conf
     - copy: src=peopleware.sql dest=/usr/home/freebsd/deployments/peopleware.sql
-    - script: recreate_database.sh
-      args:
-        chdir: deployments/
+    - copy: src=recreate_database.sh dest=/usr/home/freebsd/deployments/recreate_database.sh
+    # - script: recreate_database.sh
+    #   args:
+    #     chdir: deployments/
     - command: deployments/bin/peopleware start removes=deployments/bin/peopleware
       ignore_errors: True
