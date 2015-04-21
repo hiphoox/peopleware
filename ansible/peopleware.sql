@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,46 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: profiles; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: files; Type: TABLE; Schema: public; Owner: peopleware; Tablespace:
+--
+
+CREATE TABLE files (
+    id integer NOT NULL,
+    file_name character varying(100),
+    file_size integer,
+    content_type character varying(100),
+    content bytea,
+    profile_id integer,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE files OWNER TO peopleware;
+
+--
+-- Name: files_id_seq; Type: SEQUENCE; Schema: public; Owner: peopleware
+--
+
+CREATE SEQUENCE files_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE files_id_seq OWNER TO peopleware;
+
+--
+-- Name: files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: peopleware
+--
+
+ALTER SEQUENCE files_id_seq OWNED BY files.id;
+
+
+--
+-- Name: profiles; Type: TABLE; Schema: public; Owner: peopleware; Tablespace:
 --
 
 CREATE TABLE profiles (
@@ -38,15 +77,17 @@ CREATE TABLE profiles (
     name character varying(40),
     last_name character varying(40),
     second_surname character varying(40),
-    last_salary character varying(20),
+    last_salary integer,
     "position" character varying(50),
-    resume character varying(5000),
+    resume character varying(12000),
     keywords character varying(500),
     email character varying(50),
-    tel character varying(10),
-    cel character varying(10),
+    tel character varying(15),
+    cel character varying(15),
     state character varying(20),
-    contracting_schema character varying(30),
+    contract_schema character varying(30),
+    cv_file_name character varying(255),
+    user_id integer,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -76,7 +117,7 @@ ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: peopleware; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -88,16 +129,18 @@ CREATE TABLE schema_migrations (
 ALTER TABLE schema_migrations OWNER TO peopleware;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: peopleware; Tablespace:
 --
 
 CREATE TABLE users (
     id integer NOT NULL,
-    username character varying(255),
-    first_name character varying(255),
-    last_name character varying(255),
+    name character varying(40),
+    last_name character varying(40),
+    second_surname character varying(40),
+    reset_token character varying(255),
     password character varying(255),
     email character varying(255),
+    confirmed boolean DEFAULT false,
     is_staff boolean DEFAULT false,
     is_active boolean DEFAULT false,
     is_superuser boolean DEFAULT false,
@@ -133,6 +176,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: peopleware
 --
 
+ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('files_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: peopleware
+--
+
 ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
 
 
@@ -144,7 +194,15 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: files_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace:
+--
+
+ALTER TABLE ONLY files
+    ADD CONSTRAINT files_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace:
 --
 
 ALTER TABLE ONLY profiles
@@ -152,7 +210,7 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace:
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -160,11 +218,27 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: peopleware; Tablespace:
 --
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: files_profile_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: peopleware
+--
+
+ALTER TABLE ONLY files
+    ADD CONSTRAINT files_profile_id_fkey FOREIGN KEY (profile_id) REFERENCES profiles(id);
+
+
+--
+-- Name: profiles_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: peopleware
+--
+
+ALTER TABLE ONLY profiles
+    ADD CONSTRAINT profiles_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
