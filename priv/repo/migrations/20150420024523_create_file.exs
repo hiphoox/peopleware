@@ -5,7 +5,7 @@ defmodule Peopleware.Repo.Migrations.CreateFile do
     create table(:files) do
       add :file_name,     :string,  size: 100
       add :file_size,     :integer
-      add :content_type,  :string,  size: 50
+      add :content_type,  :string,  size: 100
       add :content,       :binary
       add :profile_id,    references(:profiles)
 

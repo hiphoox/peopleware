@@ -55,6 +55,13 @@ defmodule Peopleware.Profile  do
     Peopleware.Repo.get from(p in Peopleware.Profile, preload: [:cv_file]), id
   end
 
+  def get_file_by_id(id) do
+    query = from file in Peopleware.File,
+            where: file.profile_id == ^id
+
+    Peopleware.Repo.one(query)
+  end
+
   def contractings do
      ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
   end

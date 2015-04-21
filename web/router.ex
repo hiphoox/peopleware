@@ -35,6 +35,7 @@ defmodule Peopleware.Router do
     pipe_through :auth
 
     resources "/profiles", ProfileController
+    get "/cv/:id", ProfileController, :getCV, as: :cv
     resources "/users", UserController
   end
 

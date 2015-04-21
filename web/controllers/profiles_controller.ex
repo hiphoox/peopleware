@@ -90,6 +90,14 @@ defmodule Peopleware.ProfileController do
     |> redirect(to: profile_path(conn, :index))
   end
 
+  def getCV(conn, %{"id" => id}) do
+    document = Profile.get_file_by_id(id)
+
+    conn
+    |> put_resp_content_type(document.content_type)
+    |> put_resp_header("Content-Disposition", "attachment; filename=" <> document.file_name)
+    |> resp(200, document.content)
+  end
 
 ######################################################
 ### Private API
