@@ -4,7 +4,7 @@
     <h3>Recuperación de Contraseña</h3>
 
     <div class="col-sm-6">
-      <%= form_for @changeset, "/login", fn f -> %>
+      <%= form_for @changeset, "/reset", fn f -> %>
       <%= if @changeset.errors != [] do %>
         <p style="color: red">Correo o contraseña incorrecta</p>
       <% end %>

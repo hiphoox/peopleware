@@ -58,6 +58,11 @@ defmodule Peopleware.LoginController do
     render conn, "forget.html", changeset: changeset
   end
 
+  def reset(conn, _params) do
+    changeset = User.changeset(%User{})
+    render conn, "forget.html", changeset: changeset
+  end
+
 
 ################################
 # Private API

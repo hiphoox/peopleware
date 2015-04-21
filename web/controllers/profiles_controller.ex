@@ -102,16 +102,12 @@ defmodule Peopleware.ProfileController do
 ######################################################
 ### Private API
 
-  @doc """
-    Da de alta un cv pero sin archivo
-  """
+  # Da de alta un cv pero sin archivo
   defp upload_file_and_save(changeset, nil, nil) do
     Repo.insert(changeset)
   end
 
-  @doc """
-    Da de alta un CV nuevo con archivo
-  """
+  # Da de alta un CV nuevo con archivo
   defp upload_file_and_save(changeset, nil, file) do
     changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
     profile = Repo.insert(changeset)
@@ -119,16 +115,12 @@ defmodule Peopleware.ProfileController do
     Repo.insert(file)
   end
 
-  @doc """
-    Actualiza un CV sin archivo
-  """
+  # Actualiza un CV sin archivo
   defp upload_file_and_save(changeset, _, nil) do
     Repo.update(changeset)
   end
 
-  @doc """
-    Actualiza un CV con archivo
-  """
+  # Actualiza un CV con archivo
   defp upload_file_and_save(changeset, profile, file) do
     changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
 
