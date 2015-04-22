@@ -18,6 +18,12 @@
       datatype: :atom,
       default: false
     ],
+    "peopleware.Elixir.Peopleware.Endpoint.root": [
+      doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.root here.",
+      to: "peopleware.Elixir.Peopleware.Endpoint.root",
+      datatype: :binary,
+      default: "/Users/hiphoox/Development/Elixir/recluIT/peopleware"
+    ],
     "peopleware.Elixir.Peopleware.Endpoint.pubsub.name": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.pubsub.name here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.pubsub.name",
@@ -34,13 +40,55 @@
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.http.port here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.http.port",
       datatype: :binary,
-      default: 4000
+      default: nil
     ],
     "peopleware.Elixir.Peopleware.Endpoint.server": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.server here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.server",
       datatype: :atom,
       default: true
+    ],
+    "peopleware.mailgun_domain": [
+      doc: "Provide documentation for peopleware.mailgun_domain here.",
+      to: "peopleware.mailgun_domain",
+      datatype: :binary,
+      default: "sandbox859abcbc300b41bcbec5af10244cb0fe.mailgun.org"
+    ],
+    "peopleware.mailgun_key": [
+      doc: "Provide documentation for peopleware.mailgun_key here.",
+      to: "peopleware.mailgun_key",
+      datatype: :binary,
+      default: "key-f15925d915ebe1ce03b081e6fffe1c10"
+    ],
+    "peopleware.confirm_url": [
+      doc: "Provide documentation for peopleware.confirm_url here.",
+      to: "peopleware.confirm_url",
+      datatype: :binary,
+      default: "http://localhost:4000/confirm/"
+    ],
+    "peopleware.test_file_path": [
+      doc: "Provide documentation for peopleware.test_file_path here.",
+      to: "peopleware.test_file_path",
+      datatype: :binary,
+      default: "/tmp/mailgun.json"
+    ],
+    "peopleware.email_sender": [
+      doc: "Provide documentation for peopleware.email_sender here.",
+      to: "peopleware.email_sender",
+      datatype: :binary,
+      default: "norberto.ortigoza@gmail.com"
+    ],
+    "peopleware.welcome_email_subject": [
+      doc: "Provide documentation for peopleware.welcome_email_subject here.",
+      to: "peopleware.welcome_email_subject",
+      datatype: :binary,
+      default: "Hola "
+    ],
+    "peopleware.welcome_email_body": [
+      doc: "Provide documentation for peopleware.welcome_email_body here.",
+      to: "peopleware.welcome_email_body",
+      datatype: :binary,
+      default: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/web/templates/login/welcome_email_body.eex"
     ],
     "peopleware.Elixir.Peopleware.Repo.adapter": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Repo.adapter here.",
@@ -58,7 +106,7 @@
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Repo.password here.",
       to: "peopleware.Elixir.Peopleware.Repo.password",
       datatype: :binary,
-      default: ""
+      default: "norber0"
     ],
     "peopleware.Elixir.Peopleware.Repo.database": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Repo.database here.",
