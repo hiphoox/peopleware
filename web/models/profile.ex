@@ -67,14 +67,14 @@ defmodule Peopleware.Profile  do
   end
 
   def states do
-    ["Aguascalientes",
+    ["Distrito Federal",
+    "Aguascalientes",
     "Baja California",
     "Campeche",
     "Coahuila",
     "Colima",
     "Chiapas",
     "Chihuahua",
-    "Distrito Federal",
     "Durango",
     "Guanajuato",
     "Guerrero",
