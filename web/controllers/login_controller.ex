@@ -77,7 +77,7 @@ defmodule Peopleware.LoginController do
       nil ->
         text conn, "La cuenta ya no es valida"
       user ->
-        user = %{user | is_confirmed: true, is_active: true, reset_token: ""}
+        user = %{user | confirmed: true, is_active: true, reset_token: ""}
         Repo.update(user)
         text conn, "Cuenta activada"
     end
