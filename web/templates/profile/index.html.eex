@@ -23,7 +23,11 @@
       <td> <%= profile.second_surname %> </td>
       <td> <%= profile.email %> </td>
       <td> <%= profile.position %> </td>
+      <%= if profile.cv_file_name != nil do %>
       <td> <%= link profile.cv_file_name, to: "/admin/cv/" <> to_string(profile.id) %> </td>
+      <%= else %>
+      <td> No tiene archivo </td>
+      <%= end %>
 
       <td class="text-right">
         <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %>

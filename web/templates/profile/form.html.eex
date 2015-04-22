@@ -59,7 +59,7 @@
 
   <div class="form-group col-sm-12">
     <label class="control-label" <%= if @changeset.errors[:resume] do %> style="color: red" <% end %> for="changeset[resume]">Resumen</label>
-    <%= textarea f, :resume, class: "form-control", rows: "20", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
+    <%= textarea f, :resume, class: "form-control", rows: "10", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
   </div>
 
   <div class="form-group col-sm-8">

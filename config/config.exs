@@ -25,7 +25,7 @@ config :peopleware,
   confirm_url: "http://localhost:4000/confirm/",
   # mode: :test,
   test_file_path: "/tmp/mailgun.json",
-  email_sender: "norberto.ortigoza@gmail.com",
+  email_sender: "contacto@recluit.com",
   welcome_email_subject: "Hola ",
   welcome_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/welcome_email_body.eex"
 

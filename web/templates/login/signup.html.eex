@@ -21,12 +21,12 @@
 
       <div class="form-group col-sm-12">
         <label class="control-label" <%= if @changeset.errors[:password] do %> style="color: red" <% end %> > Contraseña </label>
-        <%= text_input f, :password, class: "form-control" %>
+        <%= password_input f, :password, class: "form-control" %>
       </div>
 
       <div class="form-group col-sm-12">
         <label class="control-label"> Confirmar Contraseña </label>
-        <%= text_input f, :password_conf, class: "form-control" %>
+        <%= password_input f, :password_conf, class: "form-control" %>
       </div>
       </div>
 
