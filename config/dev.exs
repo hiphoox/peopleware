@@ -10,7 +10,8 @@ config :peopleware, Peopleware.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   cache_static_lookup: false,
-  watchers: [{Path.expand("node_modules/brunch/bin/brunch"), ["watch"]}]
+  watchers: [{Path.expand("node_modules/brunch/bin/brunch"), ["watch"]}],
+  code_reloader: true # Enables code reloading for development
 
 # Watch static and templates for browser reloading.
 # *Note*: Be careful with wildcards. Larger projects
@@ -25,9 +26,6 @@ config :peopleware, Peopleware.Endpoint,
     patterns: [~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
                ~r{web/views/.*(ex)$},
                ~r{web/templates/.*(eex)$}]]
-
-# Enables code reloading for development
-config :your_app, Your.Endpoint, code_reloader: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

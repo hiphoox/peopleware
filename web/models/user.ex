@@ -43,4 +43,10 @@ defmodule Peopleware.User do
     query |> Peopleware.Repo.one
   end
 
+  def get_by_token(token) do
+    query = from user in Peopleware.User,
+            where: user.reset_token == ^token
+    query |> Peopleware.Repo.one
+  end
+
 end

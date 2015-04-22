@@ -21,15 +21,24 @@ defmodule Peopleware.LoginController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
+    password_conf = user_params["password_conf"]
+    password = user_params["password"]
 
-    if changeset.valid? do
-      Repo.insert(changeset)
-
-      conn
-      |> put_flash(:info, "User created succesfully.")
-      |> redirect(to: login_path(conn, :index))
-    else
+    if password_conf == nil || password != password_conf do
+      changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
       render conn, "signup.html", changeset: changeset
+    else
+      if changeset.valid?  do
+        changeset = Ecto.Changeset.put_change(changeset, :reset_token, generate_token)
+        user = Repo.insert(changeset)
+
+        Peopleware.Mailer.send_welcome_email(user)
+        conn
+        |> put_flash(:info, "User created succesfully.")
+        |> redirect(to: login_path(conn, :index))
+      else
+        render conn, "signup.html", changeset: changeset
+      end
     end
   end
 
@@ -63,6 +72,17 @@ defmodule Peopleware.LoginController do
     render conn, "forget.html", changeset: changeset
   end
 
+  def confirm(conn, %{"token" => token}) do
+    case User.get_by_token(token) do
+      nil ->
+        text conn, "La cuenta ya no es valida"
+      user ->
+        user = %{user | is_confirmed: true, is_active: true, reset_token: ""}
+        Repo.update(user)
+        text conn, "Cuenta activada"
+    end
+  end
+
 
 ################################
 # Private API
@@ -79,4 +99,8 @@ defmodule Peopleware.LoginController do
     get_session(conn, :user_id)
   end
 
+  defp generate_token do
+    token = SecureRandom.urlsafe_base64(64)
+    # {token, Comeonin.Bcrypt.hashpwsalt(token)}
+  end
 end

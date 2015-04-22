@@ -19,6 +19,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :peopleware,
+  mailgun_domain: "sandbox859abcbc300b41bcbec5af10244cb0fe.mailgun.org",
+  mailgun_key: "key-f15925d915ebe1ce03b081e6fffe1c10",
+  confirm_url: "http://localhost:4000/confirm/",
+  # mode: :test,
+  test_file_path: "/tmp/mailgun.json",
+  email_sender: "norberto.ortigoza@gmail.com",
+  welcome_email_subject: "Hola ",
+  welcome_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/web/templates/login/welcome_email_body.eex"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

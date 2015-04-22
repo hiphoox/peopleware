@@ -33,8 +33,11 @@ defmodule Peopleware.Mixfile do
      {:cowboy, "~> 1.0"},
      {:phoenix_ecto, "~> 0.3"},
      {:postgrex, "~> 0.8"},
+     {:mailgun, "~> 0.0.2"},
      {:phoenix_live_reload, "~> 0.3", only: [:dev]},
      {:excoveralls, "~> 0.3", only: [:dev, :test]},
+     {:comeonin, "~> 0.8"},
+     {:secure_random, "~> 0.1"},
      {:shouldi, only: :test},
      {:exrm, "~>0.15.3"}]
   end

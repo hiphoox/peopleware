@@ -9,7 +9,8 @@ defmodule Peopleware.Authentication  do
 
   def validate_credentials(email, password) do
     if user = User.get_by_email(email) do
-      user.password == password && user || nil
+      IO.inspect user.confirmed
+      (user.password == password && user.is_active && user.confirmed) && user || nil
     else
       nil
     end

@@ -26,6 +26,7 @@ defmodule Peopleware.Router do
     post "/login", LoginController, :login
     get "/logout", LoginController, :logout
     get "/signup", LoginController, :signup
+    get "/confirm/:token", LoginController, :confirm
     post "/create", LoginController, :create
     get "/forget", LoginController, :forget
   end
