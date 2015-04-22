@@ -41,10 +41,10 @@ defmodule Peopleware.Mailer do
   Both config fields have to be functions returning binaries. password_reset_email_subject receives the user and
   password_reset_email_body the user and reset token.
   """
-  def send_password_reset_email(user, reset_token) do
-    subject = Application.get_env(:peopleware, :password_reset_email_subject).(user)
-    body = Application.get_env(:peopleware, :password_reset_email_body).(user, reset_token)
-    from = Application.get_env(:peopleware, :email_sender)
+  def send_password_reset_email(user) do
+    subject = "Cambio de contraseña para " <> user.name
+    body    = "Su nueva contraseña es: " <> user.password
+    from    = Application.get_env(:peopleware, :email_sender)
 
     {:ok, _} = send_email(to: user.email,
                from: from,

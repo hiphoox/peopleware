@@ -67,9 +67,18 @@ defmodule Peopleware.LoginController do
     render conn, "forget.html", changeset: changeset
   end
 
-  def reset(conn, _params) do
-    changeset = User.changeset(%User{})
-    render conn, "forget.html", changeset: changeset
+  def reset(conn, %{"user" => user_params}) do
+    changeset = User.changeset(%User{}, user_params)
+    case User.get_by_email(user_params["email"]) do
+      nil ->
+        changeset = Ecto.Changeset.add_error(changeset, :email, "Correo invalido")
+        render conn, "forget.html", changeset: changeset
+      user ->
+        user = %{user | password: generate_password}
+        Repo.update(user)
+        Peopleware.Mailer.send_password_reset_email(user)
+        html conn, "Contraseña reiniciada, pronto le llegará un correo con su nueva clave, con ella podra entrar a: <a href=\"/admin/profiles\">capturar su cv</a>"
+    end
   end
 
   def confirm(conn, %{"token" => token}) do
@@ -100,7 +109,12 @@ defmodule Peopleware.LoginController do
   end
 
   defp generate_token do
-    token = SecureRandom.urlsafe_base64(64)
+    _token = SecureRandom.urlsafe_base64(64)
+    # {token, Comeonin.Bcrypt.hashpwsalt(token)}
+  end
+
+  defp generate_password do
+    _token = SecureRandom.urlsafe_base64(8)
     # {token, Comeonin.Bcrypt.hashpwsalt(token)}
   end
 end

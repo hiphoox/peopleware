@@ -21,23 +21,24 @@ defmodule Peopleware.Router do
   scope "/", Peopleware do
     pipe_through :browser
 
-    get "/", LoginController, :index
-    get "/signin", LoginController, :signin
-    post "/login", LoginController, :login
-    get "/logout", LoginController, :logout
-    get "/signup", LoginController, :signup
-    get "/confirm/:token", LoginController, :confirm
-    post "/create", LoginController, :create
-    get "/forget", LoginController, :forget
+    get "/",                LoginController, :index
+    get "/signin",          LoginController, :signin
+    post "/login",          LoginController, :login
+    get "/logout",          LoginController, :logout
+    get "/signup",          LoginController, :signup
+    post "/create",         LoginController, :create
+    get "/forget",          LoginController, :forget
+    post "/reset",          LoginController, :reset
+    get "/confirm/:token",  LoginController, :confirm
   end
 
   scope "/admin", Peopleware do
     pipe_through :browser
     pipe_through :auth
 
-    resources "/profiles", ProfileController
-    get "/cv/:id", ProfileController, :getCV, as: :cv
-    resources "/users", UserController
+    resources "/profiles",  ProfileController
+    resources "/users",     UserController
+    get "/cv/:id",          ProfileController, :getCV, as: :cv
   end
 
   # Other scopes may use custom stacks.
