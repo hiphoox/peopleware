@@ -27,7 +27,7 @@ config :peopleware,
   test_file_path: "/tmp/mailgun.json",
   email_sender: "norberto.ortigoza@gmail.com",
   welcome_email_subject: "Hola ",
-  welcome_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/web/templates/login/welcome_email_body.eex"
+  welcome_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/welcome_email_body.eex"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
