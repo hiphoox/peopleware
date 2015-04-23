@@ -74,7 +74,7 @@ defmodule Peopleware.Profile  do
   end
 
   def option_levels do
-    ["Si", "No", "Tal vez"]
+    ["No", "Si", "Tal vez"]
   end
 
   def states do
