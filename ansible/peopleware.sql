@@ -87,6 +87,9 @@ CREATE TABLE profiles (
     state character varying(20),
     contract_schema character varying(30),
     cv_file_name character varying(255),
+    residence character varying(15),
+    travel character varying(15),
+    english_level character varying(15),
     user_id integer,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
