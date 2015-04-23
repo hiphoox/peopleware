@@ -17,10 +17,13 @@ defmodule Peopleware.Profile  do
     field       :state,           :string   # Lista de estados
     field       :contract_schema, :string   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
     field       :cv_file_name,    :string
+    field       :residence,       :string
+    field       :travel,          :string
+    field       :english_level,   :string
     timestamps
   end
 
- @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema)
+ @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level)
  @optional_fields ~w(tel cel state resume second_surname)
 
   def changeset(model, params \\ nil) do
@@ -64,6 +67,14 @@ defmodule Peopleware.Profile  do
 
   def contractings do
      ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
+  end
+
+  def idiom_levels do
+    ["No", "Basico", "intermedio", "avanzado"]
+  end
+
+  def option_levels do
+    ["Si", "No", "Tal vez"]
   end
 
   def states do

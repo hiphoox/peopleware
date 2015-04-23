@@ -15,7 +15,10 @@ defmodule Peopleware.Repo.Migrations.CreateProfiles do
       add :cel,             :string, size: 15
       add :state,           :string, size: 20   # Lista de estados
       add :contract_schema, :string, size: 30   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
-      add :cv_file_name,    :string
+      add :cv_file_name,    :string, size: 100
+      add :residence,       :string, size: 15
+      add :travel,          :string, size: 15
+      add :english_level,   :string, size: 15
       add :user_id,         references(:users)
 
       timestamps

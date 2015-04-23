@@ -100,7 +100,7 @@ defmodule Peopleware.LoginController do
     if user.is_staff do
       user_path(conn, :index)
     else
-      profile_path(conn, :index)
+      profile_path(conn, :new)
     end
   end
 
