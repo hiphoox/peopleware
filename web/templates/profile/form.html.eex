@@ -7,6 +7,13 @@
     </div>
   <% end %>
 
+  <div class="form-group col-sm-12">
+    <div class="col-xs-offset-4 form-group col-sm-4">
+        <label class="text-center control-label" for="changeset[name]">Nombre </label>
+        NAda
+    </div>
+  </div>
+
   <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[name]">Nombre </label>
     <%= text_input f, :name, class: "form-control", autofocus: :autofocus%>
@@ -84,6 +91,11 @@
 
   <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[keywords]"> CV </label>
+    <%= if @changeset.model.cv_file_name != nil do %>
+    <td> <%= link @changeset.model.cv_file_name, to: "/admin/cv/" <> to_string(@changeset.model.id) %> </td>
+    <%= else %>
+    <td> No tiene archivo </td>
+    <%= end %>
     <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
   </div>
 

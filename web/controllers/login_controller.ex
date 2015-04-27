@@ -21,31 +21,26 @@ defmodule Peopleware.LoginController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
-    password_conf = user_params["password_conf"]
-    password = user_params["password"]
 
-    if password_conf == nil || password != password_conf do
-      changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
-      render conn, "signup.html", changeset: changeset
-    else
+    if password_is_valid?(user_params) do
       if changeset.valid?  do
         changeset = Ecto.Changeset.put_change(changeset, :reset_token, generate_token)
         user = Repo.insert(changeset)
 
         Peopleware.Mailer.send_welcome_email(user)
-        conn
-        |> put_flash(:info, "User created succesfully.")
-        |> redirect(to: login_path(conn, :index))
+        redirect(conn, to: login_path(conn, :index))
       else
         render conn, "signup.html", changeset: changeset
       end
+    else
+      changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
+      render conn, "signup.html", changeset: changeset
     end
   end
 
   def login(conn, %{"user" => user_params}) do
     alias Peopleware.Authentication, as: Auth
-    email = user_params["email"]
-    password = user_params["password"]
+    %{"email" => email, "password" => password} = user_params
 
     if user = Auth.validate_credentials(email, password) do
       page_path = page_path_for_user(conn, user)
@@ -69,6 +64,7 @@ defmodule Peopleware.LoginController do
 
   def reset(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
+
     case User.get_by_email(user_params["email"]) do
       nil ->
         changeset = Ecto.Changeset.add_error(changeset, :email, "Correo invalido")
@@ -88,7 +84,7 @@ defmodule Peopleware.LoginController do
       user ->
         user = %{user | confirmed: true, is_active: true, reset_token: ""}
         Repo.update(user)
-        html conn, "Cuenta activada: <a href=\"/admin/profiles\">empieza a capturar tu cv</a>"
+        html conn, "Cuenta activada: <a href=\"/\">empieza a capturar tu cv</a>"
     end
   end
 
@@ -96,11 +92,25 @@ defmodule Peopleware.LoginController do
 ################################
 # Private API
 
+  defp password_is_valid?(user_params) do
+    %{"password" => password, "password_conf" => password_conf} = user_params
+    IO.inspect password_conf
+    IO.inspect password
+    password_conf != nil && password == password_conf
+  end
+
   defp page_path_for_user(conn, user) do
+    alias Peopleware.Profile
+
     if user.is_staff do
       user_path(conn, :index)
     else
-      profile_path(conn, :new)
+      case Profile.get_by_user_type(user) do
+        nil ->
+          profile_path(conn, :new)
+        [profile] ->
+          profile_path(conn, :edit, profile)
+      end
     end
   end
 

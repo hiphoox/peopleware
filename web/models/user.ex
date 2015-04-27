@@ -1,5 +1,8 @@
 defmodule Peopleware.User do
   use Peopleware.Web, :model
+  alias Peopleware.Repo
+  alias Peopleware.Profile
+  alias Peopleware.User
 
   schema "users" do
     has_many  :profiles,       Profile
@@ -38,15 +41,23 @@ defmodule Peopleware.User do
   end
 
   def get_by_email(email) do
-    query = from user in Peopleware.User,
+    query = from user in User,
             where: user.email == ^email
     query |> Peopleware.Repo.one
   end
 
   def get_by_token(token) do
-    query = from user in Peopleware.User,
+    query = from user in User,
             where: user.reset_token == ^token
     query |> Peopleware.Repo.one
+  end
+
+  def delete_user_with_id(id) do
+    user = Repo.get from(user in User, preload: [:profiles]), id
+    Repo.transaction(fn ->
+      Enum.each(user.profiles, fn profile -> Profile.delete_profile(profile) end)
+      Repo.delete(user)
+    end)
   end
 
 end

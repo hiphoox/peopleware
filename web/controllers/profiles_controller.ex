@@ -14,7 +14,7 @@ defmodule Peopleware.ProfileController do
     # IEx.pry
     user_id = get_session(conn, :user_id)
     user = Repo.get(User, user_id)
-    profiles = Profile.get_by_user_type(user)
+    profiles = Profile.get_users_by_type(user)
     # put_resp_header("Authorization: Token", "token=12345")
     render conn, "index.html", profiles: profiles
   end
@@ -41,8 +41,8 @@ defmodule Peopleware.ProfileController do
     user_id = get_session(conn, :user_id)
     changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
     if changeset.valid? do
-      upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
-      redirect(conn, to: profile_path(conn, :index))
+      profile = upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
+      redirect(conn, to: profile_path(conn, :edit, profile.id))
     else
       render conn, "new.html", changeset: changeset
     end
@@ -73,8 +73,11 @@ defmodule Peopleware.ProfileController do
     changeset = Profile.changeset(profile, profile_params)
 
     if changeset.valid? do
-      upload_file_and_save(changeset, profile, get_file_to_upload(profile_params))
-      redirect(conn, to: profile_path(conn, :index))
+      profile = upload_file_and_save(changeset, profile, get_file_to_upload(profile_params))
+      changeset = Profile.changeset(profile)
+
+      # redirect(conn, to: profile_path(conn, :index))
+      render conn, "edit.html", profile: profile, changeset: changeset
     else
       render conn, "edit.html", profile: profile, changeset: changeset
     end
@@ -85,7 +88,7 @@ defmodule Peopleware.ProfileController do
   """
   def delete(conn, %{"id" => id}) do
     profile = Repo.get(Profile, id)
-    Repo.delete(profile)
+    Profile.delete_profile(profile)
     conn
     |> put_flash(:info, "CV borrado exitosamente.")
     |> redirect(to: profile_path(conn, :index))
@@ -131,16 +134,18 @@ defmodule Peopleware.ProfileController do
                           file_size:    file.file_size,
                           content_type: file.content_type,
                           content:      file.content}
-      Repo.transaction(fn ->
+      {:ok, value} = Repo.transaction(fn ->
         Repo.update(cv_file)
         Repo.update(changeset)
       end)
+      value
     else  # El profile todavía no tiene un archivo asociado
       file = %{file | profile_id: profile.id}
-      Repo.transaction(fn ->
+      {:ok, value} = Repo.transaction(fn ->
         Repo.insert(file)
         Repo.update(changeset)
       end)
+      value
     end
   end
 

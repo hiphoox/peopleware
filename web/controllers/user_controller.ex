@@ -56,8 +56,7 @@ defmodule Peopleware.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
-    Repo.delete(user)
+    User.delete_user_with_id(id)
 
     conn
     |> put_flash(:info, "User deleted succesfully.")

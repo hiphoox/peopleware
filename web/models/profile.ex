@@ -1,5 +1,6 @@
 defmodule Peopleware.Profile  do
   use Peopleware.Web, :model
+  alias Peopleware.Repo
 
   schema "profiles" do
     belongs_to  :user,            Peopleware.User
@@ -40,8 +41,16 @@ defmodule Peopleware.Profile  do
     |> validate_length(:contract_schema, max: 30, message: "Debe ser máximo de 30 caracteres")
     |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
-    # |> validate_format(:tel, ~r/^\(\d{2}\) ?\d{6}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/, message: "Formato Inválido")
-    # |> validate_format(:cel, ~r/^\(\d{2}\) ?\d{6}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/, message: "Formato Inválido")
+  end
+
+  def get_users_by_type(user) do
+    if user.is_staff do
+      query = Peopleware.Profile
+    else
+      query = from profile in Peopleware.Profile,
+             where: profile.user_id == ^user.id
+    end
+    Repo.all(query)
   end
 
   def get_by_user_type(user) do
@@ -51,18 +60,26 @@ defmodule Peopleware.Profile  do
       query = from profile in Peopleware.Profile,
              where: profile.user_id == ^user.id
     end
-    Peopleware.Repo.all(query)
+    Repo.one(query)
   end
 
   def get_by_id(id) do
-    Peopleware.Repo.get from(p in Peopleware.Profile, preload: [:cv_file]), id
+    Repo.get from(p in Peopleware.Profile, preload: [:cv_file]), id
   end
 
   def get_file_by_id(id) do
     query = from file in Peopleware.File,
             where: file.profile_id == ^id
 
-    Peopleware.Repo.one(query)
+    Repo.one(query)
+  end
+
+  def delete_profile(profile) do
+    file = Repo.one assoc(profile, :cv_file)
+    Repo.transaction(fn ->
+      unless file == nil, do: Repo.delete(file)
+      Repo.delete(profile)
+    end)
   end
 
   def contractings do
