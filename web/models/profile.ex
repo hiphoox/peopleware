@@ -21,10 +21,11 @@ defmodule Peopleware.Profile  do
     field       :residence,       :string
     field       :travel,          :string
     field       :english_level,   :string
+    field       :role,            :string
     timestamps
   end
 
- @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level)
+ @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level role)
  @optional_fields ~w(tel cel state resume second_surname)
 
   def changeset(model, params \\ nil) do
@@ -127,6 +128,32 @@ defmodule Peopleware.Profile  do
     "Yucatán",
     "Zacatecas",
     "Extranjero"]
+  end
+
+  def roles do
+    ["Ventas",
+    "Tester",
+    "Soporte técnico",
+    "Ingeniero de seguridad",
+    "Project manager",
+    "Operador",
+    "Soporte a infraestructura",
+    "Líder de proyecto",
+    "Gerente",
+    "SAP Funcional",
+    "SAP developer",
+    "EBS Funcional",
+    "EBS developer",
+    "Director",
+    "DBA",
+    "Comunicaciones",
+    "Business Intelligence",
+    "Arquitecto de aplicaciones",
+    "Arquitecto de soluciones",
+    "Analista de negocio",
+    "Analista de procesos",
+    "Quality Assurance",
+    "Otro"]
   end
 
 end

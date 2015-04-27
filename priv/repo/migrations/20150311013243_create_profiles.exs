@@ -19,6 +19,7 @@ defmodule Peopleware.Repo.Migrations.CreateProfiles do
       add :residence,       :string, size: 15
       add :travel,          :string, size: 15
       add :english_level,   :string, size: 15
+      add :role,            :string, size: 40
       add :user_id,         references(:users)
 
       timestamps

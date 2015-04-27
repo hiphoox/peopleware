@@ -84,7 +84,7 @@ defmodule Peopleware.LoginController do
       user ->
         user = %{user | confirmed: true, is_active: true, reset_token: ""}
         Repo.update(user)
-        html conn, "Cuenta activada: <a href=\"/\">empieza a capturar tu cv</a>"
+        html conn, "Cuenta activada: <a href=\"/signin\">empieza a capturar tu cv</a>"
     end
   end
 
