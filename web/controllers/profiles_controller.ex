@@ -117,6 +117,7 @@ defmodule Peopleware.ProfileController do
     profile = Repo.insert(changeset)
     file = %{file | profile_id: profile.id}
     Repo.insert(file)
+    profile
   end
 
   # Actualiza un CV sin archivo
@@ -134,18 +135,18 @@ defmodule Peopleware.ProfileController do
                           file_size:    file.file_size,
                           content_type: file.content_type,
                           content:      file.content}
-      {:ok, value} = Repo.transaction(fn ->
+      {:ok, profile} = Repo.transaction(fn ->
         Repo.update(cv_file)
         Repo.update(changeset)
       end)
-      value
+      profile
     else  # El profile todavía no tiene un archivo asociado
       file = %{file | profile_id: profile.id}
-      {:ok, value} = Repo.transaction(fn ->
+      {:ok, profile} = Repo.transaction(fn ->
         Repo.insert(file)
         Repo.update(changeset)
       end)
-      value
+      profile
     end
   end
 
