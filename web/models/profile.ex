@@ -131,7 +131,7 @@ defmodule Peopleware.Profile  do
   end
 
   def roles do
-    ["Programador",
+    ["Desarrollador",
     "Analista programador",
     "Ventas",
     "Tester",
