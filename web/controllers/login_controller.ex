@@ -105,7 +105,7 @@ defmodule Peopleware.LoginController do
     if user.is_staff do
       user_path(conn, :index)
     else
-      case Profile.get_by_user_type(user) do
+      case Profile.get_users_by_type(user) do
         nil ->
           profile_path(conn, :new)
         [profile] ->
