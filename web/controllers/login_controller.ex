@@ -106,7 +106,7 @@ defmodule Peopleware.LoginController do
       user_path(conn, :index)
     else
       case Profile.get_users_by_type(user) do
-        nil ->
+        [] ->
           profile_path(conn, :new)
         [profile] ->
           profile_path(conn, :edit, profile)
