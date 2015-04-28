@@ -94,8 +94,6 @@ defmodule Peopleware.LoginController do
 
   defp password_is_valid?(user_params) do
     %{"password" => password, "password_conf" => password_conf} = user_params
-    IO.inspect password_conf
-    IO.inspect password
     password_conf != nil && password == password_conf
   end
 

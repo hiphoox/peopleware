@@ -29,7 +29,8 @@ defmodule Peopleware.ProfileController do
                        last_name: user.last_name,
                        second_surname: user.second_surname,
                        email: user.email,
-                       user: user}
+                       user: user,
+                       role: "Desarrollador"}
     changeset = Profile.changeset(profile)
     render conn, "new.html", changeset: changeset
   end
