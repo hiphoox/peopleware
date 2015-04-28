@@ -82,7 +82,7 @@
   </div>
 
   <div class="form-group col-sm-8">
-    <label class="control-label" <%= if @changeset.errors[:keywords] do %> style="color: red" <% end %> for="changeset[keywords]">Palabras claves *</label>
+    <label class="control-label" <%= if @changeset.errors[:keywords] do %> style="color: red" <% end %> for="changeset[keywords]">Palabras de búsqueda (El reclutador puede encontrar mas fácil tu CV a través de estás palabras) *</label>
     <%= text_input f, :keywords, class: "form-control", placeholder: "Poner palabras separadas por comas, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."%>
   </div>
 
