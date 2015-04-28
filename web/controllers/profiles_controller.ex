@@ -42,7 +42,7 @@ defmodule Peopleware.ProfileController do
     user_id = get_session(conn, :user_id)
     changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
     if changeset.valid? do
-      profile = upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
+      upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
       render conn, "welcome.html"
       # redirect(conn, to: profile_path(conn, :edit, profile.id))
@@ -77,7 +77,7 @@ defmodule Peopleware.ProfileController do
 
     if changeset.valid? do
       profile = upload_file_and_save(changeset, profile, get_file_to_upload(profile_params))
-      changeset = Profile.changeset(profile)
+      Profile.changeset(profile)
       conn = put_session(conn, :user_id, nil)
 
       # render conn, "edit.html", profile: profile, changeset: changeset
