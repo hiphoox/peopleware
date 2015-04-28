@@ -41,6 +41,10 @@ defmodule Peopleware.ProfileView do
     "* El Archivo " <> translate_plural(message)
   end
 
+  def translate_error(message) do
+    "* Error desconocido: " <> (IO.inspect message)
+  end
+
   def translate(message) do
     case message do
       {m,_d} -> m

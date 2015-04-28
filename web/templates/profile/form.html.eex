@@ -17,12 +17,12 @@
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label" for="changeset[name]">Nombre </label>
+    <label class="control-label" <%= if @changeset.errors[:name] do %> style="color: red" <% end %> for="changeset[name]">Nombre *</label>
     <%= text_input f, :name, class: "form-control", autofocus: :autofocus%>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label" for="changeset[last_name]">Apellido Paterno </label>
+    <label class="control-label" <%= if @changeset.errors[:last_name] do %> style="color: red" <% end %> for="changeset[last_name]">Apellido Paterno *</label>
     <%= text_input f, :last_name, class: "form-control"%>
   </div>
 
