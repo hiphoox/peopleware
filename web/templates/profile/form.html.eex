@@ -7,11 +7,12 @@
     </div>
   <% end %>
 
-  <div class="col-xs-offset-2 form-group col-sm-4">
+  <div class="col-xs-offset-0 form-group col-sm-4">
         <label class="control-label" for="changeset[name]">Perfil </label>
         <%= select f, :role, Peopleware.Profile.roles, class: "form-control btn-xs"%>
   </div>
 
+  <div class="form-group col-sm-8">
   <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[keywords]"> CV </label>
     <%= if @changeset.model.cv_file_name != nil do %>
@@ -20,6 +21,7 @@
     <td> No tiene archivo </td>
     <%= end %>
     <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
+  </div>
   </div>
 
   <div class="form-group col-sm-4">
