@@ -17,7 +17,7 @@
     <%= if @changeset.model.cv_file_name != nil do %>
     <td> <%= link @changeset.model.cv_file_name, to: "/admin/cv/" <> to_string(@changeset.model.id) %> </td>
     <%= else %>
-    <td> No tiene archivo </td>
+    <td> Seleccione un archivo y de salvar para actualizar </td>
     <%= end %>
     <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
   </div>

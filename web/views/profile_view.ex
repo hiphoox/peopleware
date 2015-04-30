@@ -34,7 +34,7 @@ defmodule Peopleware.ProfileView do
   end
 
   def translate_error({:keywords, message}) do
-    "* Las palabras claves " <> translate_plural(message)
+    "* Las palabras de búsqueda " <> translate_plural(message)
   end
 
   def translate_error({:cv_file, message}) do
