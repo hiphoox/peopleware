@@ -9,6 +9,7 @@ use Mix.Config
 config :peopleware, Peopleware.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "localhost"]
+  cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
 #
@@ -31,7 +32,7 @@ config :logger, level: :info
 #
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
-# 
+#
 # config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
