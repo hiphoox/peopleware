@@ -73,7 +73,7 @@ defmodule Peopleware.LoginController do
         user = %{user | reset_token: generate_token}
         Repo.update(user)
         Peopleware.Mailer.send_password_reset_email(user)
-        html conn, "Pronto le llegará un correo para reiniciar su contraseña"
+        html conn, "Solicitud Recibida. Pronto le llegará un correo para reiniciar su contraseña"
     end
   end
 
@@ -149,8 +149,4 @@ defmodule Peopleware.LoginController do
     # {token, Comeonin.Bcrypt.hashpwsalt(token)}
   end
 
-  defp generate_password do
-    _token = SecureRandom.urlsafe_base64(8)
-    # {token, Comeonin.Bcrypt.hashpwsalt(token)}
-  end
 end
