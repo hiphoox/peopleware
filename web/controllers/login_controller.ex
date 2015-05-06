@@ -70,10 +70,38 @@ defmodule Peopleware.LoginController do
         changeset = Ecto.Changeset.add_error(changeset, :email, "Correo invalido")
         render conn, "forget.html", changeset: changeset
       user ->
-        user = %{user | password: generate_password}
+        user = %{user | reset_token: generate_token}
         Repo.update(user)
         Peopleware.Mailer.send_password_reset_email(user)
-        html conn, "Contraseña reiniciada, pronto le llegará un correo con su nueva clave, con ella podra entrar a: <a href=\"/admin/profiles\">capturar su cv</a>"
+        html conn, "Pronto le llegará un correo para reiniciar su contraseña"
+    end
+  end
+
+  def confirm_reset(conn, %{"token" => token}) do
+    case User.get_by_token(token) do
+      nil ->
+        text conn, "La cuenta ya no es valida"
+      user ->
+        changeset = User.changeset(user)
+        render conn, "change_password.html", changeset: changeset
+    end
+  end
+
+  def update_password(conn, %{"user" => user_params}) do
+    case User.get_by_token(user_params["reset_token"]) do
+      nil ->
+        text conn, "La cuenta ya no es valida"
+      user ->
+        user_params = %{user_params | "reset_token" => ""}
+        changeset = User.changeset(user, user_params)
+
+        if changeset.valid? do
+          Repo.update(changeset)
+          changeset = User.changeset(%User{})
+          render conn, "signin.html", changeset: changeset
+        else
+          render conn, "change_password.html", changeset: changeset
+        end
     end
   end
 

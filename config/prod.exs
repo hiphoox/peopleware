@@ -8,7 +8,7 @@ use Mix.Config
 # meaningful, we use this information when generating URLs.
 config :peopleware, Peopleware.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "localhost"]
+  url: [host: "localhost"],
   cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support

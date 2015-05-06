@@ -43,7 +43,8 @@ defmodule Peopleware.Mailer do
   """
   def send_password_reset_email(user) do
     subject = "Cambio de contraseña para " <> user.name
-    body    = "Su nueva contraseña es: " <> user.password
+    url     = Application.get_env(:peopleware, :reset_pass_url) <> user.reset_token
+    body    = EEx.eval_file Application.get_env(:peopleware, :change_pass_email_body) , [url: url]
     from    = Application.get_env(:peopleware, :email_sender)
 
     {:ok, _} = send_email(to: user.email,

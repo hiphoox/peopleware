@@ -30,6 +30,8 @@ defmodule Peopleware.Router do
     get "/forget",          LoginController, :forget
     post "/reset",          LoginController, :reset
     get "/confirm/:token",  LoginController, :confirm
+    get "/confirm_reset/:token",  LoginController, :confirm_reset
+    put "/update_password", LoginController, :update_password
   end
 
   scope "/admin", Peopleware do
