@@ -2,7 +2,7 @@ defmodule Peopleware.LoginController do
   use Peopleware.Web, :controller
   alias Peopleware.User
 
-  plug :scrub_params, "user" when action in [:create]
+  plug :scrub_params, "user" when action in [:create, :update_password]
   plug :action
 
   def index(conn, _params) do
@@ -92,14 +92,18 @@ defmodule Peopleware.LoginController do
       nil ->
         text conn, "La cuenta ya no es valida"
       user ->
-        user_params = %{user_params | "reset_token" => ""}
         changeset = User.changeset(user, user_params)
-
-        if changeset.valid? do
-          Repo.update(changeset)
-          changeset = User.changeset(%User{})
-          render conn, "signin.html", changeset: changeset
+        if password_is_valid?(user_params) do
+          if changeset.valid? do
+            changeset = Ecto.Changeset.change(changeset, %{reset_token: ""})
+            Repo.update(changeset)
+            changeset = User.changeset(%User{})
+            render conn, "signin.html", changeset: changeset
+          else
+            render conn, "change_password.html", changeset: changeset
+          end
         else
+          changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
           render conn, "change_password.html", changeset: changeset
         end
     end
