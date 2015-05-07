@@ -42,6 +42,12 @@
       datatype: :binary,
       default: nil
     ],
+    "peopleware.Elixir.Peopleware.Endpoint.cache_static_manifest": [
+      doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.cache_static_manifest here.",
+      to: "peopleware.Elixir.Peopleware.Endpoint.cache_static_manifest",
+      datatype: :binary,
+      default: "priv/static/manifest.json"
+    ],
     "peopleware.Elixir.Peopleware.Endpoint.server": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Endpoint.server here.",
       to: "peopleware.Elixir.Peopleware.Endpoint.server",
@@ -66,6 +72,12 @@
       datatype: :binary,
       default: "http://localhost:4000/confirm/"
     ],
+    "peopleware.reset_pass_url": [
+      doc: "Provide documentation for peopleware.reset_pass_url here.",
+      to: "peopleware.reset_pass_url",
+      datatype: :binary,
+      default: "http://localhost:4000/confirm_reset/"
+    ],
     "peopleware.test_file_path": [
       doc: "Provide documentation for peopleware.test_file_path here.",
       to: "peopleware.test_file_path",
@@ -76,7 +88,7 @@
       doc: "Provide documentation for peopleware.email_sender here.",
       to: "peopleware.email_sender",
       datatype: :binary,
-      default: "norberto.ortigoza@gmail.com"
+      default: "contacto@recluit.com"
     ],
     "peopleware.welcome_email_subject": [
       doc: "Provide documentation for peopleware.welcome_email_subject here.",
@@ -88,7 +100,13 @@
       doc: "Provide documentation for peopleware.welcome_email_body here.",
       to: "peopleware.welcome_email_body",
       datatype: :binary,
-      default: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/web/templates/login/welcome_email_body.eex"
+      default: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/welcome_email_body.html.eex"
+    ],
+    "peopleware.change_pass_email_body": [
+      doc: "Provide documentation for peopleware.change_pass_email_body here.",
+      to: "peopleware.change_pass_email_body",
+      datatype: :binary,
+      default: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/change_pass_email_body.html.eex"
     ],
     "peopleware.Elixir.Peopleware.Repo.adapter": [
       doc: "Provide documentation for peopleware.Elixir.Peopleware.Repo.adapter here.",
