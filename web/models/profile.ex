@@ -28,7 +28,7 @@ defmodule Peopleware.Profile  do
  @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level role)
  @optional_fields ~w(tel cel state resume second_surname)
 
-  def changeset(model, params \\ nil) do
+  def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
     # |> update_change(:email, &String.downcase/1)
