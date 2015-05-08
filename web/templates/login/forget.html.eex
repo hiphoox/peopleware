@@ -6,7 +6,7 @@
     <div class="col-sm-6">
       <%= form_for @changeset, "/reset", fn f -> %>
       <%= if @changeset.errors != [] do %>
-        <p style="color: red">Correo o contraseña incorrecta</p>
+        <p style="color: red">Correo incorrecto</p>
       <% end %>
 
       <div class="form-group ">

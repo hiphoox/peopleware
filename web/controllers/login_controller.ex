@@ -5,6 +5,8 @@ defmodule Peopleware.LoginController do
   plug :scrub_params, "user" when action in [:create, :update_password]
   plug :action
 
+  @password_error_message "no es igual. Considera que es sensible al uso de mayúsculas y minúsculas"
+
   def index(conn, _params) do
     render conn, "index.html"
   end
@@ -33,7 +35,7 @@ defmodule Peopleware.LoginController do
         render conn, "signup.html", changeset: changeset
       end
     else
-      changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
+      changeset = Ecto.Changeset.add_error(changeset, :password, @password_error_message)
       render conn, "signup.html", changeset: changeset
     end
   end
@@ -103,7 +105,7 @@ defmodule Peopleware.LoginController do
             render conn, "change_password.html", changeset: changeset
           end
         else
-          changeset = Ecto.Changeset.add_error(changeset, :password, "no es igual")
+          changeset = Ecto.Changeset.add_error(changeset, :password, @password_error_message)
           render conn, "change_password.html", changeset: changeset
         end
     end
