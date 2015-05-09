@@ -44,6 +44,10 @@ defmodule Peopleware.Profile  do
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
   end
 
+#####################
+# Queries
+#####################
+
   def get_users_by_type(user) do
     if user.is_staff do
       query = Peopleware.Profile
@@ -83,6 +87,14 @@ defmodule Peopleware.Profile  do
     end)
   end
 
+  def get_by_criteria(criteria) do
+    []
+  end
+
+
+#####################
+# Catalogs
+#####################
   def contractings do
      ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
   end

@@ -43,6 +43,14 @@ defmodule Peopleware.Router do
     get "/cv/:id",          ProfileController, :getCV, as: :cv
   end
 
+  scope "/search", Peopleware do
+    pipe_through :browser
+    pipe_through :auth
+
+    get "/",                SearchController, :index
+    post "/",               SearchController, :search
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Peopleware do
   #   pipe_through :api
