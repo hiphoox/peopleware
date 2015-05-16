@@ -16,32 +16,32 @@
 
   <div class="col-xs-offset-0 form-group col-sm-4">
         <label class="control-label" for="changeset[name]">Perfil </label>
-        <%= select f, :role, Peopleware.Profile.roles, class: "form-control btn-xs"%>
+        <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" for="changeset[state]">Estado de Residencia</label>
-    <%= select f, :state, Peopleware.Profile.states, class: "form-control btn-xs"%>
+    <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:contract_schema] do %> style="color: red" <% end %> for="changeset[contract_schema]">Esquema de Contratación</label>
-    <%= select f, :contract_schema, Peopleware.Profile.contractings, class: "form-control btn-xs"%>
+    <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:residence] do %> style="color: red" <% end %> for="changeset[residence]">Cambiar de Residencia</label>
-    <%= select f, :residence, Peopleware.Profile.option_levels, class: "form-control btn-xs"%>
+    <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:travel] do %> style="color: red" <% end %> for="changeset[travel]">Disponibilidad para viajar</label>
-    <%= select f, :travel, Peopleware.Profile.option_levels, class: "form-control btn-xs"%>
+    <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
   </div>
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:english_level] do %> style="color: red" <% end %> for="changeset[english_level]">Nivel de Ingles</label>
-    <%= select f, :english_level, Peopleware.Profile.idiom_levels, class: "form-control btn-xs"%>
+    <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs"%>
   </div>
 
   <div class="clearfix"></div>

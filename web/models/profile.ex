@@ -25,8 +25,8 @@ defmodule Peopleware.Profile  do
     timestamps
   end
 
- @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level role)
- @optional_fields ~w(tel cel state resume second_surname)
+  @required_fields ~w(user_id name last_name last_salary position keywords email contract_schema residence travel english_level role)
+  @optional_fields ~w(tel cel state resume second_surname)
 
   def changeset(model, params \\ :empty) do
     model
@@ -44,16 +44,16 @@ defmodule Peopleware.Profile  do
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
   end
 
-#####################
-# Queries
-#####################
+  #####################
+  # Queries
+  #####################
 
   def get_users_by_type(user) do
     if user.is_staff do
       query = Peopleware.Profile
     else
       query = from profile in Peopleware.Profile,
-             where: profile.user_id == ^user.id
+      where: profile.user_id == ^user.id
     end
     Repo.all(query)
   end
@@ -63,7 +63,7 @@ defmodule Peopleware.Profile  do
       query = Peopleware.Profile
     else
       query = from profile in Peopleware.Profile,
-             where: profile.user_id == ^user.id
+      where: profile.user_id == ^user.id
     end
     Repo.one(query)
   end
@@ -74,7 +74,7 @@ defmodule Peopleware.Profile  do
 
   def get_file_by_id(id) do
     query = from file in Peopleware.File,
-            where: file.profile_id == ^id
+    where: file.profile_id == ^id
 
     Repo.one(query)
   end
@@ -83,20 +83,115 @@ defmodule Peopleware.Profile  do
     file = Repo.one assoc(profile, :cv_file)
     Repo.transaction(fn ->
       unless file == nil, do: Repo.delete(file)
-      Repo.delete(profile)
-    end)
-  end
-
-  def get_by_criteria(criteria) do
-    []
+        Repo.delete(profile)
+      end)
   end
 
 
-#####################
-# Catalogs
-#####################
+  ###########################################
+  # Search
+  ###########################################
+
+  def search(page, count, search_criteria) do
+    Peopleware.Profile
+    |> has_keywords(search_criteria)
+    |> has_role(search_criteria)
+    |> has_state(search_criteria)
+    |> has_contract_schema(search_criteria)
+    |> has_residence(search_criteria)
+    |> can_travel(search_criteria)
+    |> has_english_level(search_criteria)
+    |> Repo.paginate(page: page, page_size: count)
+  end
+
+  def has_keywords(query, %{"keywords" => keywords}) do
+    if keywords != "" do
+      keyword_criteria = build_criteria(keywords, " | ") # We use OR inside the keyword field
+      resume_criteria  = build_criteria(keywords)        # We use AND inside the resume field
+      from p in query,
+      where: fragment("to_tsvector('spanish', keywords) @@ to_tsquery('spanish', ?)", ^keyword_criteria) or
+             fragment("to_tsvector('spanish', resume) @@ to_tsquery('spanish', ?)", ^resume_criteria)
+    else
+      query
+    end
+  end
+
+  def build_criteria(keywords, operator \\ " & ") do
+    keywords
+    |> String.strip(?,)   # Removing any , at the begining or at the end of the text.
+    |> String.split(",")  # Getting a list of keywords
+    |> Enum.map( &prepare_item &1)  # Setting the format that Postgres's ts_query requires
+    |> Enum.join(operator) # Using the *operator* to concatenate the keywords
+  end
+
+  def prepare_item(item) do
+    new =
+      item
+      |> String.strip   # Remove any space at the begining or at the end of the keyword
+      |> String.replace(" ", "\\ ")  # Escaping the blanks between a keyword that has multiple words
+
+    "(" <> new <> ")"   # Putting the keyword inside () in order to combine it with other keywords
+  end
+
+  def has_role(query, %{"role" => role}) do
+    if role != "" do
+      from p in query,
+      where: p.role == ^role
+    else
+      query
+    end
+  end
+
+  def has_state(query, %{"state" => state}) do
+    if state != "" do
+      from p in query,
+      where: p.state == ^state
+    else
+      query
+    end
+  end
+
+  def has_contract_schema(query, %{"contract_schema" => contract_schema}) do
+    if contract_schema != "" do
+      from p in query,
+      where: p.contract_schema == ^contract_schema
+    else
+      query
+    end
+  end
+
+  def has_residence(query, %{"residence" => residence}) do
+    if residence != "" do
+      from p in query,
+      where: p.residence == ^residence
+    else
+      query
+    end
+  end
+
+  def can_travel(query, %{"travel" => travel}) do
+    if travel != "" do
+      from p in query,
+      where: p.travel == ^travel
+    else
+      query
+    end
+  end
+
+  def has_english_level(query, %{"english_level" => english_level}) do
+    if english_level != "" do
+      from p in query,
+      where: p.english_level == ^english_level
+    else
+      query
+    end
+  end
+
+  #####################
+  # Catalogs
+  #####################
   def contractings do
-     ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
+    ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
   end
 
   def idiom_levels do
@@ -109,65 +204,65 @@ defmodule Peopleware.Profile  do
 
   def states do
     ["Distrito Federal",
-    "Aguascalientes",
-    "Baja California",
-    "Campeche",
-    "Coahuila",
-    "Colima",
-    "Chiapas",
-    "Chihuahua",
-    "Durango",
-    "Guanajuato",
-    "Guerrero",
-    "Hidalgo",
-    "Jalisco",
-    "Estado de México",
-    "Michoacán",
-    "Morelos",
-    "Nayarit",
-    "Nuevo León",
-    "Oaxaca",
-    "Puebla",
-    "Querétaro",
-    "Quintana Roo",
-    "San Luis Potosí",
-    "Sinaloa",
-    "Sonora",
-    "Tabasco",
-    "Tamaulipas",
-    "Tlaxcala",
-    "Veracruz",
-    "Yucatán",
-    "Zacatecas",
-    "Extranjero"]
+     "Aguascalientes",
+     "Baja California",
+     "Campeche",
+     "Coahuila",
+     "Colima",
+     "Chiapas",
+     "Chihuahua",
+     "Durango",
+     "Guanajuato",
+     "Guerrero",
+     "Hidalgo",
+     "Jalisco",
+     "Estado de México",
+     "Michoacán",
+     "Morelos",
+     "Nayarit",
+     "Nuevo León",
+     "Oaxaca",
+     "Puebla",
+     "Querétaro",
+     "Quintana Roo",
+     "San Luis Potosí",
+     "Sinaloa",
+     "Sonora",
+     "Tabasco",
+     "Tamaulipas",
+     "Tlaxcala",
+     "Veracruz",
+     "Yucatán",
+     "Zacatecas",
+     "Extranjero"]
   end
 
   def roles do
     ["Otro",
-    "Desarrollador",
-    "Analista de negocio",
-    "Analista de procesos",
-    "Analista programador",
-    "Arquitecto de aplicaciones",
-    "Arquitecto de soluciones",
-    "Business Intelligence",
-    "Comunicaciones",
-    "Director",
-    "DBA",
-    "EBS Funcional",
-    "EBS developer",
-    "Gerente",
-    "Ingeniero de seguridad",
-    "Líder de proyecto",
-    "Operador",
-    "Project manager",
-    "Quality assurance",
-    "SAP developer",
-    "SAP funcional",
-    "Soporte a infraestructura",
-    "Soporte técnico",
-    "Tester",
-    "Ventas"]
+     "Desarrollador",
+     "Analista de negocio",
+     "Analista de procesos",
+     "Analista programador",
+     "Arquitecto de aplicaciones",
+     "Arquitecto de soluciones",
+     "Business Intelligence",
+     "Comunicaciones",
+     "Director",
+     "DBA",
+     "EBS Funcional",
+     "EBS developer",
+     "Gerente",
+     "Ingeniero de seguridad",
+     "Líder de proyecto",
+     "Operador",
+     "Project manager",
+     "Quality assurance",
+     "SAP developer",
+     "SAP funcional",
+     "Soporte a infraestructura",
+     "Soporte técnico",
+     "Tester",
+     "Ventas"]
   end
 
 end

@@ -2,7 +2,6 @@ defmodule Peopleware.SearchController do
   use Peopleware.Web, :controller
   # require IEx
   alias Peopleware.Profile
-  alias Peopleware.User
 
   plug :scrub_params, "profile" when action in [:create, :update]
   plug :action
@@ -16,8 +15,9 @@ defmodule Peopleware.SearchController do
   end
 
   def search(conn, %{"profile" => profile_params}) do
-     profiles = Profile.get_by_criteria(profile_params)
-     render conn, "results.html", profiles: profiles
+
+    profiles = Profile.search(1, 5, profile_params)
+    render conn, "results.html", profiles: profiles.entries
   end
 
 end
