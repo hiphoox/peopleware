@@ -18,7 +18,7 @@ defmodule Peopleware.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Peopleware, []},
-     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :postgrex,
+     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :phoenix_html, :postgrex,
                     :mailgun, :secure_random, :comeonin, :inets, :ssl]]
   end
 
@@ -34,7 +34,7 @@ defmodule Peopleware.Mixfile do
      {:phoenix_ecto,  "~> 0.4"},
      {:phoenix_html,  "~> 1.0"},
      {:postgrex,      "~> 0.8"},
-     {:phoenix_live_reload, "~> 0.3", only: [:dev]},
+     {:phoenix_live_reload, "~> 0.4", only: [:dev]},
      {:cowboy,        "~> 1.0"},
      {:excoveralls,   "~> 0.3", only: [:dev, :test]},
      {:mailgun,       "~> 0.0.2"},
