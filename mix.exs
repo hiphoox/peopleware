@@ -4,7 +4,7 @@ defmodule Peopleware.Mixfile do
   def project do
     [app: :peopleware,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.0.5",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -30,18 +30,18 @@ defmodule Peopleware.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix,       "~> 0.13"},
-     {:phoenix_ecto,  "~> 0.4"},
-     {:phoenix_html,  "~> 1.0"},
-     {:postgrex,      "~> 0.8"},
-     {:phoenix_live_reload, "~> 0.4", only: [:dev]},
+    [{:phoenix,       "~> 0.17.1"},
+     {:phoenix_ecto,  "~> 1.1"},
+     {:phoenix_html,  "~> 2.1.2"},
+     {:postgrex,      "~> 0.9.1"},
+     {:phoenix_live_reload, "~> 1.0", only: [:dev]},
      {:cowboy,        "~> 1.0"},
      {:excoveralls,   "~> 0.3", only: [:dev, :test]},
-     {:mailgun,       "~> 0.0.2"},
+     {:mailgun,       "~> 0.1.1"},
      {:secure_random, "~> 0.1"},
-     {:comeonin,      "~> 0.8"},
-     {:scrivener,     "~> 0.6.0"},
+     {:comeonin,      "~> 1.1"},
+     {:scrivener,     "~> 1.0"},
      {:shouldi, only: :test},
-     {:exrm,          "~>0.15.3"}]
+     {:exrm,          "~>0.19.2"}]
   end
 end
