@@ -29,5 +29,5 @@ defmodule Peopleware.Endpoint do
     signing_salt: "I/uU/6Yf",
     encryption_salt: "jvh4RkmU"
 
-  plug :router, Peopleware.Router
+  plug Peopleware.Router
 end
