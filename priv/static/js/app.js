@@ -188,7 +188,7 @@
   globals.require.list = list;
   globals.require.brunch = true;
 })();
-require.define({ phoenix: function (exports, require, module) {
+require.define({ phoenix: function phoenix(exports, require, module) {
     "use strict";
 
     var _classCallCheck = function _classCallCheck(instance, Constructor) {
