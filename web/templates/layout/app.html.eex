@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,18 +12,46 @@
   </head>
 
   <body>
-    <div class="container">
+
     <header>
-      <div class="circle">
-        <br />
-        <H2>Registro de Curriculums</H2>
-      </div>
-      <%= if Peopleware.LoginController.get_userid(@conn) do %>
-      <div class="col-xs-12 text-right">
-        <a href="/logout">Salir de sesión</a>
-      </div>
-      <%= end %>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse-1">
+                    <span class="sr-only">RecluIT Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img class="header-image" alt="RecluIT Log"
+                   src="<%= static_path(@conn, "/images/logo.png") %>">
+            </a>
+          </div><!-- /navbar-header -->
+
+          <!-- Nav links -->
+          <div class="collapse navbar-collapse navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#">¿Quiénes somos?</a></li>
+              <li><a href="#">Servicio</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Sitios de interés</a></li>
+
+              <%= if Peopleware.LoginController.get_userid(@conn) do %>
+                <li><a href="#">Logout</a></li>
+              <%= end %>
+
+            </ul>
+          </div>
+          <!-- End nav links -->
+
+        </div><!-- /container-fluid -->
+      </nav><!-- /navbar navbar-default -->
     </header>
+
+
+    <div class="container">
 
     <main>
       <%= @inner %>
@@ -33,6 +61,9 @@
     </footer>
 
     </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
   </body>

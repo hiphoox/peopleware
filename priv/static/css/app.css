@@ -5142,80 +5142,13 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-/* Space out content a bit */
-/* line 10, stdin */
-body, form, ul {
-  padding-top: 20px;
-  padding-bottom: 20px; }
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 18, stdin */
-.header, .marketing, .footer {
-  padding-right: 15px;
-  padding-left: 15px; }
-
-/* line 22, stdin */
-.logo {
-  width: 519px;
-  height: 71px;
-  display: inline-block;
-  margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
-  background-size: 519px 71px; }
-
-/* Flash messages */
-/* line 32, stdin */
-.alert:empty {
-  display: none; }
-
-/* line 34, stdin */
-form.link, form.button {
-  display: inline; }
-
-/* Custom page header */
-/* line 39, stdin */
-.header {
-  border-bottom: 1px solid #e5e5e5; }
-
-/* Custom page footer */
-/* line 44, stdin */
-.footer {
-  margin-top: 24px;
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5; }
+/* line 9, stdin */
+.header-image {
+  max-width: 100%;
+  max-height: 100%; }
 
 /* Customize container */
-/* line 56, stdin */
-.container-narrow > hr {
-  margin: 30px 0; }
-
-/* Main marketing message */
-/* line 61, stdin */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5; }
-
-/* Supporting marketing content */
-/* line 67, stdin */
-.marketing {
-  margin: 35px 0; }
-
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  /* line 76, stdin */
-  .header, .marketing, .footer {
-    padding-right: 0;
-    padding-left: 0; }
-  /* Space out the masthead */
-  /* line 81, stdin */
-  .header {
-    margin-bottom: 30px; }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 85, stdin */
-  .jumbotron {
-    border-bottom: 0; } }
 
 
 /*# sourceMappingURL=app.css.map*/
