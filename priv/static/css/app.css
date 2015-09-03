@@ -5142,13 +5142,67 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-/* line 9, stdin */
+/* Font faces */
+@font-face {
+  font-family: Champagne;
+  src: url(fonts/champagne.ttf); }
+
+@font-face {
+  font-family: Champagne;
+  src: url(fonts/champagne_bold.ttf);
+  font-weight: bold; }
+
+@font-face {
+  font-family: Champagne;
+  src: url(fonts/champagne_italic.ttf);
+  font-weight: italic; }
+
+/* General styles */
+/* line 31, stdin */
+body {
+  font-family: champagne; }
+
+/* Navigation styles */
+/* line 38, stdin */
+.navbar-default {
+  background-color: #312f2f;
+  color: #fff;
+  width: 100%; }
+
+/* line 44, stdin */
+.navbar-default .navbar-nav > li > a {
+  color: #fff; }
+
+/* line 49, stdin */
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #fff; }
+
+/* line 53, stdin */
 .header-image {
-  max-width: 100%;
-  max-height: 100%; }
+  max-height: 100%;
+  max-width: 100%; }
+
+/* line 58, stdin */
+.navbar-brand {
+  height: 3em; }
 
 /* Customize container */
-/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* line 67, stdin */
+  .navbar {
+    border-radius: 0; }
+  /* line 71, stdin */
+  .navbar-brand {
+    height: 6em; }
+  /* line 76, stdin */
+  .navbar-nav {
+    letter-spacing: 2px;
+    font-weight: italic;
+    float: right; }
+  /* line 82, stdin */
+  .nav > li > a {
+    padding: 44px;
+    font-size: 1.5em; } }
 
 
 /*# sourceMappingURL=app.css.map*/
