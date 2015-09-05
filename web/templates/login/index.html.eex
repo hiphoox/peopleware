@@ -1,9 +1,9 @@
 <div class="container-fluid">
 
-      <h3>¡Bienvenido!</h3>
+      <h3 class="welcome">¡Bienvenido!</h3>
 
-      <a href="#" class="cv-button">Empieza a capturar tu CV</a>
+      <a href="#" class="button-cv">Empieza a capturar tu CV</a>
 
-      <a href="#" class="link-register">¿Aún no tienes una cuenta?</a>
+      <a href="/signin" class="link-register">¿Aún no tienes una cuenta?</a>
 
 </div>

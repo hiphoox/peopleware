@@ -5223,19 +5223,20 @@ hr.line-title {
 
 /* line 98, stdin */
 main {
+  color: #3d3d3c;
   margin: 0 auto;
   margin-top: 6em;
   width: 100%; }
 
-/* line 104, stdin */
-main h3 {
+/* line 105, stdin */
+main h3.welcome {
   color: #878787;
   font-size: 5em;
   font-weight: bold;
   text-align: center; }
 
-/* line 111, stdin */
-main .cv-button {
+/* line 112, stdin */
+main .button-cv {
   background-color: #ededed;
   border-radius: 20px;
   color: #3d3d3c;
@@ -5247,40 +5248,81 @@ main .cv-button {
   width: 13em;
   font-size: 2em; }
 
-/* line 124, stdin */
+/* line 125, stdin */
 .link-register {
   color: #3d3d3c;
   text-align: center;
   display: block;
   font-size: 2em; }
 
-/* line 131, stdin */
+/* line 132, stdin */
 .link-register:hover {
   text-decoration: none; }
 
+/* line 137, stdin */
+main h3.password {
+  font-size: 2.5em;
+  text-align: center; }
+
+/* line 142, stdin */
+.form-forget {
+  margin: 0 auto;
+  margin-top: 10px; }
+
+/* line 147, stdin */
+.form-forget input[type="email"] {
+  border: solid 2px #000;
+  padding: 10px;
+  height: 4em; }
+
+/* line 153, stdin */
+.button-login {
+  background-color: #ededed;
+  border: none;
+  border-radius: 20px;
+  color: #3d3d3c;
+  text-transform: uppercase;
+  margin-top: 15px;
+  padding: 10px 40px;
+  width: 16em; }
+
 /* Customize container */
 @media screen and (min-width: 768px) {
-  /* line 140, stdin */
+  /* line 168, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 144, stdin */
+  /* line 172, stdin */
   .navbar-brand {
     height: 6em; }
-  /* line 149, stdin */
+  /* line 177, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 155, stdin */
+  /* line 183, stdin */
   .nav > li > a {
     padding: 44px;
     font-size: 1.5em; }
-  /* line 160, stdin */
+  /* line 188, stdin */
   .register {
     font-size: 4em; }
-  /* line 164, stdin */
+  /* line 192, stdin */
   hr.line-title {
-    width: 41%; } }
+    width: 41%; }
+  /* line 196, stdin */
+  main h3.password {
+    font-size: 2.5em;
+    margin-left: 3em;
+    text-align: left; }
+  /* line 202, stdin */
+  .form-forget {
+    margin-left: 7em; }
+  /* line 206, stdin */
+  .form-forget input[type="email"] {
+    width: 300px; }
+  /* line 210, stdin */
+  .button-login {
+    margin-left: 7em; } }
 
 
 /*# sourceMappingURL=app.css.map*/
