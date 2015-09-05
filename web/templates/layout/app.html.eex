@@ -50,11 +50,9 @@
       </nav><!-- /navbar navbar-default -->
     </header>
 
-
-    <div class="container">
-
-      <h2>Registro de<br>
-      <span>curriculums</span></h2>
+    <h2 class="register">Registro de<br>
+    <span>curriculums</span></h2>
+    <hr class="line-title" /><div class="circle"></div>
 
     <main>
       <%= @inner %>
@@ -63,7 +61,6 @@
     <footer>
     </footer>
 
-    </div> <!-- /container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

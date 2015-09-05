@@ -5188,30 +5188,53 @@ body {
 
 /* Container styles */
 /* line 64, stdin */
-.container h2 {
+.register {
+  color: #878787;
   font-weight: bold;
-  font-size: 6em; }
+  font-size: 3em;
+  margin-left: 20%; }
 
-/* line 69, stdin */
-.container h2 span {
+/* line 71, stdin */
+.register span {
+  color: #575756;
   text-transform: uppercase;
   font-size: .8em;
   font-weight: normal; }
 
-/* line 75, stdin */
+/* line 78, stdin */
+hr.line-title {
+  background-color: #878787;
+  border: 0;
+  display: inline-block;
+  height: 3px;
+  margin-left: 0;
+  margin-top: 0;
+  width: 75%; }
+
+/* line 88, stdin */
+.circle {
+  background-color: #878787;
+  border-radius: 75px;
+  display: inline-block;
+  height: 25px;
+  margin-left: 0;
+  width: 25px;
+  margin-bottom: 10px; }
+
+/* line 98, stdin */
 main {
   margin: 0 auto;
   margin-top: 6em;
-  width: 80%; }
+  width: 100%; }
 
-/* line 81, stdin */
+/* line 104, stdin */
 main h3 {
   color: #878787;
   font-size: 5em;
   font-weight: bold;
   text-align: center; }
 
-/* line 88, stdin */
+/* line 111, stdin */
 main .cv-button {
   background-color: #ededed;
   border-radius: 20px;
@@ -5224,29 +5247,40 @@ main .cv-button {
   width: 13em;
   font-size: 2em; }
 
-/* line 101, stdin */
-.link {
+/* line 124, stdin */
+.link-register {
+  color: #3d3d3c;
   text-align: center;
   display: block;
   font-size: 2em; }
 
+/* line 131, stdin */
+.link-register:hover {
+  text-decoration: none; }
+
 /* Customize container */
 @media screen and (min-width: 768px) {
-  /* line 111, stdin */
+  /* line 140, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 115, stdin */
+  /* line 144, stdin */
   .navbar-brand {
     height: 6em; }
-  /* line 120, stdin */
+  /* line 149, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 126, stdin */
+  /* line 155, stdin */
   .nav > li > a {
     padding: 44px;
-    font-size: 1.5em; } }
+    font-size: 1.5em; }
+  /* line 160, stdin */
+  .register {
+    font-size: 4em; }
+  /* line 164, stdin */
+  hr.line-title {
+    width: 41%; } }
 
 
 /*# sourceMappingURL=app.css.map*/

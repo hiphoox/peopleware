@@ -61,21 +61,44 @@ body {
 
 
 /* Container styles */
-.container h2 {
+.register {
+  color: #878787;
   font-weight: bold;
-  font-size: 6em;
+  font-size: 3em;
+  margin-left: 20%;
 }
 
-.container h2 span {
+.register span {
+  color: #575756;
   text-transform: uppercase;
   font-size: .8em;
   font-weight: normal;
 }
 
+hr.line-title {
+  background-color: #878787;
+  border: 0;
+  display: inline-block;
+  height: 3px;
+  margin-left: 0;
+  margin-top: 0;
+  width: 75%;
+}
+
+.circle {
+  background-color: #878787;
+  border-radius: 75px;
+  display: inline-block;
+  height: 25px;
+  margin-left: 0;
+  width: 25px;
+  margin-bottom: 10px;
+}
+
 main {
   margin: 0 auto;
   margin-top: 6em;
-  width: 80%;
+  width: 100%;
 }
 
 main h3 {
@@ -98,11 +121,17 @@ main .cv-button {
   font-size: 2em;
 }
 
-.link {
+.link-register {
+  color: #3d3d3c;
   text-align: center;
   display: block;
   font-size: 2em;
 }
+
+.link-register:hover {
+  text-decoration: none;
+}
+
 
 
 /* Customize container */
@@ -126,6 +155,14 @@ main .cv-button {
   .nav > li > a {
     padding: 44px;
     font-size: 1.5em;
+  }
+
+  .register {
+    font-size: 4em;
+  }
+
+  hr.line-title {
+    width: 41%;
   }
 
 }
