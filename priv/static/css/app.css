@@ -5186,20 +5186,64 @@ body {
 .navbar-brand {
   height: 3em; }
 
+/* Container styles */
+/* line 64, stdin */
+.container h2 {
+  font-weight: bold;
+  font-size: 6em; }
+
+/* line 69, stdin */
+.container h2 span {
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: normal; }
+
+/* line 75, stdin */
+main {
+  margin: 0 auto;
+  margin-top: 6em;
+  width: 80%; }
+
+/* line 81, stdin */
+main h3 {
+  color: #878787;
+  font-size: 5em;
+  font-weight: bold;
+  text-align: center; }
+
+/* line 88, stdin */
+main .cv-button {
+  background-color: #ededed;
+  border-radius: 20px;
+  color: #3d3d3c;
+  display: block;
+  font-weight: bold;
+  padding: 10px 40px;
+  text-decoration: none;
+  margin: 5px auto;
+  width: 13em;
+  font-size: 2em; }
+
+/* line 101, stdin */
+.link {
+  text-align: center;
+  display: block;
+  font-size: 2em; }
+
 /* Customize container */
 @media screen and (min-width: 768px) {
-  /* line 67, stdin */
+  /* line 111, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 71, stdin */
+  /* line 115, stdin */
   .navbar-brand {
     height: 6em; }
-  /* line 76, stdin */
+  /* line 120, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 82, stdin */
+  /* line 126, stdin */
   .nav > li > a {
     padding: 44px;
     font-size: 1.5em; } }

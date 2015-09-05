@@ -53,6 +53,9 @@
 
     <div class="container">
 
+      <h2>Registro de<br>
+      <span>curriculums</span></h2>
+
     <main>
       <%= @inner %>
     </main>

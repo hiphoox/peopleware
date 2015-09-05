@@ -60,6 +60,50 @@ body {
 }
 
 
+/* Container styles */
+.container h2 {
+  font-weight: bold;
+  font-size: 6em;
+}
+
+.container h2 span {
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: normal;
+}
+
+main {
+  margin: 0 auto;
+  margin-top: 6em;
+  width: 80%;
+}
+
+main h3 {
+  color: #878787;
+  font-size: 5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+main .cv-button {
+  background-color: #ededed;
+  border-radius: 20px;
+  color: #3d3d3c;
+  display: block;
+  font-weight: bold;
+  padding: 10px 40px;
+  text-decoration: none;
+  margin: 5px auto;
+  width: 13em;
+  font-size: 2em;
+}
+
+.link {
+  text-align: center;
+  display: block;
+  font-size: 2em;
+}
+
 
 /* Customize container */
 @media screen and (min-width: 768px) {
@@ -83,5 +127,6 @@ body {
     padding: 44px;
     font-size: 1.5em;
   }
+
 }
 
