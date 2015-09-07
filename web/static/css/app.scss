@@ -156,12 +156,12 @@ main h3.password {
   width: 16em;
 }
 
-.signup-box {
+.signin-box {
   margin: 0 auto;
   text-align: center;
 }
 
-.signup-box h3 {
+.signin-box h3, .signup-box h3 {
   font-size: 2.5em;
 }
 
@@ -177,11 +177,14 @@ main h3.password {
 
 .form-forget input[type="email"],
 .login-box .form-group input[type="email"],
-.login-box .form-group input[type="password"] {
+.login-box .form-group input[type="password"],
+.signup-box .form-group input[type="email"],
+.signup-box .form-group input[type="password"],
+.signup-box .form-group input[type="text"], {
   border: solid 2px #000;
   border-radius: 0;
-  padding: 8px;
-  height: 4em;
+  padding: 6px;
+  height: 3em;
 }
 
 
@@ -204,8 +207,9 @@ main h3.password {
   }
 
   .nav > li > a {
-    padding: 44px;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    padding: 30px;
+    margin-top: 10px;
   }
 
   .register {
@@ -234,9 +238,22 @@ main h3.password {
      margin-left: 7em;
   }
 
-  .signup-box {
+  .signin-box {
     margin: 0 auto;
     width: 30%;
+  }
+
+  .signup-box {
+    padding: 0 5em;
+  }
+
+  .signup-box h3 {
+    margin-left: 1.5em;
+  }
+
+  .signup-box .form-group{
+    margin: 0 auto;
+    width: 75%;
   }
 
   .login-box {
