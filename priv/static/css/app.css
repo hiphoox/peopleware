@@ -5345,24 +5345,34 @@ main h3.password {
   .button-login {
     margin-left: 7em; }
   /* line 241, stdin */
+  .button-login2 {
+    margin: 10px auto; }
+  /* line 245, stdin */
   .signin-box {
     margin: 0 auto;
     width: 30%; }
-  /* line 246, stdin */
+  /* line 250, stdin */
   .signup-box {
     padding: 0 5em; }
-  /* line 250, stdin */
+  /* line 254, stdin */
   .signup-box h3 {
     margin-left: 1.5em; }
-  /* line 254, stdin */
+  /* line 258, stdin */
+  .row-account {
+    border-right: solid 2px #dadada; }
+  /* line 262, stdin */
   .signup-box .form-group {
     margin: 0 auto;
     width: 75%; }
-  /* line 259, stdin */
-  .login-box {
-    margin: 0 auto;
+  /* line 267, stdin */
+  .box-button-signup {
+    margin: 0 auto 30px auto;
     width: 40%; }
-  /* line 264, stdin */
+  /* line 272, stdin */
+  .login-box {
+    margin: 10px auto;
+    width: 50%; }
+  /* line 277, stdin */
   .login-box .form-group {
     margin-top: 15px;
     width: 300px; } }

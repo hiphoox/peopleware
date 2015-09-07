@@ -238,6 +238,10 @@ main h3.password {
      margin-left: 7em;
   }
 
+  .button-login2 {
+    margin: 10px auto;
+  }
+
   .signin-box {
     margin: 0 auto;
     width: 30%;
@@ -251,14 +255,23 @@ main h3.password {
     margin-left: 1.5em;
   }
 
+  .row-account {
+    border-right: solid 2px #dadada;
+  }
+
   .signup-box .form-group{
     margin: 0 auto;
     width: 75%;
   }
 
-  .login-box {
-    margin: 0 auto;
+  .box-button-signup {
+    margin: 0 auto 30px auto;
     width: 40%;
+  }
+
+  .login-box {
+    margin: 10px auto;
+    width: 50%;
   }
 
   .login-box .form-group {
