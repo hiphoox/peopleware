@@ -114,11 +114,11 @@ defmodule Peopleware.LoginController do
   def confirm(conn, %{"token" => token}) do
     case User.get_by_token(token) do
       nil ->
-        text conn, "La cuenta ya no es valida"
+        render conn, "not_valid.html"
       user ->
         user = %{user | confirmed: true, is_active: true, reset_token: ""}
         Repo.update(user)
-        html conn, "Cuenta activada: <a href=\"/signin\">empieza a capturar tu cv</a>"
+        render conn, "confirm.html"
     end
   end
 

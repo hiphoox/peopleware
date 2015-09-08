@@ -38,7 +38,7 @@
               <li><a href="#">Sitios de interés</a></li>
 
               <%= if Peopleware.LoginController.get_userid(@conn) do %>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
               <%= end %>
 
             </ul>

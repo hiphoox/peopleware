@@ -1,0 +1,7 @@
+<div class="container-fluid">
+
+  <h3 class="welcome">¡Gracias!</h3>
+  <p class="container-text">
+    Cuenta activada: <a href=\"/signin\">empieza a capturar tu cv</a>
+  </p>
+</div>

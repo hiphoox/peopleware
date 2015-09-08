@@ -61,6 +61,11 @@ body {
 
 
 /* Container styles */
+
+.container-fluid .container-text {
+  font-size: 3em;
+}
+
 .register {
   color: #878787;
   font-weight: bold;

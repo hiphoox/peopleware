@@ -1,0 +1,7 @@
+<div class="container-fluid">
+
+  <h3 class="welcome">¡Error!</h3>
+  <p class="container-text">
+    La cuenta ya no es válida.
+  </p>
+</div>
