@@ -248,6 +248,11 @@ main h3.password {
     margin: 0 auto 30px auto;
     width: 30%;
   }
+
+  .input-group-addon {
+    padding: 6px 20px;
+  }
+
 }
 
 
@@ -348,6 +353,10 @@ main h3.password {
 
 @media screen and (min-width: 1300px) {
 
+  .navbar-brand {
+    height: 7em;
+  }
+
   .nav > li > a {
     font-size: 1.8em;
     padding: 35px;
@@ -362,6 +371,10 @@ main h3.password {
 
 
 @media screen and (min-width: 1900px) {
+
+  .navbar-brand {
+    height: 8em;
+  }
 
   .nav > li > a {
     font-size: 2.5em;

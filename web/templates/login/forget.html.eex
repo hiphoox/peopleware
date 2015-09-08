@@ -12,7 +12,10 @@
 
       <div class="form-group form-forget">
         <label class="control-label">E-mail</label>
-        <%= email_input f, :email, class: "form-control", placeholder: "Dirección de correo Electrónico", autofocus: "autofocus" %>
+        <div class="input-group">
+          <div class="input-group-addon user-control"></div>
+          <%= email_input f, :email, class: "form-control", placeholder: "Dirección de correo Electrónico", autofocus: "autofocus" %>
+        </div>
       </div>
 
       <div class="btn-login">
