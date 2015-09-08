@@ -17,17 +17,26 @@
       <div class="col-sm-12">
       <div class="form-group">
         <label class="control-label" <%= if @changeset.errors[:email] do %> style="color: red" <% end %> > Correo </label>
-        <%= text_input f, :email, class: "form-control", autofocus: "autofocus" %>
+        <div class="input-group">
+          <div class="input-group-addon email-control"></div>
+          <%= email_input f, :email, class: "form-control", autofocus: "autofocus" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="control-label" <%= if @changeset.errors[:password] do %> style="color: red" <% end %> > Contraseña </label>
-        <%= password_input f, :password, class: "form-control" %>
+        <div class="input-group">
+          <div class="input-group-addon password-control"></div>
+          <%= password_input f, :password, class: "form-control" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="control-label"> Confirmar Contraseña </label>
-        <%= password_input f, :password_conf, class: "form-control" %>
+        <div class="input-group">
+          <div class="input-group-addon password-control"></div>
+          <%= password_input f, :password_conf, class: "form-control" %>
+        </div>
       </div>
       </div>
 
@@ -40,17 +49,26 @@
       <div class="col-sm-12">
       <div class="form-group">
         <label class="control-label" <%= if @changeset.errors[:name] do %> style="color: red" <% end %> > Nombre </label>
-        <%= text_input f, :name, class: "form-control"%>
+        <div class="input-group">
+          <div class="input-group-addon user-control"></div>
+          <%= text_input f, :name, class: "form-control"%>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="control-label" <%= if @changeset.errors[:last_name] do %> style="color: red" <% end %> > Apellido Paterno </label>
-        <%= text_input f, :last_name, class: "form-control" %>
+        <div class="input-group">
+          <div class="input-group-addon user-control"></div>
+          <%= text_input f, :last_name, class: "form-control" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="control-label"> Apellido Materno </label>
+        <div class="input-group">
+          <div class="input-group-addon user-control"></div>
           <%= text_input f, :second_surname, class: "form-control" %>
+        </div>
       </div>
       </div>
       </div>
