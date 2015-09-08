@@ -30,9 +30,9 @@
 
 body {
   font-family: champagne;
+  margin: 0;
+  padding: 0;
 }
-
-
 
 /* Navigation styles */
 .navbar-default {
@@ -188,7 +188,6 @@ main h3.password {
 }
 
 
-/* Customize container */
 @media screen and (min-width: 768px) {
 
   .navbar {
@@ -196,7 +195,37 @@ main h3.password {
   }
 
   .navbar-brand {
-    height: 6em;
+    height: 5em;
+  }
+
+
+  .navbar-nav {
+    letter-spacing: 2px;
+    font-weight: italic;
+    float: right;
+  }
+
+  .nav > li > a {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-top: 30px;
+  }
+
+  hr.line-title {
+    width: 48%;
+  }
+}
+
+
+/* Customize container */
+@media screen and (min-width: 970px) {
+
+  .navbar {
+    border-radius: 0;
+  }
+
+  .navbar-brand {
+    height: 5.5em;
   }
 
 
@@ -209,7 +238,7 @@ main h3.password {
   .nav > li > a {
     font-size: 1.3em;
     padding: 30px;
-    margin-top: 10px;
+    margin-top: 25px;
   }
 
   .register {
@@ -217,7 +246,7 @@ main h3.password {
   }
 
   hr.line-title {
-    width: 41%;
+    width: 45%;
   }
 
   main h3.password {
@@ -281,4 +310,5 @@ main h3.password {
 
 
 }
+
 
