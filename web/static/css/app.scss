@@ -225,6 +225,18 @@ main h3.password {
   background-image: url("../images/user.png");
 }
 
+/* Profile css */
+
+.row-new-cv h3 {
+  margin-left: 3em;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.row-new-cv p {
+  font-size: 1.5em;
+}
+
 
 @media screen and (min-width: 768px) {
 
@@ -261,6 +273,12 @@ main h3.password {
     margin: 0 auto 30px auto;
     width: 30%;
   }
+
+  .box-button-cv {
+    margin: 0 auto 30px auto;
+    width: 50%;
+  }
+
 
   .input-group-addon {
     padding: 6px 20px;
@@ -375,7 +393,7 @@ main h3.password {
   }
 
   .nav > li > a {
-    font-size: 1.8em;
+    font-size: 1.6em;
     padding: 35px;
     margin-top: 25px;
   }

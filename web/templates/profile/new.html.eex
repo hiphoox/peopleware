@@ -1,4 +1,15 @@
-<h3>Nuevo Curriculum</h3>
+<div class="row">
 
-<%= render "form.html", changeset: @changeset,
-                        action: profile_path(@conn, :create) %>
+  <div class="col-md-12 row-new-cv">
+
+
+    <h3>Nuevo Curriculum</h3>
+
+      <%= render "form.html",
+        changeset: @changeset,
+        action: profile_path(@conn, :create) %>
+
+
+  </div>
+
+</div>

@@ -5347,141 +5347,156 @@ main h3.password {
 .user-control {
   background-image: url("../images/user.png"); }
 
+/* Profile css */
+/* line 230, stdin */
+.row-new-cv h3 {
+  margin-left: 3em;
+  font-size: 2em;
+  font-weight: bold; }
+
+/* line 236, stdin */
+.row-new-cv p {
+  font-size: 1.5em; }
+
 @media screen and (min-width: 768px) {
-  /* line 231, stdin */
+  /* line 243, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 235, stdin */
+  /* line 247, stdin */
   .navbar-brand {
     height: 5em; }
-  /* line 240, stdin */
+  /* line 252, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 246, stdin */
+  /* line 258, stdin */
   .nav > li > a {
     font-size: 1.2em;
     padding: 5px;
     margin-top: 30px; }
-  /* line 252, stdin */
+  /* line 264, stdin */
   hr.line-title {
     width: 48%; }
-  /* line 256, stdin */
+  /* line 268, stdin */
   .btn-login {
     width: 35%; }
-  /* line 260, stdin */
+  /* line 272, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; }
-  /* line 265, stdin */
+  /* line 277, stdin */
+  .box-button-cv {
+    margin: 0 auto 30px auto;
+    width: 50%; }
+  /* line 283, stdin */
   .input-group-addon {
     padding: 6px 20px; } }
 
 /* Customize container */
 @media screen and (min-width: 970px) {
-  /* line 275, stdin */
+  /* line 293, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 279, stdin */
+  /* line 297, stdin */
   .navbar-brand {
     height: 5.5em; }
-  /* line 284, stdin */
+  /* line 302, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 290, stdin */
+  /* line 308, stdin */
   .nav > li > a {
     font-size: 1.3em;
     padding: 30px;
     margin-top: 25px; }
-  /* line 296, stdin */
+  /* line 314, stdin */
   .register {
     font-size: 4em; }
-  /* line 300, stdin */
+  /* line 318, stdin */
   hr.line-title {
     width: 45%; }
-  /* line 304, stdin */
+  /* line 322, stdin */
   main h3.password {
     font-size: 2.5em;
     margin-left: 3em;
     text-align: left; }
-  /* line 310, stdin */
+  /* line 328, stdin */
   .form-forget {
     margin-left: 7em; }
-  /* line 314, stdin */
+  /* line 332, stdin */
   .form-forget input[type="email"] {
     width: 300px; }
-  /* line 318, stdin */
+  /* line 336, stdin */
   .btn-login {
     width: 66%; }
-  /* line 322, stdin */
+  /* line 340, stdin */
   .button-login {
     margin-left: 7em; }
-  /* line 326, stdin */
+  /* line 344, stdin */
   .button-login2 {
     margin: 10px auto; }
-  /* line 330, stdin */
+  /* line 348, stdin */
   .signin-box {
     margin: 0 auto;
     width: 30%; }
-  /* line 335, stdin */
+  /* line 353, stdin */
   .signup-box {
     padding: 0 5em; }
-  /* line 339, stdin */
+  /* line 357, stdin */
   .signup-box h3 {
     margin-left: 1.5em; }
-  /* line 343, stdin */
+  /* line 361, stdin */
   .row-account {
     border-right: solid 2px #dadada; }
-  /* line 347, stdin */
+  /* line 365, stdin */
   .signup-box .form-group {
     margin: 0 auto;
     width: 75%; }
-  /* line 352, stdin */
+  /* line 370, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 40%; }
-  /* line 357, stdin */
+  /* line 375, stdin */
   .login-box {
     margin: 10px auto;
     width: 50%; }
-  /* line 362, stdin */
+  /* line 380, stdin */
   .login-box .form-group {
     margin-top: 15px;
     width: 300px; } }
 
 @media screen and (min-width: 1300px) {
-  /* line 373, stdin */
+  /* line 391, stdin */
   .navbar-brand {
     height: 7em; }
-  /* line 377, stdin */
+  /* line 395, stdin */
   .nav > li > a {
-    font-size: 1.8em;
+    font-size: 1.6em;
     padding: 35px;
     margin-top: 25px; }
-  /* line 383, stdin */
+  /* line 401, stdin */
   .btn-login {
     width: 35%; }
-  /* line 387, stdin */
+  /* line 405, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; } }
 
 @media screen and (min-width: 1900px) {
-  /* line 396, stdin */
+  /* line 414, stdin */
   .navbar-brand {
     height: 8em; }
-  /* line 400, stdin */
+  /* line 418, stdin */
   .btn-login {
     width: 24%; }
-  /* line 404, stdin */
+  /* line 422, stdin */
   .nav > li > a {
     font-size: 2.5em;
     padding: 40px;
     margin-top: 25px; }
-  /* line 411, stdin */
+  /* line 429, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 22%; } }

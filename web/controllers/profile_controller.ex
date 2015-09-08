@@ -118,7 +118,7 @@ defmodule Peopleware.ProfileController do
   # Da de alta un CV nuevo con archivo
   defp upload_file_and_save(changeset, nil, file) do
     changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
-    profile = Repo.insert(changeset)
+    {:ok, profile} = Repo.insert(changeset)
     file = %{file | profile_id: profile.id}
     Repo.insert(file)
     profile
