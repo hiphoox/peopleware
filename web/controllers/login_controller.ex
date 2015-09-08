@@ -3,7 +3,6 @@ defmodule Peopleware.LoginController do
   alias Peopleware.User
 
   plug :scrub_params, "user" when action in [:create, :update_password]
-  plug :action
 
   @password_error_message "no es igual. Considera que es sensible al uso de mayúsculas y minúsculas"
 

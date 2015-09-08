@@ -20,16 +20,16 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :peopleware,
-  mailgun_domain: "sandbox859abcbc300b41bcbec5af10244cb0fe.mailgun.org",
-  mailgun_key: "key-f15925d915ebe1ce03b081e6fffe1c10",
+  mailgun_domain: "https://api.mailgun.net/v3/giovannicortes.com",
+  mailgun_key: "key-301ca355e1329d5741ff908f27e6c96f",
   confirm_url: "http://localhost:4000/confirm/",
   reset_pass_url: "http://localhost:4000/confirm_reset/",
   # mode: :test,
   test_file_path: "/tmp/mailgun.json",
-  email_sender: "contacto@recluit.com",
+  email_sender: "postmaster@giovannicortes.com",
   welcome_email_subject: "Hola ",
-  welcome_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/welcome_email_body.html.eex",
-  change_pass_email_body: "/Users/hiphoox/Development/Elixir/recluIT/peopleware/priv/static/change_pass_email_body.html.eex"
+  welcome_email_body: "/Users/Giovanni/Programming/Work/peopleware/priv/static/welcome_email_body.html.eex",
+  change_pass_email_body: "/Users/hiphoox/Programming/Work/peopleware/priv/static/change_pass_email_body.html.eex"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
