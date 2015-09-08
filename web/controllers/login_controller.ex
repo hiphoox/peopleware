@@ -27,7 +27,7 @@ defmodule Peopleware.LoginController do
     if password_is_valid?(user_params) do
       if changeset.valid?  do
         changeset = Ecto.Changeset.put_change(changeset, :reset_token, generate_token)
-        user = Repo.insert(changeset)
+        {:ok, user} = Repo.insert(changeset)
 
         Peopleware.Mailer.send_welcome_email(user)
         redirect(conn, to: login_path(conn, :index))
