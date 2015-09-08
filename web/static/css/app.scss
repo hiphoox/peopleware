@@ -144,6 +144,11 @@ main h3.password {
   margin-top: 10px;
 }
 
+.btn-login {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 70%;
+}
 
 .button-login {
   background-color: #ededed;
@@ -208,6 +213,10 @@ main h3.password {
   background-image: url("../images/email-1.png");
 }
 
+.email-control2 {
+  background-image: url("../images/email-2.png");
+}
+
 .password-control {
   background-image: url("../images/password.png");
 }
@@ -242,6 +251,10 @@ main h3.password {
 
   hr.line-title {
     width: 48%;
+  }
+
+  .btn-login {
+    width: 35%;
   }
 
   .box-button-signup {
@@ -300,6 +313,10 @@ main h3.password {
 
   .form-forget input[type="email"] {
     width: 300px;
+  }
+
+  .btn-login {
+    width: 66%;
   }
 
   .button-login {
@@ -363,6 +380,10 @@ main h3.password {
     margin-top: 25px;
   }
 
+  .btn-login {
+    width: 35%;
+  }
+
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%;
@@ -374,6 +395,10 @@ main h3.password {
 
   .navbar-brand {
     height: 8em;
+  }
+
+  .btn-login {
+    width: 24%;
   }
 
   .nav > li > a {
