@@ -101,7 +101,7 @@ defmodule Peopleware.ProfileController do
 
     conn
     |> put_resp_content_type(document.content_type)
-    |> put_resp_header("Content-Disposition", "filename=" <> document.file_name)
+    |> put_resp_header("content-disposition", "filename=" <> document.file_name)
     |> resp(200, document.content)
   end
 
