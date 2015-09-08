@@ -5,7 +5,6 @@ defmodule Peopleware.ProfileController do
   alias Peopleware.User
 
   plug :scrub_params, "profile" when action in [:create, :update]
-  plug :action
 
   @doc """
   It just returns the list of all curriculums
@@ -75,16 +74,15 @@ defmodule Peopleware.ProfileController do
     profile = Profile.get_by_id(id)
     changeset = Profile.changeset(profile, profile_params)
 
-    if changeset.valid? do
-      profile = upload_file_and_save(changeset, profile, get_file_to_upload(profile_params))
-      Profile.changeset(profile)
-      conn = put_session(conn, :user_id, nil)
+    case Repo.update(changeset) do
+    {:ok, profile} ->
+      conn
+      |> put_flash(:info, "profile updated successfully.")
+      |> redirect(to: profile_path(conn, :show, profile))
+    {:error, changeset} ->
+      render(conn, "edit.html", profile: profile, changeset: changeset)
+  end
 
-      # render conn, "edit.html", profile: profile, changeset: changeset
-      render conn, "thanks.html"
-    else
-      render conn, "edit.html", profile: profile, changeset: changeset
-    end
   end
 
   @doc """
