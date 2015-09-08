@@ -175,6 +175,11 @@ main h3.password {
   width: 90%;
 }
 
+.box-button-signup {
+    margin: 0 auto 30px auto;
+    width: 60%;
+}
+
 .form-forget input[type="email"],
 .login-box .form-group input[type="email"],
 .login-box .form-group input[type="password"],
@@ -237,6 +242,11 @@ main h3.password {
 
   hr.line-title {
     width: 48%;
+  }
+
+  .box-button-signup {
+    margin: 0 auto 30px auto;
+    width: 30%;
   }
 }
 
@@ -335,4 +345,34 @@ main h3.password {
 
 }
 
+
+@media screen and (min-width: 1300px) {
+
+  .nav > li > a {
+    font-size: 1.8em;
+    padding: 35px;
+    margin-top: 25px;
+  }
+
+  .box-button-signup {
+    margin: 0 auto 30px auto;
+    width: 30%;
+  }
+}
+
+
+@media screen and (min-width: 1900px) {
+
+  .nav > li > a {
+    font-size: 2.5em;
+    padding: 40px;
+    margin-top: 25px;
+  }
+
+
+  .box-button-signup {
+    margin: 0 auto 30px auto;
+    width: 22%;
+  }
+}
 
