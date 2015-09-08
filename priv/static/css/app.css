@@ -5362,145 +5362,150 @@ main h3.password {
 .row-new-cv p {
   font-size: 1.5em; }
 
+/* line 246, stdin */
+.alert {
+  margin: 0 auto;
+  width: 50%; }
+
 @media screen and (min-width: 768px) {
-  /* line 248, stdin */
+  /* line 253, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 252, stdin */
+  /* line 257, stdin */
   .navbar-brand {
     height: 5em; }
-  /* line 257, stdin */
+  /* line 262, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 263, stdin */
+  /* line 268, stdin */
   .nav > li > a {
     font-size: 1.2em;
     padding: 5px;
     margin-top: 30px; }
-  /* line 269, stdin */
+  /* line 274, stdin */
   hr.line-title {
     width: 48%; }
-  /* line 273, stdin */
+  /* line 278, stdin */
   .btn-login {
     width: 35%; }
-  /* line 277, stdin */
+  /* line 282, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; }
-  /* line 282, stdin */
+  /* line 287, stdin */
   .box-button-cv {
     margin: 0 auto 30px auto;
     width: 50%; }
-  /* line 288, stdin */
+  /* line 293, stdin */
   .input-group-addon {
     padding: 6px 20px; } }
 
 /* Customize container */
 @media screen and (min-width: 970px) {
-  /* line 298, stdin */
+  /* line 303, stdin */
   .navbar {
     border-radius: 0; }
-  /* line 302, stdin */
+  /* line 307, stdin */
   .navbar-brand {
     height: 5.5em; }
-  /* line 307, stdin */
+  /* line 312, stdin */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 313, stdin */
+  /* line 318, stdin */
   .nav > li > a {
     font-size: 1.3em;
     padding: 30px;
     margin-top: 25px; }
-  /* line 319, stdin */
+  /* line 324, stdin */
   .register {
     font-size: 4em; }
-  /* line 323, stdin */
+  /* line 328, stdin */
   hr.line-title {
     width: 45%; }
-  /* line 327, stdin */
+  /* line 332, stdin */
   main h3.password {
     font-size: 2.5em;
     margin-left: 3em;
     text-align: left; }
-  /* line 333, stdin */
+  /* line 338, stdin */
   .form-forget {
     margin-left: 7em; }
-  /* line 337, stdin */
+  /* line 342, stdin */
   .form-forget input[type="email"] {
     width: 300px; }
-  /* line 341, stdin */
+  /* line 346, stdin */
   .btn-login {
     width: 66%; }
-  /* line 345, stdin */
+  /* line 350, stdin */
   .button-login {
     margin-left: 7em; }
-  /* line 349, stdin */
+  /* line 354, stdin */
   .button-login2 {
     margin: 10px auto; }
-  /* line 353, stdin */
+  /* line 358, stdin */
   .signin-box {
     margin: 0 auto;
     width: 30%; }
-  /* line 358, stdin */
+  /* line 363, stdin */
   .signup-box {
     padding: 0 5em; }
-  /* line 362, stdin */
+  /* line 367, stdin */
   .signup-box h3 {
     margin-left: 1.5em; }
-  /* line 366, stdin */
+  /* line 371, stdin */
   .row-account {
     border-right: solid 2px #dadada; }
-  /* line 370, stdin */
+  /* line 375, stdin */
   .signup-box .form-group {
     margin: 0 auto;
     width: 75%; }
-  /* line 375, stdin */
+  /* line 380, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 40%; }
-  /* line 380, stdin */
+  /* line 385, stdin */
   .login-box {
     margin: 10px auto;
     width: 50%; }
-  /* line 385, stdin */
+  /* line 390, stdin */
   .login-box .form-group {
     margin-top: 15px;
     width: 300px; } }
 
 @media screen and (min-width: 1300px) {
-  /* line 396, stdin */
+  /* line 401, stdin */
   .navbar-brand {
     height: 7em; }
-  /* line 400, stdin */
+  /* line 405, stdin */
   .nav > li > a {
     font-size: 1.6em;
     padding: 35px;
     margin-top: 25px; }
-  /* line 406, stdin */
+  /* line 411, stdin */
   .btn-login {
     width: 35%; }
-  /* line 410, stdin */
+  /* line 415, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; } }
 
 @media screen and (min-width: 1900px) {
-  /* line 419, stdin */
+  /* line 424, stdin */
   .navbar-brand {
     height: 8em; }
-  /* line 423, stdin */
+  /* line 428, stdin */
   .btn-login {
     width: 24%; }
-  /* line 427, stdin */
+  /* line 432, stdin */
   .nav > li > a {
     font-size: 2.5em;
     padding: 40px;
     margin-top: 25px; }
-  /* line 434, stdin */
+  /* line 439, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 22%; } }

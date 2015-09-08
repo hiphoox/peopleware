@@ -78,7 +78,7 @@ defmodule Peopleware.ProfileController do
     {:ok, profile} ->
       conn
       |> put_flash(:info, "profile updated successfully.")
-      |> redirect(to: profile_path(conn, :show, profile))
+      |> render "edit.html", profile: profile, changeset: changeset
     {:error, changeset} ->
       render(conn, "edit.html", profile: profile, changeset: changeset)
   end
