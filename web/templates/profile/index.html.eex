@@ -35,8 +35,8 @@
         <%= end %>
 
         <td class="text-right">
-          <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %>
-          <%= link "Borrar", to: profile_path(@conn, :delete, profile), method: :delete, class: "btn btn-danger btn-xs" %>
+          <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %><!--
+          <%= link "Borrar", to: profile_path(@conn, :delete, profile), method: :delete, class: "btn btn-danger btn-xs" %> -->
         </td>
       </tr>
       <% end %>
@@ -44,8 +44,9 @@
     </table>
 
     <div class="cv-button">
-
+    <!--
     <%= link "Agregar nuevo CV", to: profile_path(@conn, :new), class: "button-cv-add" %>
+    -->
 
     </div>
 

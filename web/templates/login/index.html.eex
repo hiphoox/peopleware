@@ -2,7 +2,7 @@
 
       <h3 class="welcome">¡Bienvenido!</h3>
 
-      <a href="/admin/profiles/new" class="button-cv">Empieza a capturar tu CV</a>
+      <%= link "Empieza a capturar tu CV", class: "button-cv", to: profile_path(@conn, :index) %>
 
       <a href="/signup" class="link-register">¿Aún no tienes una cuenta?</a>
 

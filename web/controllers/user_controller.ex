@@ -3,11 +3,18 @@ defmodule Peopleware.UserController do
   alias Peopleware.User
 
   plug :scrub_params, "user" when action in [:create, :update]
-  plug :action
 
   def index(conn, _params) do
-    users = Repo.all(User)
-    render conn, "index.html", users: users
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+      users = Repo.all(User)
+      render conn, "index.html", users: users
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
+
   end
 
   def new(conn, _params) do
