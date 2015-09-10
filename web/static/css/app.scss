@@ -248,6 +248,30 @@ main h3.password {
   width: 50%;
 }
 
+
+.show-cv {
+  padding: 60px;
+}
+
+.button-cv-add {
+  background-color: #ededed;
+  border-radius: 20px;
+  color: #3d3d3c;
+  display: block;
+  font-weight: bold;
+  padding: 10px 40px;
+  text-decoration: none;
+  margin: 5px auto;
+  width: 12em;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.button-cv-add:hover {
+  text-decoration: none;
+  color: #3d3d3c;
+}
+
 @media screen and (min-width: 768px) {
 
   .navbar {

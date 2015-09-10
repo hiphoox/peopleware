@@ -77,7 +77,7 @@ defmodule Peopleware.ProfileController do
     case Repo.update(changeset) do
     {:ok, profile} ->
       conn
-      |> put_flash(:info, "profile updated successfully.")
+      |> put_flash(:info, "Perfil actualizado correctamente")
       |> render "edit.html", profile: profile, changeset: changeset
     {:error, changeset} ->
       render(conn, "edit.html", profile: profile, changeset: changeset)

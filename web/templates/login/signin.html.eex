@@ -33,6 +33,11 @@
       </div>
       <% end %>
 
+      <p class="text-center">
+        <a href="/forget">¿Olvidaste tu contraseña?</a>
+
+      </p>
+
 
     </div>
 
