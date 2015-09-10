@@ -4,7 +4,6 @@ defmodule Peopleware.SearchController do
   alias Peopleware.Profile
 
   plug :scrub_params, "profile" when action in [:create, :update]
-  plug :action
 
   @doc """
   It just returns the list of all curriculums
