@@ -74,14 +74,15 @@ defmodule Peopleware.ProfileController do
     profile = Profile.get_by_id(id)
     changeset = Profile.changeset(profile, profile_params)
 
-    case Repo.update(changeset) do
-    {:ok, profile} ->
-      conn
-      |> put_flash(:info, "Perfil actualizado correctamente")
-      |> render "edit.html", profile: profile, changeset: changeset
-    {:error, changeset} ->
+    if changeset.valid? do
+      upload_file_and_save(changeset, profile,
+                           get_file_to_upload(profile_params))
+      conn = put_session(conn, :user_id, nil)
+      put_flash(conn, :info, "Perfil actualizado satisfactoriamente")
+      render conn, "edit.html", profile: profile, changeset: changeset
+    else
       render(conn, "edit.html", profile: profile, changeset: changeset)
-  end
+    end
 
   end
 
