@@ -1,22 +1,22 @@
 ---
 
 - name: Actualizar aplicación de peopleware en digital ocean
-  hosts: peopleware
+  hosts: 162.243.186.136
   tasks:
     - command: deployments/bin/peopleware stop removes=deployments/bin/peopleware
       ignore_errors: True
     - command: chmod -R 777 deployments removes=deployments
     - command: rm -r deployments removes=deployments
     - command: mkdir deployments
-    - copy: src=../rel/peopleware/peopleware-0.0.1.tar.gz dest=/usr/home/freebsd/deployments
-    - command: tar xvf peopleware-0.0.1.tar.gz
+    - copy: src=../rel/peopleware/releases/0.0.1/peopleware.tar.gz dest=/usr/home/freebsd/deployments
+    - command: tar xvf peopleware.tar.gz
       args:
         chdir: deployments/
-    - copy: src=peopleware.digital.conf dest=/usr/home/freebsd/deployments/releases/0.0.1/peopleware.conf
-    - copy: src=peopleware.sql dest=/usr/home/freebsd/deployments/peopleware.sql
-    - copy: src=recreate_database.sh dest=/usr/home/freebsd/deployments/recreate_database.sh
-    # - script: recreate_database.sh
-    #   args:
-    #     chdir: deployments/
-    - command: deployments/bin/peopleware start removes=deployments/bin/peopleware
-      ignore_errors: True
+    # - copy: src=peopleware.digital.conf dest=/usr/home/freebsd/deployments/releases/0.0.1/peopleware.conf
+    # - copy: src=peopleware.sql dest=/usr/home/freebsd/deployments/peopleware.sql
+    # - copy: src=recreate_database.sh dest=/usr/home/freebsd/deployments/recreate_database.sh
+    # # - script: recreate_database.sh
+    # #   args:
+    # #     chdir: deployments/
+    # - command: deployments/bin/peopleware start removes=deployments/bin/peopleware
+    #   ignore_errors: True

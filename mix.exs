@@ -18,8 +18,7 @@ defmodule Peopleware.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Peopleware, []},
-     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :phoenix_html, :postgrex,
-                    :mailgun, :secure_random, :comeonin, :inets, :ssl]]
+     applications: [:phoenix, :cowboy, :logger, :phoenix_ecto, :phoenix_html, :postgrex, :mailgun, :secure_random, :comeonin, :inets, :ssl]]
   end
 
   # Specifies which paths to compile per environment
@@ -42,6 +41,6 @@ defmodule Peopleware.Mixfile do
      {:comeonin,      "~> 1.1"},
      {:scrivener,     "~> 1.0"},
      {:shouldi, only: :test},
-     {:exrm,          "~>0.19.2"}]
+     {:exrm,          "~>0.18.1"}]
   end
 end
