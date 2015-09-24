@@ -3,8 +3,6 @@
 
     <h3 class="password">Recuperación de Contraseña</h3>
 
-    <div class="col-sm-6">
-
       <%= form_for @changeset, "/reset", fn f -> %>
       <%= if @changeset.errors != [] do %>
         <p style="color: red">Correo incorrecto</p>
@@ -22,6 +20,5 @@
         <button class="button button-login" type="submit">Reiniciar contraseña</button>
       </div>
       <% end %>
-    </div>
 
 </div>

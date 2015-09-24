@@ -190,6 +190,10 @@ main h3.password {
     width: 60%;
 }
 
+.form-forget {
+  padding: 10px;
+}
+
 .form-forget input[type="email"],
 .login-box .form-group input[type="email"],
 .login-box .form-group input[type="password"],
@@ -434,6 +438,7 @@ main h3.password {
   }
 
   .btn-login {
+    margin-left: 11em;
     width: 35%;
   }
 
