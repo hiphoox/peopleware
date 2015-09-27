@@ -79,7 +79,7 @@
 
   <div class="row">
     <div class="box-button-signup">
-      <%= submit "Salvar", class: "button button-login" %>
+      <%= submit "Guardar", class: "button button-login" %>
   </div>
   </div>
 
