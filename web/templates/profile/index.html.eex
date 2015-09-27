@@ -29,7 +29,7 @@
         <td> <%= profile.email %> </td>
         <td> <%= profile.position %> </td>
         <%= if profile.cv_file_name != nil do %>
-        <td> <%= link profile.cv_file_name, to: "/admin/cv/" <> to_string(profile.id) %> </td>
+        <td> <%= link profile.cv_file_name, to: "/profiles/cv/" <> to_string(profile.id) %> </td>
         <%= else %>
         <td> No tiene archivo </td>
         <%= end %>
