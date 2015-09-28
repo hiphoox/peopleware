@@ -5242,10 +5242,10 @@ main .button-cv {
 
 /* line 112, stdin */
 .link-register {
-  color: #3d3d3c;
+  color: #CA123A;
   text-align: center;
   display: block;
-  font-size: 2em; }
+  font-size: 1.3em; }
 
 /* line 119, stdin */
 .link-register:hover {
