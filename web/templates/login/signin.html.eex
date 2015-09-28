@@ -8,9 +8,6 @@
     <div class="login-box">
 
       <%= form_for @changeset, "/login", fn f -> %>
-      <%= if @changeset.errors != [] do %>
-        <p style="color: red">Correo o contraseña incorrecta</p>
-      <% end %>
 
       <div class="form-group">
         <label class="control-label">E-mail</label>
@@ -31,6 +28,11 @@
       <div class="btn-login">
         <button class="button button-login button-login2" type="submit">Iniciar sesión</button>
       </div>
+
+      <%= if @changeset.errors != [] do %>
+        <p style="color: red; text-align: center">Correo o contraseña incorrecta</p>
+      <% end %>
+
       <% end %>
 
       <p class="text-center">
@@ -39,7 +41,7 @@
       </p>
 
       <p class="text-center">
-        <a href="/signup" class="link-register">¿Aún no tienes una cuenta?</a>
+
       </p>
 
 
