@@ -7,7 +7,12 @@ defmodule Peopleware.LoginController do
   @password_error_message "La contraseña y su confirmación no son iguales, considera que son sensibles a mayúsculas y minúsculas"
 
   def index(conn, _params) do
-    render conn, "index.html"
+    user_id = get_session(conn, :user_id)
+    if user_id do
+      redirect(conn, to: profile_path(conn, :index))
+    else
+      redirect(conn, to: login_path(conn, :signin))
+    end
   end
 
   def signin(conn, _params) do
