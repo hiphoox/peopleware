@@ -74,7 +74,7 @@ defmodule Peopleware.LoginController do
         user = %{user | reset_token: generate_token}
         Repo.update(user)
         Peopleware.Mailer.send_password_reset_email(user)
-        html conn, "Solicitud Recibida. Pronto le llegará un correo para reiniciar su contraseña"
+        render conn, "reset.html"
     end
   end
 
