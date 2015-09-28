@@ -25,6 +25,10 @@ defmodule Peopleware.LoginController do
     render conn, "signup.html", changeset: changeset
   end
 
+  def thanks(conn, _params) do
+    render conn, "thanks.html"
+  end
+
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
 
@@ -34,7 +38,7 @@ defmodule Peopleware.LoginController do
         {:ok, user} = Repo.insert(changeset)
 
         Peopleware.Mailer.send_welcome_email(user)
-        redirect(conn, to: login_path(conn, :index))
+        redirect(conn, to: login_path(conn, :thanks))
       else
         render conn, "signup.html", changeset: changeset
       end
