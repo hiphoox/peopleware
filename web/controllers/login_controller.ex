@@ -4,7 +4,7 @@ defmodule Peopleware.LoginController do
 
   plug :scrub_params, "user" when action in [:create, :update_password]
 
-  @password_error_message "no es igual. Considera que es sensible al uso de mayúsculas y minúsculas"
+  @password_error_message "La contraseña y su confirmación no son iguales, considera que son sensibles a mayúsculas y minúsculas"
 
   def index(conn, _params) do
     render conn, "index.html"
