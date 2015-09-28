@@ -49,6 +49,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
+
+    <script type="text/javascript">
+      function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+      }
+    </script>
   </body>
 
 </html>
