@@ -110,7 +110,7 @@ main .button-cv {
 }
 
 .link-register {
-  color: #CA123A;
+  color: #878787;
   text-align: center;
   display: block;
   font-size: 1.3em;
@@ -256,6 +256,11 @@ main h3.password {
 .button-cv-add:hover {
   text-decoration: none;
   color: #3d3d3c;
+}
+
+
+.alert {
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {

@@ -6,13 +6,6 @@
     <h3>Cuenta</h3>
 
     <%= form_for @changeset, "/create", fn f -> %>
-      <%= if @changeset.errors != [] do %>
-        <div class="alert alert-danger col-sm-12" role="alert">
-        <%= for error <- @changeset.errors do %>
-          <div><%= translate_error(error) %> </div>
-        <% end %>
-        </div>
-      <% end %>
 
       <div class="col-sm-12">
       <div class="form-group">
@@ -73,8 +66,6 @@
       </div>
       </div>
 
-
-
   </div>
 
   <div class="row">
@@ -82,6 +73,14 @@
       <%= submit "Guardar", class: "button button-login" %>
   </div>
   </div>
+
+    <%= if @changeset.errors != [] do %>
+        <div class="alert alert-danger" role="alert">
+        <%= for error <- @changeset.errors do %>
+          <div><%= translate_error(error) %> </div>
+        <% end %>
+        </div>
+      <% end %>
 
   <% end %>
 
