@@ -29,6 +29,15 @@
             </a>
           </div><!-- /navbar-header -->
 
+          <div class="collapse navbar-collapse navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <%= if Peopleware.LoginController.get_userid(@conn) do %>
+                <li><a href="/logout">Logout</a></li>
+              <%= end %>
+
+            </ul>
+          </div>
+
         </div><!-- /container-fluid -->
       </nav><!-- /navbar navbar-default -->
     </header>

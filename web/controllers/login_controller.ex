@@ -6,6 +6,8 @@ defmodule Peopleware.LoginController do
 
   @password_error_message "La contraseña y su confirmación no son iguales, considera que son sensibles a mayúsculas y minúsculas"
 
+  @email_error_message "El correo ya se encuentra registrado, favor de registrarse con uno diferente"
+
   def index(conn, _params) do
     user_id = get_session(conn, :user_id)
     if user_id do
@@ -35,7 +37,12 @@ defmodule Peopleware.LoginController do
     if password_is_valid?(user_params) do
       if changeset.valid?  do
         changeset = Ecto.Changeset.put_change(changeset, :reset_token, generate_token)
-        {:ok, user} = Repo.insert(changeset)
+        {result, user} = Repo.insert(changeset)
+
+        if result == :error do
+          changeset = Ecto.Changeset.add_error(changeset, :email, @email_error_message)
+          render conn, "signup.html", changeset: changeset
+        end
 
         Peopleware.Mailer.send_welcome_email(user)
         redirect(conn, to: login_path(conn, :thanks))
