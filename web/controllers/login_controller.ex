@@ -137,6 +137,11 @@ defmodule Peopleware.LoginController do
     end
   end
 
+  # Static pages
+  def aviso_privacidad(conn, _params) do
+    render conn, "privacity.html"
+  end
+
 
 ################################
 # Private API

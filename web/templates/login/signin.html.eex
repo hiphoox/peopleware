@@ -25,9 +25,9 @@
         </div>
       </div>
 
-      <div class="btn-login">
-        <button class="button button-login button-login2" type="submit">Iniciar sesión</button>
-      </div>
+
+        <button class="button button-login" type="submit">Iniciar sesión</button>
+
 
       <%= if @changeset.errors != [] do %>
         <div class="alert alert-warning" role="alert">
@@ -48,6 +48,8 @@
 
 
     </div>
+
+    <p class="text-center"><a href="/avisoprivacidad">Aviso de privacidad</a></p>
 
   </div>
 </div>

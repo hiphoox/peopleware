@@ -33,6 +33,9 @@ defmodule Peopleware.Router do
     get "/confirm/:token",  LoginController, :confirm
     get "/confirm_reset/:token",  LoginController, :confirm_reset
     put "/update_password", LoginController, :update_password
+
+    # Static page
+    get "/avisoprivacidad", LoginController, :aviso_privacidad
   end
 
   scope "/admin", Peopleware do
