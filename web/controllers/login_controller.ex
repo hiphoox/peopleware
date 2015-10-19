@@ -71,7 +71,7 @@ defmodule Peopleware.LoginController do
 
   def logout(conn, _params) do
     conn = put_session(conn, :user_id, nil)
-    redirect(conn, to: login_path(conn, :index))
+    redirect(conn, external: "http://www.recluit.com")
   end
 
   def forget(conn, _params) do
