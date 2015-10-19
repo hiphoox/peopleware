@@ -26,7 +26,7 @@ defmodule Peopleware.ProfileView do
   end
 
   def translate_error({:last_salary, message}) do
-    "* El salario " <> translate(message)
+    "* El último salario " <> translate(message)
   end
 
   def translate_error({:resume, message}) do
