@@ -16,7 +16,7 @@
   <div class="form-group col-sm-4" >
     <label class="control-label" for="changeset[keywords]"> CV </label>
     <%= if @changeset.model.cv_file_name != nil do %>
-    <td> <%= link @changeset.model.cv_file_name, to: "/profiles/cv/" <> to_string(@changeset.model.id) %> </td>
+    <td> <%= link @changeset.model.cv_file_name, to: "/profiles/cv/" <> to_string(@changeset.model.id), target: "_blank" %> </td>
     <%= else %>
     <td>  </td>
     <%= end %>
