@@ -67,19 +67,19 @@ background-color: #f6f6f6;
   <tbody>
   <tr>
     <td style="box-sizing: border-box; vertical-align: top; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
-      <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">Gracias por selecionar a RecluIT. Por favor activa tu cuenta seleccionando el boton de abajo.</p>
+      <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">Gracias por seleccionar a RecluIT empresa líder en el reclutamiento y selección de personal de TI de todos los niveles, industrias y tecnologías. Para continuar con la captura de tu CV, activa tu cuenta seleccionando el botón de abajo.</p>
     <table class="btn btn-primary" style="box-sizing: border-box; -premailer-width: auto; border-collapse: separate !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin-bottom: 15px; width: auto;" width="auto">
   <tbody>
   <tr>
-    <td style="box-sizing: border-box; vertical-align: top; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 5px; text-align: center; background: #348eda;" align="center" valign="top">
-    <a href="<%= url %>" style="box-sizing: border-box; border-radius: 5px; color: #fff; text-decoration: none; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; text-transform: capitalize; background: #348eda; margin: 0; padding: 12px 25px; border: 1px solid #348eda;">Activa tu cuenta en RecluIT</a>
+    <td style="box-sizing: border-box; vertical-align: top; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 5px; text-align: center; background: #000000;" align="center" valign="top">
+    <a href="<%= url %>" style="box-sizing: border-box; border-radius: 5px; color: #fff; text-decoration: none; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; text-transform: capitalize; background: #000000; margin: 0; padding: 12px 25px;">Activa tu cuenta en RecluIT</a>
     </td>
     </tr>
   </tbody>
   </table>
 
-    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">Para comunicarte cosas importantes de vez en cuando <strong>es muy importante que tengas actualizada tu dirección de correo</strong> en tu perfil.</p>
-    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">¡Gracias y feliz captura de Curriculums!, RecluIT</p>
+    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">Para poder ayudarte a encontrar un mejor empleo, <strong>es muy importante que tengas actualizada tu dirección de correo y tus datos personales en tu perfil</strong>, para poder contactarte lo mas rápido posible.</p>
+    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; font-weight: normal; margin: 0 0 15px; padding: 0;">¡Gracias por confiar en RecluIT!</p>
     </td>
   </tr>
   </tbody>
