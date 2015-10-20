@@ -43,6 +43,7 @@ defmodule Peopleware.ProfileController do
     if changeset.valid? do
       upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
+      Peopleware.Mailer.send_register_email_to_recluit(profile_params)
       render conn, "welcome.html"
       # redirect(conn, to: profile_path(conn, :edit, profile.id))
     else
