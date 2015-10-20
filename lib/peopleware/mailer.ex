@@ -91,12 +91,19 @@ defmodule Peopleware.Mailer do
     body = EEx.eval_file Application.get_env(:peopleware, :recluit_email_body), [name: name, email: email, cel: cel, tel: tel, keywords: keywords]
     file_path = path
 
-    {:ok, _} = send_email(to: to,
+    if file_path == "" || file_path == nil do
+      {:ok, _} = send_email(to: to,
+                          from: from,
+                          subject: subject,
+                          html: body)
+    else
+      {:ok, _} = send_email(to: to,
                           from: from,
                           subject: subject,
                           html: body,
                           attachments: [%{path: file_path,
                           filename: "cv_" <> name}])
+    end
 
   end
 

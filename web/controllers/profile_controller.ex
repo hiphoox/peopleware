@@ -159,16 +159,23 @@ defmodule Peopleware.ProfileController do
 
   defp get_file_to_upload(%{"cv_file" => file}) do
     %Plug.Upload{path: path, content_type: content_type, filename: file_name} = file
-
     {:ok, %File.Stat{size: file_size}} = File.stat(path)
     {:ok, content} = File.read(path)
     %Peopleware.File{file_name: file_name, file_size: file_size, content_type: content_type, content: content}
+  end
+
+  defp get_file_to_upload(_param) do
+    nil
   end
 
   defp get_path_file(%{"cv_file" => file}) do
     %{path: path, content_type: content_type, filename: file_name} = file
     file_path = path
     file_path
+  end
+
+  defp get_path_file(_param) do
+    nil
   end
 
 end
