@@ -235,6 +235,11 @@ main h3.password {
   width: 50%;
 }
 
+.alert-cv {
+  float: right;
+  width: 40%;
+}
+
 
 .show-cv {
   padding: 60px;
@@ -298,6 +303,10 @@ main h3.password {
     margin-top: 30px;
   }
 
+  .nav > li > p {
+    margin-top: 85px;
+  }
+
   hr.line-title {
     width: 55%;
   }
@@ -312,8 +321,9 @@ main h3.password {
   }
 
   .box-button-cv {
-    margin: 0 auto 30px auto;
+    float: right;
     width: 50%;
+    margin-top: -90px;
   }
 
 

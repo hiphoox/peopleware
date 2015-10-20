@@ -1,12 +1,8 @@
 <%= form_for @changeset, @action, [class: "col-sm-12", multipart: true], fn f -> %>
-  <%= if @changeset.errors != [] do %>
-    <div class="alert alert-danger" role="alert">
-    <%= for error <- @changeset.errors do %>
-      <div><%= translate_error(error) %> </div>
-    <% end %>
-    </div>
-    <br />
-  <% end %>
+
+  <div class="form-group box-button-cv">
+    <%= submit "Guardar", class: "button button-login" %>
+  </div>
 
   <div class="col-xs-offset-0 form-group col-sm-3">
         <label class="control-label" for="changeset[name]">Perfil </label>
@@ -22,6 +18,15 @@
     <%= end %>
     <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
   </div>
+
+  <%= if @changeset.errors != [] do %>
+    <div class="alert-cv alert-danger" role="alert">
+    <%= for error <- @changeset.errors do %>
+      <div><%= translate_error(error) %> </div>
+    <% end %>
+    </div>
+    <br />
+  <% end %>
 
   <div class="clearfix"></div>
 
@@ -97,10 +102,7 @@
 
   <div class="form-group col-sm-12">
     <label class="control-label" <%= if @changeset.errors[:resume] do %> style="color: red" <% end %> for="changeset[resume]">Resumen de experiencia profesional (Puedes copiar y pegar todo tu CV si así lo deseas o poner solo un resumen del mismo)</label>
-    <%= textarea f, :resume, class: "form-control", rows: "10", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
+    <%= textarea f, :resume, class: "form-control", rows: "8", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
   </div>
 
-  <div class="form-group box-button-cv">
-    <%= submit "Guardar", class: "button button-login" %>
-  </div>
 <% end %>
