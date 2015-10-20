@@ -78,7 +78,7 @@ defmodule Peopleware.Mailer do
   Sends an email  to contacto@recluit.com with cv file, name, email, phone
   and search words
   """
-  def send_register_email_to_recluit(profile_params) do
+  def send_register_email_to_recluit(profile_params, path) do
     name = profile_params["name"] <> " " <> profile_params["last_name"] <> " " <> profile_params["second_surname"]
     email = profile_params["email"]
     cel = profile_params["cel"]
@@ -89,11 +89,14 @@ defmodule Peopleware.Mailer do
     to = Application.get_env(:peopleware, :to_recluit)
     from    = Application.get_env(:peopleware, :email_sender)
     body = EEx.eval_file Application.get_env(:peopleware, :recluit_email_body), [name: name, email: email, cel: cel, tel: tel, keywords: keywords]
+    file_path = path
 
     {:ok, _} = send_email(to: to,
                           from: from,
                           subject: subject,
-                          html: body)
+                          html: body,
+                          attachments: [%{path: file_path,
+                          filename: "cv_" <> name}])
 
   end
 

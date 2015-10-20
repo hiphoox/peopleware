@@ -80,10 +80,10 @@ background-color: #f6f6f6;
 
     <ul>
       <li>Nombre: <%= name %></li>
-      <li>Correo electrónico: <%= email %> </li>
+      <li>Correo electr&oacute;nico: <%= email %> </li>
       <li>Celular: <%= cel %></li>
-      <li>Teléfono: <%= tel %></li>
-      <li>Palabras de búsqueda: <%= keywords %></li>
+      <li>Tel&eacute;fono: <%= tel %></li>
+      <li>Palabras de b&uacute;squeda: <%= keywords %></li>
     </ul>
 
 
