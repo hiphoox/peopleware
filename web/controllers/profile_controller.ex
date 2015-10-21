@@ -83,7 +83,7 @@ defmodule Peopleware.ProfileController do
                            get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
       put_flash(conn, :info, "Perfil actualizado satisfactoriamente")
-      render conn, "edit.html", profile: profile, changeset: changeset
+      render conn, "thanks.html"
     else
       render(conn, "edit.html", profile: profile, changeset: changeset)
     end
