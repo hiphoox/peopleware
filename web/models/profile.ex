@@ -42,6 +42,10 @@ defmodule Peopleware.Profile  do
     |> validate_length(:contract_schema, max: 30, message: "Debe ser máximo de 30 caracteres")
     |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
+    |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
+    |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
+    |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
+    |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
   end
 
   #####################
