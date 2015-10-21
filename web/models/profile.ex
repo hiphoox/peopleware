@@ -8,7 +8,7 @@ defmodule Peopleware.Profile  do
     field       :name,            :string
     field       :last_name,       :string
     field       :second_surname,  :string
-    field       :last_salary,     :integer
+    field       :last_salary,     :string
     field       :position,        :string
     field       :resume,          :string
     field       :keywords,        :string
@@ -37,8 +37,8 @@ defmodule Peopleware.Profile  do
     |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
     |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
     |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
+    |> validate_format(:last_salary, ~r/(?<!\S)(?=.)(0|([1-9](\d*|\d{0,2}(,\d{3})*)))?(\.\d*[1-9])?(?!\S)/, message: " tiene un formato inválido")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
-    |> validate_inclusion(:last_salary, 0..200_000, message: "Cantidad inválida")
     |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_length(:resume, max: 12000, message: "Debe ser máximo de 12000 caracteres")
     |> validate_length(:keywords, max: 500, message: "Debe ser máximo de 500 caracteres")
