@@ -33,6 +33,10 @@ defmodule Peopleware.Profile  do
     |> cast(params, @required_fields, @optional_fields)
     # |> update_change(:email, &String.downcase/1)
     |> validate_format(:email, ~r/@/, message: "Formato Inválido")
+    |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
+    |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
+    |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
+    |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_inclusion(:last_salary, 0..200_000, message: "Cantidad inválida")
     |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
@@ -42,10 +46,6 @@ defmodule Peopleware.Profile  do
     |> validate_length(:contract_schema, max: 30, message: "Debe ser máximo de 30 caracteres")
     |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
-    |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
-    |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
-    |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
-    |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
   end
 
   #####################

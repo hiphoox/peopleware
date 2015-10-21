@@ -9,6 +9,10 @@ defmodule Peopleware.ProfileView do
     "* El apellido paterno " <> translate(message)
   end
 
+  def translate_error({:second_surname, message}) do
+    "* Apellido materno: " <> translate(message)
+  end
+
   def translate_error({:email, message}) do
     "* El correo " <> translate(message)
   end

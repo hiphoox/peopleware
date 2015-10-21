@@ -34,13 +34,13 @@ defmodule Peopleware.User do
     |> cast(params, @required_fields, @optional_fields)
     |> validate_format(:email, ~r/@/, message: "Formato Inválido")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
+    |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
+    |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
+    |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
     |> unique_constraint(:email, message: "Cuenta de correo ya registrada")
     |> validate_length(:name, max: 40, message: "Debe ser máximo de 40 caracteres")
     |> validate_length(:last_name, max: 40, message: "Debe ser máximo de 40 caracteres")
     |> validate_length(:second_surname, max: 40, message: "Debe ser máximo de 40 caracteres")
-    |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
-    |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
-    |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
   end
 
   def get_by_email(email) do
