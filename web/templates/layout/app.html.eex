@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="http://www.recluit.com">
               <img class="header-image" alt="RecluIT Log"
                    src="<%= static_path(@conn, "/images/logo.png") %>">
             </a>
