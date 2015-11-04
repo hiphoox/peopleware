@@ -117,6 +117,12 @@
             components[1] = components[1].replace(/\D/g, "");
         return components.join(".");
     }
+
+
+    $('.profile-result').click(function(){
+      $(this).children('.profile-resume').fadeToggle();
+    });
+
     </script>
   </body>
 

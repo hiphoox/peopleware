@@ -98,11 +98,11 @@
 
         </div><!-- /info-cv-wrapper -->
 
-        <div class="profile-resume">
-
-          <%= profile.resume %>
-
-        </div> <!-- /profile-resume -->
+        <%= if profile.resume != nil do %>
+          <div class="profile-resume">
+            <%= profile.resume %>
+          </div> <!-- /profile-resume -->
+        <%= end %>
 
       </div><!-- /profile-result -->
 
