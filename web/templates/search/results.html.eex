@@ -45,6 +45,25 @@
 
       <div class="profile-result">
 
+        <div class="cv-holder">
+
+            <%= if profile.cv_file_name != nil do %>
+
+              <%= link "Descargar CV", to: "/profiles/cv/" <> to_string(profile.id), class: "download-link-cv", target: "_blank" %>
+
+            <%= else %>
+              <p class="download-link-cv">No hay CV</p>
+            <%= end %>
+
+        </div>
+
+        <div class="info-cv-wrapper">
+
+          <div class="profile-name">
+          </div>
+
+        </div>
+
       </div>
 
       <% end %>

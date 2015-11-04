@@ -41,6 +41,10 @@ body {
   height: 3em;
 }
 
+a:hover, a:visited {
+  text-decoration: none;
+}
+
 
 /* Container styles */
 
@@ -299,10 +303,34 @@ main h3.password {
 }
 
 .profile-result {
-  background-color: red;
-  min-height: 160px;
+  border: 1px solid #e0e0e0;
+  min-height: 180px;
   width: 80;
+  margin-bottom: 20px;
 }
+
+.cv-holder {
+  margin: 10px;
+  min-height: 160px;
+  width: 160px;
+  float: left;
+  text-align: center;
+}
+
+.download-link-cv {
+  font-size: 2.6em;
+  margin-top: 30px;
+  display: block;
+}
+
+.info-cv-wrapper {
+  margin: 10px;
+  min-height: 160px;
+  min-width: 80%;
+  background-color:green;
+  float: right;
+}
+
 
 @media screen and (min-width: 768px) {
 
