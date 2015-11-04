@@ -64,11 +64,43 @@
           </div><!-- /profile-salary -->
 
           <div class="profile-details">
+            <h2><%= profile.name %> <%= profile.last_name %> <%= profile.second_surname %></h2>
+
+            <div class="contact-info">
+              <span>Correo:</span> <%= profile.email %>
+              <span>Teléfono:</span> <%= profile.tel %>
+              <span>Celular:</span> <%= profile.cel %>
+            </div>
+
+            <div class="job-info">
+              <fieldset>
+                <legend>Información de trabajo</legend>
+
+                <p><span>Última posición:</span> <%= profile.position %></p>
+                <p><span>Tipo de contratación:</span> <%= profile.contract_schema %></p>
+                <p><span>Rol:</span> <%= profile.role %></p>
+              </fieldset>
+            </div>
+
+            <div class="other-info">
+              <fieldset>
+                <legend>Otra información</legend>
+
+                <p><span>Estado:</span> <%= profile.state %></p>
+                <p><span>Disponible para cambio de residencia:</span> <%= profile.residence %></p>
+                <p><span>Disponibilad para viajar:</span> <%= profile.travel %></p>
+                <p><span>Inglés:</span> <%= profile.english_level %></p>
+
+              </fieldset>
+            </div>
+
           </div><!-- /profile-details -->
 
         </div><!-- /info-cv-wrapper -->
 
         <div class="profile-resume">
+
+          <%= profile.resume %>
 
         </div> <!-- /profile-resume -->
 
@@ -77,45 +109,6 @@
       <% end %>
 
     </div><!-- /result-wrapper -->
-
-    <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre(s)</th>
-        <th>Apellido Materno</th>
-        <th>Apellido Paterno</th>
-        <th>Correo</th>
-        <th>Posición</th>
-        <th>CV</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-    <%= for profile <- @profiles do %>
-    <tr>
-      <td> <%= profile.id %> </td>
-      <td> <%= link profile.name, to: profile_path(@conn, :show, profile) %> </td>
-      <td> <%= profile.last_name %> </td>
-      <td> <%= profile.second_surname %> </td>
-      <td> <%= profile.email %> </td>
-      <td> <%= profile.position %> </td>
-      <%= if profile.cv_file_name != nil do %>
-      <td> <%= link profile.cv_file_name, to: "/admin/cv/" <> to_string(profile.id) %> </td>
-      <%= else %>
-      <td> No tiene archivo </td>
-      <%= end %>
-
-      <td class="text-right">
-        <%= link "Editar", to: profile_path(@conn, :edit, profile), class: "btn btn-info btn-xs" %>
-        <%= link "Borrar", to: profile_path(@conn, :delete, profile), method: :delete, class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
-
 
   </div>
 

@@ -304,7 +304,7 @@ main h3.password {
 
 .profile-result {
   border: 1px solid #e0e0e0;
-  min-height: 180px;
+  min-height: 275px;
   width: 80;
   margin-bottom: 20px;
 }
@@ -341,12 +341,42 @@ main h3.password {
 
 .profile-resume {
   min-height: 160px;
-  background-color: green;
   clear: both;
   width: 98%;
-  margin: 0 auto 5px;;
+  margin: 0 auto 5px;
 }
 
+
+.contact-info {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.contact-info span {
+  font-weight: bold;
+}
+
+.job-info {
+  float: left;
+  width: 45%;
+}
+
+.job-info span {
+  font-weight: bold;
+}
+
+.other-info {
+  float: right;
+  width: 45%;
+}
+
+.other-info span {
+ font-weight: bold;
+}
+
+.profile-resume {
+  display: none;
+}
 
 @media screen and (min-width: 768px) {
 
