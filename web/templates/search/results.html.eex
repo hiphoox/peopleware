@@ -1,6 +1,57 @@
-<h3>Resultado de la búsqueda</h3>
+<div class="row">
 
-  <table class="table">
+  <div class="col-md-4">
+
+    <div class="list-result-filter-container">
+
+      <form action="">
+
+          <div class="filter-section">
+            <div class="filter-section-header">
+              <span class="filter-section-name">Palabras de búsqueda</span>
+            </div>
+            <div class="filter-section-body">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-header">
+              <span class="filter-section-name">Perfil</span>
+            </div>
+            <div class="filter-section-body">
+
+              <div class="checkbox-wrapper">
+                <input type="checkbox" name="perfil" value="Desarrollador"> Desarrollador
+              </div>
+              <div class="checkbox-wrapper">
+                <input type="checkbox" name="perfil" value="Analista de negocios"> Analista de negocios
+              </div>
+
+            </div>
+          </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-8">
+
+    <div class="result-wrapper">
+
+      <%= for profile <- @profiles do %>
+
+      <div class="profile-result">
+
+      </div>
+
+      <% end %>
+
+    </div>
+
+    <table class="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -38,4 +89,7 @@
     </tbody>
   </table>
 
-  <%= link "Agregar nuevo CV", to: profile_path(@conn, :new), class: "btn btn-primary" %>
+
+  </div>
+
+</div>

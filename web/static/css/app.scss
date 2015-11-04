@@ -280,6 +280,30 @@ main h3.password {
   margin-bottom: 2em;
 }
 
+/* Search css */
+
+.list-result-filter-container {
+  padding: 0px 20px 20px 20px;
+}
+
+.filter-section {
+  margin-top: 10px;
+}
+
+.checkbox-wrapper {
+  display: block;
+}
+
+.result-wrapper {
+  padding: 20px;
+}
+
+.profile-result {
+  background-color: red;
+  min-height: 160px;
+  width: 80;
+}
+
 @media screen and (min-width: 768px) {
 
   .navbar {
