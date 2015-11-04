@@ -327,8 +327,24 @@ main h3.password {
   margin: 10px;
   min-height: 160px;
   min-width: 80%;
-  background-color:green;
   float: right;
+}
+
+.profile-salary {
+  float: right;
+  padding: 10px;
+}
+
+.salary {
+  font-size: 3em;
+}
+
+.profile-resume {
+  min-height: 160px;
+  background-color: green;
+  clear: both;
+  width: 98%;
+  margin: 0 auto 5px;;
 }
 
 

@@ -55,20 +55,28 @@
               <p class="download-link-cv">No hay CV</p>
             <%= end %>
 
-        </div>
+        </div><!-- /cv-holder -->
 
         <div class="info-cv-wrapper">
 
-          <div class="profile-name">
-          </div>
+          <div class="profile-salary">
+            <p class="salary">$ <%= profile.last_salary %></p>
+          </div><!-- /profile-salary -->
 
-        </div>
+          <div class="profile-details">
+          </div><!-- /profile-details -->
 
-      </div>
+        </div><!-- /info-cv-wrapper -->
+
+        <div class="profile-resume">
+
+        </div> <!-- /profile-resume -->
+
+      </div><!-- /profile-result -->
 
       <% end %>
 
-    </div>
+    </div><!-- /result-wrapper -->
 
     <table class="table">
     <thead>
