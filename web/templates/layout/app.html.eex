@@ -63,6 +63,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery.phoenix.min.js") %>"></script>
     <script>require("web/static/js/app")</script>
 
     <script type="text/javascript">
@@ -123,6 +124,16 @@
       $(this).children('.profile-resume').fadeToggle();
     });
 
+    $(function() {
+       $(".search-control-change").change(function() {
+         $("#search_form").submit();
+       });
+     });
+
+    // Save in local storage the form search
+    $("#profile_keywords").phoenix();
+    $("#profile_role").phoenix();
+    $("#profile_state").phoenix();
     </script>
   </body>
 

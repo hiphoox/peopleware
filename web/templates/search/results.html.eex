@@ -1,10 +1,10 @@
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-4 result-filter-wrapper">
 
     <div class="list-result-filter-container">
 
-      <%= form_for @changeset, search_path(@conn, :search) , [multipart: true], fn f -> %>
+      <%= form_for @changeset, search_path(@conn, :search) , [multipart: true, id: "search_form"], fn f -> %>
 
       <div class="search-control">
 
@@ -13,7 +13,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= text_input f, :keywords, class: "form-control", placeholder: "Poner palabras separadas por comas."%>
+          <%= text_input f, :keywords, class: "form-control search-control-change", placeholder: "Poner palabras separadas por comas."%>
         </div>
 
       </div><!-- /search-control -->
@@ -25,7 +25,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs"%>
+          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->
@@ -37,7 +37,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs"%>
+          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->
@@ -49,7 +49,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs"%>
+          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->
@@ -61,7 +61,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
+          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->
@@ -73,7 +73,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
+          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->
@@ -85,7 +85,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs"%>
+          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs search-control-change"%>
         </div>
 
       </div><!-- /search-control -->

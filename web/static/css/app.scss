@@ -286,16 +286,17 @@ main h3.password {
 
 /* Search css */
 
+.result-filter-wrapper {
+  padding: 10px 20px 20px 20px;
+}
+
 .list-result-filter-container {
-  padding: 0px 20px 20px 20px;
+  margin-left: 38px;
 }
 
-.filter-section {
+.header-form-search {
+  font-size: 1.3em;
   margin-top: 10px;
-}
-
-.checkbox-wrapper {
-  display: block;
 }
 
 .result-wrapper {
@@ -382,6 +383,8 @@ main h3.password {
 .profile-resume {
   display: none;
 }
+
+
 
 @media screen and (min-width: 768px) {
 
