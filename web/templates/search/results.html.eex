@@ -4,34 +4,96 @@
 
     <div class="list-result-filter-container">
 
-      <form action="">
+      <%= form_for @changeset, search_path(@conn, :search) , [multipart: true], fn f -> %>
 
-          <div class="filter-section">
-            <div class="filter-section-header">
-              <span class="filter-section-name">Palabras de búsqueda</span>
-            </div>
-            <div class="filter-section-body">
-              <input type="text" class="form-control">
-            </div>
-          </div>
+      <div class="search-control">
 
-          <div class="filter-section">
-            <div class="filter-section-header">
-              <span class="filter-section-name">Perfil</span>
-            </div>
-            <div class="filter-section-body">
+        <div class="header-form-search">
+          <label class="control-label" <%= if @changeset.errors[:keywords] do %> style="color: red" <% end %> for="changeset[keywords]">Palabras de búsqueda</label>
+        </div>
 
-              <div class="checkbox-wrapper">
-                <input type="checkbox" name="perfil" value="Desarrollador"> Desarrollador
-              </div>
-              <div class="checkbox-wrapper">
-                <input type="checkbox" name="perfil" value="Analista de negocios"> Analista de negocios
-              </div>
+        <div class="body-form-search">
+          <%= text_input f, :keywords, class: "form-control", placeholder: "Poner palabras separadas por comas."%>
+        </div>
 
-            </div>
-          </div>
+      </div><!-- /search-control -->
 
-      </form>
+      <div class="search-control">
+
+        <div class="header-form-search">
+          <label class="control-label" for="changeset[name]">Perfil </label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+      <div class="search-control">
+
+        <div class="header-form-search">
+          <label class="control-label" for="changeset[state]">Estado de Residencia</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+      <div class="search-control">
+
+        <div class="header-form-search">
+         <label class="control-label" <%= if @changeset.errors[:contract_schema] do %> style="color: red" <% end %> for="changeset[contract_schema]">Esquema de Contratación</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+      <div class="search-control">
+
+        <div class="header-form-search">
+         <label class="control-label" <%= if @changeset.errors[:residence] do %> style="color: red" <% end %> for="changeset[residence]">Cambiar de Residencia</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+      <div class="search-control">
+
+        <div class="header-form-search">
+         <label class="control-label" <%= if @changeset.errors[:travel] do %> style="color: red" <% end %> for="changeset[travel]">Disponibilidad para viajar</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+      <div class="search-control">
+
+        <div class="header-form-search">
+         <label class="control-label" <%= if @changeset.errors[:english_level] do %> style="color: red" <% end %> for="changeset[english_level]">Nivel de Ingles</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs"%>
+        </div>
+
+      </div><!-- /search-control -->
+
+  <div class="clearfix"></div>
+
+<% end %>
+
 
     </div>
 
@@ -77,7 +139,7 @@
                 <legend>Información de trabajo</legend>
 
                 <p><span>Última posición:</span> <%= profile.position %></p>
-                <p><span>Tipo de contratación:</span> <%= profile.contract_schema %></p>
+                <p><span>Esquema de Contratación:</span> <%= profile.contract_schema %></p>
                 <p><span>Rol:</span> <%= profile.role %></p>
               </fieldset>
             </div>

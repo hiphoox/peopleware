@@ -14,9 +14,10 @@ defmodule Peopleware.SearchController do
   end
 
   def search(conn, %{"profile" => profile_params}) do
+    changeset = Profile.changeset(%Profile{})
 
     profiles = Profile.search(1, 5, profile_params)
-    render conn, "results.html", profiles: profiles.entries
+    render conn, "results.html", profiles: profiles.entries, changeset: changeset
   end
 
 end
