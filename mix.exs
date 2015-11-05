@@ -31,7 +31,7 @@ defmodule Peopleware.Mixfile do
   defp deps do
     [{:phoenix,       "~> 1.0"},
      {:phoenix_ecto,  "~> 1.1"},
-     {:phoenix_html,  "~> 2.1.2"},
+     {:phoenix_html,  "~> 2.2.0"},
      {:postgrex,      "~> 0.9.1"},
      {:phoenix_live_reload, "~> 1.0", only: [:dev]},
      {:cowboy,        "~> 1.0"},
@@ -40,6 +40,7 @@ defmodule Peopleware.Mixfile do
      {:secure_random, "~> 0.1"},
      {:comeonin,      "~> 1.1"},
      {:scrivener,     "~> 1.0"},
+     {:scrivener_html, "~> 1.0"},
      {:shouldi, only: :test},
      {:exrm,          "~>0.18.1"}]
   end
