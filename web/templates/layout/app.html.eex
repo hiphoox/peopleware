@@ -126,14 +126,20 @@
 
     $(function() {
        $(".search-control-change").change(function() {
-         $("#search_form").submit();
+          $("#search_form").submit();
        });
      });
 
     // Save in local storage the form search
-    $("#profile_keywords").phoenix();
-    $("#profile_role").phoenix();
-    $("#profile_state").phoenix();
+    // $(function() {
+    //   $("#profile_keywords").phoenix();
+    //   $("#profile_role").phoenix();
+    //   $("#profile_state").phoenix();
+    //   $("#profile_contract_schema").phoenix();
+    //   $("#profile_residence").phoenix();
+    //   $("#profile_travel").phoenix();
+    //   $("#profile_english_level").phoenix();
+    // });
     </script>
   </body>
 
