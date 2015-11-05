@@ -4,7 +4,7 @@ defmodule Peopleware.SearchController do
   alias Peopleware.Profile
 
   @page 1
-  @count 5
+  @count 10
 
   plug :scrub_params, "profile" when action in [:create, :update]
 
@@ -20,7 +20,7 @@ defmodule Peopleware.SearchController do
     changeset = Profile.changeset(%Profile{})
 
     profiles = Profile.search(@page, @count, profile_params)
-    render conn, "results.html", profiles: profiles.entries, changeset: changeset
+    render conn, "results.html", profiles: profiles.entries, changeset: changeset, page: profiles, profile_params: profile_params
   end
 
 end

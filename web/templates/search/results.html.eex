@@ -13,7 +13,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= text_input f, :keywords, class: "form-control search-control-change", placeholder: "Poner palabras separadas por comas."%>
+          <%= text_input f, :keywords, class: "form-control search-control-change", placeholder: "Poner palabras separadas por comas.", value: @profile_params["keywords"] %>
         </div>
 
       </div><!-- /search-control -->
@@ -25,7 +25,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs search-control-change", value: @profile_params["role"]%>
         </div>
 
       </div><!-- /search-control -->
@@ -37,7 +37,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs search-control-change", value: @profile_params["state"]%>
         </div>
 
       </div><!-- /search-control -->
@@ -49,7 +49,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs search-control-change", value: @profile_params["contract_schema"]%>
         </div>
 
       </div><!-- /search-control -->
@@ -61,7 +61,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change", value: @profile_params["residence"]%>
         </div>
 
       </div><!-- /search-control -->
@@ -73,7 +73,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change", value: @profile_params["travel"] %>
         </div>
 
       </div><!-- /search-control -->
@@ -85,7 +85,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs search-control-change"%>
+          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs search-control-change", value: @profile_params["english_level"]%>
         </div>
 
       </div><!-- /search-control -->

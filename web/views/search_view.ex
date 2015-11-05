@@ -1,5 +1,6 @@
 defmodule Peopleware.SearchView do
   use Peopleware.Web, :view
+  import Scrivener.HTML
 
   def translate_error({:keywords, message}) do
     "* Las palabras de búsqueda " <> translate_plural(message)
