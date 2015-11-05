@@ -3,6 +3,9 @@ defmodule Peopleware.SearchController do
   # require IEx
   alias Peopleware.Profile
 
+  @page 1
+  @count 5
+
   plug :scrub_params, "profile" when action in [:create, :update]
 
   @doc """
@@ -16,7 +19,7 @@ defmodule Peopleware.SearchController do
   def search(conn, %{"profile" => profile_params}) do
     changeset = Profile.changeset(%Profile{})
 
-    profiles = Profile.search(1, 5, profile_params)
+    profiles = Profile.search(@page, @count, profile_params)
     render conn, "results.html", profiles: profiles.entries, changeset: changeset
   end
 
