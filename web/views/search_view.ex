@@ -19,7 +19,7 @@ defmodule Peopleware.SearchView do
   end
 
   @doc """
-  Convert the number into redeable human format, example:
+  Convert the number into readable human format, example:
   123456 => 123,456
   """
   def convert_number_to_human(num) do

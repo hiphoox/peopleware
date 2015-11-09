@@ -90,6 +90,18 @@
 
       </div><!-- /search-control -->
 
+      <div class="search-control">
+
+        <div class="header-form-search">
+         <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[last_salary]">Salario</label>
+        </div>
+
+        <div class="body-form-search">
+          <%= range_input f, :last_salary, class: "search-control-change", value: @profile_params["last_salary"], min: "0", max: "200000" %>
+        </div>
+
+      </div><!-- /search-control -->
+
   <div class="clearfix"></div>
 
 <% end %>

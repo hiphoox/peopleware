@@ -8,7 +8,7 @@ defmodule Peopleware.Profile  do
     field       :name,            :string
     field       :last_name,       :string
     field       :second_surname,  :string
-    field       :last_salary,     :string
+    field       :last_salary,     :integer
     field       :position,        :string
     field       :resume,          :string
     field       :keywords,        :string
@@ -47,6 +47,7 @@ defmodule Peopleware.Profile  do
     |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:last_salary, max: 10, message: " es demasiado largo.")
+    |> validate_inclusion(:last_salary, 0..200_000, message: "Cantidad inválida")
   end
 
   #####################
@@ -106,6 +107,7 @@ defmodule Peopleware.Profile  do
     |> has_residence(search_criteria)
     |> can_travel(search_criteria)
     |> has_english_level(search_criteria)
+    |> has_salary(search_criteria)
     |> Repo.paginate(page: page, page_size: count)
   end
 
@@ -187,6 +189,15 @@ defmodule Peopleware.Profile  do
     if english_level != "" do
       from p in query,
       where: p.english_level == ^english_level
+    else
+      query
+    end
+  end
+
+  def has_salary(query, %{"last_salary" => last_salary}) do
+    if last_salary != "" do
+      from p in query,
+      where: p.last_salary <= ^last_salary
     else
       query
     end

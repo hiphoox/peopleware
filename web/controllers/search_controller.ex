@@ -34,12 +34,25 @@ defmodule Peopleware.SearchController do
     if user.is_staff do
       changeset = Profile.changeset(%Profile{})
 
+      last_salary = change_salary_to_integer(profile_params)
+      profile_params = Map.put(profile_params, "last_salary", last_salary)
+
       profiles = Profile.search(@page, @count, profile_params)
       render conn, "results.html", profiles: profiles.entries, changeset: changeset, page: profiles, profile_params: profile_params
     else
       redirect(conn, to: profile_path(conn, :index))
     end
 
+  end
+
+  def change_salary_to_integer(%{"last_salary" => last_salary}) do
+    if last_salary != "" do
+      last_salary
+      |> String.replace(",", "")
+      |> String.to_integer
+    else
+      ""
+    end
   end
 
 end
