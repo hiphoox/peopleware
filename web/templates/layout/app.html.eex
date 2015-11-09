@@ -130,6 +130,16 @@
        });
      });
 
+    $(function() {
+       $(".range-salary").ready(function() {
+          updateTextMaxSalary();
+       });
+     });
+
+    function updateTextMaxSalary() {
+      var val = document.getElementById('range-salary').value;
+      $('.max').text(val);
+    }
     </script>
   </body>
 

@@ -1,4 +1,4 @@
-<h3>Búsqueda</h3>
+
 
 <%= form_for @changeset, search_path(@conn, :search) , [class: "col-sm-12", multipart: true], fn f -> %>
   <%= if @changeset.errors != [] do %>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[english_level]">Salario</label>
+    <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[english_level]">Salario máximo</label>
     <%= text_input f, :last_salary, class: "form-control btn-xs"%>
   </div>
 
