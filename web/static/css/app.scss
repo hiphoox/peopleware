@@ -41,7 +41,7 @@ body {
   height: 3em;
 }
 
-a:hover, a:visited {
+a, a:hover, a:visited, a:active, a:focus {
   text-decoration: none;
 }
 
@@ -329,6 +329,11 @@ main h3.password {
   min-height: 160px;
   min-width: 80%;
   float: right;
+}
+
+.link-profile-name, .link-profile-name:hover, .link-profile-name:visited,
+.link-profile-name:active, .link-profile-name:focus {
+  color: #000000;
 }
 
 .profile-salary {
