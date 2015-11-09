@@ -45,7 +45,7 @@ defmodule Peopleware.SearchController do
 
   end
 
-  def change_salary_to_integer(%{"last_salary" => last_salary}) do
+  defp change_salary_to_integer(%{"last_salary" => last_salary}) do
     if last_salary != "" do
       last_salary
       |> String.replace(",", "")

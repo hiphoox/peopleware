@@ -38,8 +38,13 @@ defmodule Peopleware.ProfileController do
   Invoked when the user selects the save button when in the new.html
   """
   def create(conn, %{"profile" => profile_params}) do
+
+    last_salary = change_salary_to_integer(profile_params)
+    profile_params = Map.put(profile_params, "last_salary", last_salary)
+
     user_id = get_session(conn, :user_id)
     changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
+
     if changeset.valid? do
       upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
@@ -76,12 +81,18 @@ defmodule Peopleware.ProfileController do
   """
   def update(conn, %{"id" => id, "profile" => profile_params}) do
     profile = Profile.get_by_id(id)
+
+    last_salary = change_salary_to_integer(profile_params)
+    profile_params = Map.put(profile_params, "last_salary", last_salary)
+
     changeset = Profile.changeset(profile, profile_params)
 
     if changeset.valid? do
+
       upload_file_and_save(changeset, profile,
                            get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
+
       put_flash(conn, :info, "Perfil actualizado satisfactoriamente")
       render conn, "thanks.html"
     else
@@ -176,6 +187,16 @@ defmodule Peopleware.ProfileController do
 
   defp get_path_file(_param) do
     nil
+  end
+
+  defp change_salary_to_integer(%{"last_salary" => last_salary}) do
+    if last_salary != "" do
+      last_salary
+      |> String.replace(",", "")
+      |> String.to_integer
+    else
+      ""
+    end
   end
 
 end

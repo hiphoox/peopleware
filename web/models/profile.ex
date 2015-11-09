@@ -37,7 +37,6 @@ defmodule Peopleware.Profile  do
     |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
     |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
     |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
-    |> validate_format(:last_salary, ~r/^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$/, message: " tiene un formato inválido")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_length(:resume, max: 12000, message: "Debe ser máximo de 12000 caracteres")
@@ -46,7 +45,6 @@ defmodule Peopleware.Profile  do
     |> validate_length(:contract_schema, max: 30, message: "Debe ser máximo de 30 caracteres")
     |> validate_length(:tel, max: 15, message: "Debe ser máximo de 15 caracteres")
     |> validate_length(:cel, max: 15, message: "Debe ser máximo de 15 caracteres")
-    |> validate_length(:last_salary, max: 10, message: " es demasiado largo.")
     |> validate_inclusion(:last_salary, 0..200_000, message: "Cantidad inválida")
   end
 
