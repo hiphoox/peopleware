@@ -99,7 +99,7 @@
         <div class="body-form-search">
           <p><span class="min">$ 0</span> - <span class="max">$ 10000</span></p>
 
-          <%= range_input f, :last_salary, class: "search-control-change range-salary", value: @profile_params["last_salary"], min: "0", max: "200000", id: "range-salary", oninput: "updateTextMaxSalary();", onload: "updateTextMaxSalary();"%>
+          <%= range_input f, :last_salary, class: "search-control-change range-salary", value: @profile_params["last_salary"], min: "0", max: "100000", id: "range-salary", oninput: "updateTextMaxSalary();", onload: "updateTextMaxSalary();"%>
         </div>
 
       </div><!-- /search-control -->
@@ -116,6 +116,8 @@
   <div class="col-md-8">
 
     <div class="result-wrapper">
+
+    <%= if @profiles != [] do %>
 
       <%= for profile <- @profiles do %>
 
@@ -183,6 +185,12 @@
       </div><!-- /profile-result -->
 
       <% end %>
+
+    <%= else %>
+      <h2>No hay CV con los criterios seleccionados</h2>
+    <%= end %>
+
+
 
     </div><!-- /result-wrapper -->
 
