@@ -18,4 +18,17 @@ defmodule Peopleware.SearchView do
     end
   end
 
+  @doc """
+  Convert the number into redeable human format, example:
+  123456 => 123,456
+  """
+  def convert_number_to_human(num) do
+    num
+    |> Integer.to_char_list
+    |> Enum.reverse
+    |> Enum.chunk(3, 3, [])
+    |> Enum.join(",")
+    |> String.reverse
+  end
+
 end

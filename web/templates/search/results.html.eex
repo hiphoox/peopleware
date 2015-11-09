@@ -122,7 +122,7 @@
         <div class="info-cv-wrapper">
 
           <div class="profile-salary">
-            <p class="salary">$ <%= profile.last_salary %></p>
+            <p class="salary">$ <%= convert_number_to_human(profile.last_salary) %></p>
           </div><!-- /profile-salary -->
 
           <div class="profile-details">
