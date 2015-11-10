@@ -49,19 +49,7 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change", value: @profile_params["residence"]%>
-        </div>
-
-      </div><!-- /search-control -->
-
-      <div class="search-control">
-
-        <div class="header-form-search">
-         <label class="control-label" <%= if @changeset.errors[:travel] do %> style="color: red" <% end %> for="changeset[travel]">Disponibilidad para viajar</label>
-        </div>
-
-        <div class="body-form-search">
-          <%= select f, :travel, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change", value: @profile_params["travel"] %>
+          <%= select f, :contract_schema, Peopleware.Catalog.contractings, class: "form-control btn-xs search-control-change", value: @profile_params["contract_schema"]%>
         </div>
 
       </div><!-- /search-control -->
@@ -90,11 +78,14 @@
           <%= range_input f, :last_salary, class: "search-control-change range-salary", value: @profile_params["last_salary"], min: "0", max: "100000", id: "range-salary", oninput: "updateTextMaxSalary();", onload: "updateTextMaxSalary();"%>
         </div>
 
+        <input type="hidden" name="profile[residence]" value="">
+        <input type="hidden" name="profile[travel]" value="">
+
       </div><!-- /search-control -->
 
   <div class="clearfix"></div>
 
-<% end %>
+    <% end %>
 
 
     </div>
