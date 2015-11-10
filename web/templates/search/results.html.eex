@@ -49,18 +49,6 @@
         </div>
 
         <div class="body-form-search">
-          <%= select f, :contract_schema, Peopleware.Catalog.search_contractings, class: "form-control btn-xs search-control-change", value: @profile_params["contract_schema"]%>
-        </div>
-
-      </div><!-- /search-control -->
-
-      <div class="search-control">
-
-        <div class="header-form-search">
-         <label class="control-label" <%= if @changeset.errors[:residence] do %> style="color: red" <% end %> for="changeset[residence]">Cambiar de Residencia</label>
-        </div>
-
-        <div class="body-form-search">
           <%= select f, :residence, Peopleware.Catalog.search_option_levels, class: "form-control btn-xs search-control-change", value: @profile_params["residence"]%>
         </div>
 
