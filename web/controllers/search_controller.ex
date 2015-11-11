@@ -37,8 +37,10 @@ defmodule Peopleware.SearchController do
       last_salary = change_salary_to_integer(profile_params)
       profile_params = Map.put(profile_params, "last_salary", last_salary)
 
+      token = get_csrf_token
+
       profiles = Profile.search(@page, @count, profile_params)
-      render conn, "results.html", profiles: profiles.entries, changeset: changeset, page: profiles, profile_params: profile_params
+      render conn, "results.html", profiles: profiles.entries, changeset: changeset, page: profiles, profile_params: profile_params, token: token
     else
       redirect(conn, to: profile_path(conn, :index))
     end

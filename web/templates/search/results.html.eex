@@ -4,16 +4,20 @@
 
     <div class="list-result-filter-container">
 
-      <%= form_for @changeset, search_path(@conn, :search) , [multipart: true, id: "search_form"], fn f -> %>
+      <form action="/search" multipart="true", id="search_form" method="post">
+
 
       <div class="search-control">
 
         <div class="header-form-search">
-          <label class="control-label" <%= if @changeset.errors[:keywords] do %> style="color: red" <% end %> for="changeset[keywords]">Palabras de búsqueda</label>
+          <label class="control-label" for="changeset[keywords]">Palabras de búsqueda</label>
         </div>
 
         <div class="body-form-search">
-          <%= text_input f, :keywords, class: "form-control search-control-change", placeholder: "Poner palabras separadas por comas.", value: @profile_params["keywords"] %>
+          <input type="text" name="profile[keywords]"
+            class= "form-control search-control-change"
+            placeholder="Poner palabras separadas por comas."
+            value=<%= @profile_params["keywords"] %> >
         </div>
 
       </div><!-- /search-control -->
@@ -21,11 +25,14 @@
       <div class="search-control">
 
         <div class="header-form-search">
-          <label class="control-label" for="changeset[name]">Perfil </label>
+          <label class="control-label" for="profile[name]">Perfil </label>
         </div>
 
         <div class="body-form-search">
-          <%= select f, :role, Peopleware.Catalog.search_roles, class: "form-control btn-xs search-control-change", value: @profile_params["role"]%>
+          <select name="profile[role]"
+            class="form-control btn-xs search-control-change">
+            <option value=""></option>
+          </select>
         </div>
 
       </div><!-- /search-control -->
@@ -33,11 +40,14 @@
       <div class="search-control">
 
         <div class="header-form-search">
-          <label class="control-label" for="changeset[state]">Estado de Residencia</label>
+          <label class="control-label" for="profile[state]">Estado de Residencia</label>
         </div>
 
         <div class="body-form-search">
-          <%= select f, :state, Peopleware.Catalog.search_states, class: "form-control btn-xs search-control-change", value: @profile_params["state"]%>
+          <select name="profile[state]"
+            class="form-control btn-xs search-control-change">
+            <option value=""></option>
+          </select>
         </div>
 
       </div><!-- /search-control -->
@@ -45,11 +55,14 @@
       <div class="search-control">
 
         <div class="header-form-search">
-         <label class="control-label" <%= if @changeset.errors[:contract_schema] do %> style="color: red" <% end %> for="changeset[contract_schema]">Esquema de Contratación</label>
+         <label class="control-label" for="profile[contract_schema]">Esquema de Contratación</label>
         </div>
 
         <div class="body-form-search">
-          <%= select f, :contract_schema, Peopleware.Catalog.contractings, class: "form-control btn-xs search-control-change", value: @profile_params["contract_schema"]%>
+          <select name="profile[contract_schema]"
+            class="form-control btn-xs search-control-change">
+            <option value=""></option>
+          </select>
         </div>
 
       </div><!-- /search-control -->
@@ -57,11 +70,14 @@
       <div class="search-control">
 
         <div class="header-form-search">
-         <label class="control-label" <%= if @changeset.errors[:english_level] do %> style="color: red" <% end %> for="changeset[english_level]">Nivel de Ingles</label>
+         <label class="control-label" for="profile[english_level]">Nivel de Ingles</label>
         </div>
 
         <div class="body-form-search">
-          <%= select f, :english_level, Peopleware.Catalog.search_idiom_levels, class: "form-control btn-xs search-control-change", value: @profile_params["english_level"]%>
+          <select name="profile[english_level]"
+            class="form-control btn-xs search-control-change">
+            <option value=""></option>
+          </select>
         </div>
 
       </div><!-- /search-control -->
@@ -69,23 +85,31 @@
       <div class="search-control">
 
         <div class="header-form-search">
-         <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[last_salary]">Salario máximo</label>
+         <label class="control-label" for="profile[last_salary]">Salario máximo</label>
         </div>
 
         <div class="body-form-search">
           <p><span class="min">$ 0</span> - <span class="max">$ 10000</span></p>
 
-          <%= range_input f, :last_salary, class: "search-control-change range-salary", value: @profile_params["last_salary"], min: "0", max: "100000", id: "range-salary", oninput: "updateTextMaxSalary();", onload: "updateTextMaxSalary();"%>
+          <input
+            name="profile[last_salary]"
+            type="range"
+            class="search-control-change range-salary"
+            min="0" max="100000" id="range-salary" oninput="updateTextMaxSalary();"
+            onload="updateTextMaxSalary();"
+            value=<%= @profile_params["last_salary"] %>>
         </div>
 
         <input type="hidden" name="profile[residence]" value="">
         <input type="hidden" name="profile[travel]" value="">
+        <input type="hidden" name="_csrf_token" value="<%= @token %>">
+        <input name="_utf8" type="hidden" value="✓">
 
       </div><!-- /search-control -->
 
   <div class="clearfix"></div>
 
-    <% end %>
+    </form>
 
 
     </div>
