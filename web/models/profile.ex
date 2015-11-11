@@ -185,8 +185,16 @@ defmodule Peopleware.Profile  do
 
   def has_english_level(query, %{"english_level" => english_level}) do
     if english_level != "" do
-      from p in query,
-      where: p.english_level == ^english_level
+
+      if is_map(english_level) do
+        {_, english_level} = Enum.unzip(english_level)
+
+        from p in query,
+        where: p.english_level in ^english_level
+      else
+        from p in query,
+        where: p.english_level == ^english_level
+      end
     else
       query
     end

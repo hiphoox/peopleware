@@ -74,10 +74,28 @@
         </div>
 
         <div class="body-form-search">
-          <select name="profile[english_level]"
-            class="form-control btn-xs search-control-change">
-            <option value=""></option>
-          </select>
+          <input type="hidden" name="profile[english_level]" value="">
+          <input type="checkbox"
+            value="No"
+            name="profile[english_level][1]"
+            class="search-control-change"
+            <%= if is_checked?(@profile_params, "No", "1") do %> checked <%= end %>> No <br>
+          <input type="checkbox"
+            value="Basico"
+            name="profile[english_level][2]"
+            class="search-control-change"
+            <%= if is_checked?(@profile_params, "Basico", "2") do %> checked <%= end %>> Basico <br>
+          <input type="checkbox"
+            value="Intermedio"
+            name="profile[english_level][3]"
+            class="search-control-change"
+            <%= if is_checked?(@profile_params, "Intermedio", "3") do %> checked <%= end %>> Intermedio <br>
+          <input type="checkbox"
+            value="Avanzado"
+            name="profile[english_level][4]"
+            class="search-control-change"
+            <%= if is_checked?(@profile_params, "Avanzado", "4")do %> checked <%= end %>> Avanzado <br>
+
         </div>
 
       </div><!-- /search-control -->
