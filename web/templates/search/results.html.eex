@@ -79,22 +79,22 @@
             value="No"
             name="profile[english_level][1]"
             class="search-control-change"
-            <%= if is_checked?(@profile_params, "No", "1") do %> checked <%= end %>> No <br>
+            <%= if is_checked?(@profile_params, "1", "No") do %> checked <%= end %>> No <br>
           <input type="checkbox"
             value="Basico"
             name="profile[english_level][2]"
             class="search-control-change"
-            <%= if is_checked?(@profile_params, "Basico", "2") do %> checked <%= end %>> Basico <br>
+            <%= if is_checked?(@profile_params, "2", "Basico") do %> checked <%= end %>> Basico <br>
           <input type="checkbox"
             value="Intermedio"
             name="profile[english_level][3]"
             class="search-control-change"
-            <%= if is_checked?(@profile_params, "Intermedio", "3") do %> checked <%= end %>> Intermedio <br>
+            <%= if is_checked?(@profile_params, "3", "Intermedio") do %> checked <%= end %>> Intermedio <br>
           <input type="checkbox"
             value="Avanzado"
             name="profile[english_level][4]"
             class="search-control-change"
-            <%= if is_checked?(@profile_params, "Avanzado", "4")do %> checked <%= end %>> Avanzado <br>
+            <%= if is_checked?(@profile_params, "4", "Avanzado")do %> checked <%= end %>> Avanzado <br>
 
         </div>
 
