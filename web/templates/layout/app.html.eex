@@ -51,7 +51,7 @@
     </header>
 
     <h2 class="register">
-      <%= if get_path(@conn) == "/search" do %>
+      <%= if get_path(@conn) == "/search" or get_path(@conn) == "/search/results" do %>
         Búsqueda
       <%= else %>
         Registro
@@ -70,10 +70,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/jquery.phoenix.min.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery.mask.js") %>"></script>
     <script>require("web/static/js/app")</script>
 
     <script type="text/javascript">
+
+      $(document).ready(function(){
+        $('.phone').mask('(000) 000-0000');
+      });
+
+
       function isNumberKey(evt){
         var charCode = (evt.which) ? evt.which : event.keyCode
 

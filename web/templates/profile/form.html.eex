@@ -52,12 +52,12 @@
 
   <div class="form-group col-sm-2">
     <label class="control-label" <%= if @changeset.errors[:cel] do %> style="color: red" <% end %> for="changeset[cel]">Celular</label>
-    <%= text_input f, :cel, class: "form-control form-number", placeholder: "(52)5544332211", onkeypress: "return isNumberKey(event)"%>
+    <%= text_input f, :cel, class: "form-control form-number phone", placeholder: "(555) 555-5555", onkeypress: "return isNumberKey(event)"%>
   </div>
 
   <div class="form-group col-sm-2">
     <label class="control-label" <%= if @changeset.errors[:tel] do %> style="color: red" <% end %> for="changeset[tel]">Teléfono de Casa</label>
-    <%= text_input f, :tel, class: "form-control", placeholder: "(52)5544332211", onkeypress: "return isNumberKey(event)"%>
+    <%= text_input f, :tel, class: "form-control form-number phone", placeholder: "(555) 555-5555", onkeypress: "return isNumberKey(event)"%>
   </div>
 
   <div class="form-group col-sm-4">
