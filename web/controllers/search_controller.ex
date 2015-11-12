@@ -40,11 +40,17 @@ defmodule Peopleware.SearchController do
 
       profiles = Profile.search(@page, @count, profile_params)
 
+      # If the post come from the index search, we save the fields in
+      # the session, if not, then we get the fields from the session
       if profile_params["is_first"] == "true" do
         english_fields = get_english_fields(profiles.entries)
+        role_fields = get_role_fields(profiles.entries)
+
         conn = put_session(conn, :english_fields, english_fields)
+        conn = put_session(conn, :role_fields, role_fields)
       else
         english_fields = get_session(conn, :english_fields)
+        role_fields = get_session(conn, :role_fields)
       end
 
 
@@ -53,12 +59,15 @@ defmodule Peopleware.SearchController do
         page: profiles,
         profile_params: profile_params,
         token: token,
-        english_fields: english_fields
+        english_fields: english_fields,
+        role_fields: role_fields
     else
       redirect(conn, to: profile_path(conn, :index))
     end
 
   end
+
+  # Change the salary that comes in string format to integer
 
   defp change_salary_to_integer(%{"last_salary" => last_salary}) do
     if last_salary != "" do
@@ -70,12 +79,25 @@ defmodule Peopleware.SearchController do
     end
   end
 
+  # Methods to get fields
+
   defp get_english_fields(profile_entries) do
 
     fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
 
        %Peopleware.Profile{english_level: english_level} = x
        Map.put(acc, english_level , english_level)
+    end)
+
+    fields
+  end
+
+  defp get_role_fields(profile_entries) do
+
+    fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
+
+       %Peopleware.Profile{role: role} = x
+       Map.put(acc, role , role)
     end)
 
     fields

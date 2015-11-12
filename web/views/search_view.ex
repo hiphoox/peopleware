@@ -34,12 +34,12 @@ defmodule Peopleware.SearchView do
   @doc """
   Check if the checkbox field is checked or not
   """
-  def is_checked?(%{"english_level" => english_level}, key, value) do
+  def is_checked?(map, key, value) do
     # Check if is a map, because when the form sends a empty value
     # is just a string with ""
-    if is_map(english_level) do
+    if is_map(map) do
       # Extract the value from the key
-      val = Map.get(english_level, key)
+      val = Map.get(map, key)
 
       if val == value do
         true

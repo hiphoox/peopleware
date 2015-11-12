@@ -140,8 +140,22 @@ defmodule Peopleware.Profile  do
 
   def has_role(query, %{"role" => role}) do
     if role != "" do
-      from p in query,
-      where: p.role == ^role
+
+      # We need to check if the data is a map or just string
+      if is_map(role) do
+        # If is a map, then we need to get the values from keys and
+        # create a list
+        {_, role} = Enum.unzip(role)
+
+        # Query from list
+        from p in query,
+        where: p.role in ^role
+      else
+        # If is a value then is a simple equal query
+        from p in query,
+        where: p.role == ^role
+      end
+
     else
       query
     end
@@ -186,12 +200,17 @@ defmodule Peopleware.Profile  do
   def has_english_level(query, %{"english_level" => english_level}) do
     if english_level != "" do
 
+      # We need to check if the data is a map or just string
       if is_map(english_level) do
+        # If is a map, then we need to get the values from keys and
+        # create a list
         {_, english_level} = Enum.unzip(english_level)
 
+        # Query from list
         from p in query,
         where: p.english_level in ^english_level
       else
+        # If is a value then is a simple equal query
         from p in query,
         where: p.english_level == ^english_level
       end
