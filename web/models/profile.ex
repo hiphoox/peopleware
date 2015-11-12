@@ -163,8 +163,20 @@ defmodule Peopleware.Profile  do
 
   def has_state(query, %{"state" => state}) do
     if state != "" do
-      from p in query,
-      where: p.state == ^state
+      # We need to check if the data is a map or just string
+      if is_map(state) do
+        # If is a map, then we need to get the values from keys and
+        # create a list
+        {_, state} = Enum.unzip(state)
+
+        # Query from list
+        from p in query,
+        where: p.state in ^state
+      else
+        # If is a value then is a simple equal query
+        from p in query,
+        where: p.state == ^state
+      end
     else
       query
     end

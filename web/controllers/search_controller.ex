@@ -45,12 +45,15 @@ defmodule Peopleware.SearchController do
       if profile_params["is_first"] == "true" do
         english_fields = get_english_fields(profiles.entries)
         role_fields = get_role_fields(profiles.entries)
+        state_fields = get_state_fields(profiles.entries)
 
         conn = put_session(conn, :english_fields, english_fields)
         conn = put_session(conn, :role_fields, role_fields)
+        conn = put_session(conn, :state_fields, state_fields)
       else
         english_fields = get_session(conn, :english_fields)
         role_fields = get_session(conn, :role_fields)
+        state_fields = get_session(conn, :state_fields)
       end
 
 
@@ -60,7 +63,8 @@ defmodule Peopleware.SearchController do
         profile_params: profile_params,
         token: token,
         english_fields: english_fields,
-        role_fields: role_fields
+        role_fields: role_fields,
+        state_fields: state_fields
     else
       redirect(conn, to: profile_path(conn, :index))
     end
@@ -98,6 +102,17 @@ defmodule Peopleware.SearchController do
 
        %Peopleware.Profile{role: role} = x
        Map.put(acc, role , role)
+    end)
+
+    fields
+  end
+
+  defp get_state_fields(profile_entries) do
+
+    fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
+
+       %Peopleware.Profile{state: state} = x
+       Map.put(acc, state , state)
     end)
 
     fields

@@ -50,11 +50,14 @@
         </div>
 
         <div class="body-form-search">
-          <select name="profile[state]"
-            class="form-control btn-xs search-control-change">
-            <option value=""></option>
-          </select>
-        </div>
+          <input type="hidden" name="profile[state]" value="">
+          <%= for key <- get_keys @state_fields do %>
+            <input type="checkbox"
+            value="<%= key %>"
+            name="profile[state][<%= key %>]"
+            class="search-control-change"
+            <%= if is_checked?(@profile_params["state"], key, key) do %> checked <%= end %>> <%= key %> <br>
+          <%= end %>        </div>
 
       </div><!-- /search-control -->
 
