@@ -184,8 +184,20 @@ defmodule Peopleware.Profile  do
 
   def has_contract_schema(query, %{"contract_schema" => contract_schema}) do
     if contract_schema != "" do
-      from p in query,
-      where: p.contract_schema == ^contract_schema
+      # We need to check if the data is a map or just string
+      if is_map(contract_schema) do
+        # If is a map, then we need to get the values from keys and
+        # create a list
+        {_, contract_schema} = Enum.unzip(contract_schema)
+
+        # Query from list
+        from p in query,
+        where: p.contract_schema in ^contract_schema
+      else
+        # If is a value then is a simple equal query
+        from p in query,
+        where: p.contract_schema == ^contract_schema
+      end
     else
       query
     end

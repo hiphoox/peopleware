@@ -46,14 +46,17 @@ defmodule Peopleware.SearchController do
         english_fields = get_english_fields(profiles.entries)
         role_fields = get_role_fields(profiles.entries)
         state_fields = get_state_fields(profiles.entries)
+        schema_fields = get_schema_fields(profiles.entries)
 
         conn = put_session(conn, :english_fields, english_fields)
         conn = put_session(conn, :role_fields, role_fields)
         conn = put_session(conn, :state_fields, state_fields)
+        conn = put_session(conn, :schema_fields, schema_fields)
       else
         english_fields = get_session(conn, :english_fields)
         role_fields = get_session(conn, :role_fields)
         state_fields = get_session(conn, :state_fields)
+        schema_fields = get_session(conn, :schema_fields)
       end
 
 
@@ -64,7 +67,8 @@ defmodule Peopleware.SearchController do
         token: token,
         english_fields: english_fields,
         role_fields: role_fields,
-        state_fields: state_fields
+        state_fields: state_fields,
+        schema_fields: schema_fields
     else
       redirect(conn, to: profile_path(conn, :index))
     end
@@ -113,6 +117,17 @@ defmodule Peopleware.SearchController do
 
        %Peopleware.Profile{state: state} = x
        Map.put(acc, state , state)
+    end)
+
+    fields
+  end
+
+  defp get_schema_fields(profile_entries) do
+
+    fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
+
+       %Peopleware.Profile{contract_schema: contract_schema} = x
+       Map.put(acc, contract_schema , contract_schema)
     end)
 
     fields
