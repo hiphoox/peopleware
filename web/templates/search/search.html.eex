@@ -46,7 +46,7 @@
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[english_level]">Salario máximo</label>
-    <%= text_input f, :last_salary, class: "form-control btn-xs"%>
+    <%= text_input f, :last_salary, class: "form-control btn-xs last_salary"%>
   </div>
 
   <input type="hidden" name="profile[is_first]" value="true">

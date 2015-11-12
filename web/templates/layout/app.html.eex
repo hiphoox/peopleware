@@ -77,81 +77,28 @@
 
       $(document).ready(function(){
         $('.phone').mask('(000) 000-0000');
+        $('.last_salary').mask('00,000');
       });
 
+      $('.profile-result').click(function(){
+        $(this).children('.profile-resume').fadeToggle();
+      });
 
-      function isNumberKey(evt){
-        var charCode = (evt.which) ? evt.which : event.keyCode
-
-        if((charCode == 40) || (charCode == 41) || (charCode == 45)) return true;
-
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-      }
-
-      function isSalary(evt){
-        var charCode = (evt.which) ? evt.which : event.keyCode
-
-        if((charCode == 44) || (charCode == 46)) return true;
-
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-
-        return true;
-      }
-
-      $('#profile_last_salary').keyup(function (event) {
-        // skip for arrow keys
-        if (event.which >= 37 && event.which <= 40) {
-            event.preventDefault();
-        }
-
-        var currentVal = $(this).val();
-        var testDecimal = testDecimals(currentVal);
-        if (testDecimal.length > 1) {
-            console.log("You cannot enter more than one decimal point");
-            currentVal = currentVal.slice(0, -1);
-        }
-        $(this).val(replaceCommas(currentVal));
-    });
-
-    function testDecimals(currentVal) {
-        var count;
-        currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-        return count;
-    }
-
-    function replaceCommas(yourNumber) {
-        var components = yourNumber.toString().split(".");
-        if (components.length === 1)
-            components[0] = yourNumber;
-        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        if (components.length === 2)
-            components[1] = components[1].replace(/\D/g, "");
-        return components.join(".");
-    }
-
-
-    $('.profile-result').click(function(){
-      $(this).children('.profile-resume').fadeToggle();
-    });
-
-    $(function() {
-       $(".search-control-change").change(function() {
-          $("#search_form").submit();
+      $(function() {
+         $(".search-control-change").change(function() {
+            $("#search_form").submit();
+         });
        });
-     });
 
-    $(function() {
-       $(".range-salary").ready(function() {
-          updateTextMaxSalary();
+      $(function() {
+         $(".range-salary").ready(function() {
+            updateTextMaxSalary();
+         });
        });
-     });
 
-    function updateTextMaxSalary() {
-      var val = document.getElementById('range-salary').value;
-      $('.max').text(val);
+      function updateTextMaxSalary() {
+        var val = document.getElementById('range-salary').value;
+        $('.max').text(val);
     }
     </script>
   </body>

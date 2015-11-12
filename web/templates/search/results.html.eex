@@ -170,8 +170,8 @@
 
             <div class="contact-info">
               <span>Correo:</span> <%= profile.email %>
-              <%= if profile.tel != nil do %><span>Teléfono:</span> <%= profile.tel %><%= end %>
-              <%= if profile.cel != nil do %><span>Celular:</span> <%= profile.cel %><%= end %>
+              <%= if profile.tel != nil do %><span>Tel:</span> <%= profile.tel %><%= end %>
+              <%= if profile.cel != nil do %><span>Cel:</span> <%= profile.cel %><%= end %>
             </div>
 
             <div class="job-info">
