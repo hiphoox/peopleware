@@ -57,8 +57,9 @@ defmodule Peopleware.Router do
     pipe_through :browser
     pipe_through :auth
 
-    get "/",                SearchController, :index
-    post "/",               SearchController, :search
+    get "/",                    SearchController, :index
+    post "/results",            SearchController, :search
+    get "/results",             SearchController, :search
   end
 
   # Other scopes may use custom stacks.
