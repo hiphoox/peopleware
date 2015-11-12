@@ -202,7 +202,7 @@
 
         <%= if profile.resume != nil do %>
           <div class="profile-resume">
-            <%= profile.resume %>
+            <%= raw profile.resume %>
           </div> <!-- /profile-resume -->
         <%= else %>
           <div class="profile-resume">

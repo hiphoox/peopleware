@@ -9,6 +9,8 @@
 
     <title>Captura de Curriculums</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
   </head>
 
   <body>
