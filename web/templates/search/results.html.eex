@@ -78,7 +78,7 @@
         <div class="body-form-search">
           <input type="hidden" name="profile[english_level]" value="">
 
-          <%= for key <- get_keys @fields do %>
+          <%= for key <- get_keys @english_fields do %>
             <input type="checkbox"
             value="<%= key %>"
             name="profile[english_level][<%= key %>]"
