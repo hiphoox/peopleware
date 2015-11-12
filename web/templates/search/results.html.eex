@@ -4,6 +4,8 @@
 
     <div class="list-result-filter-container">
 
+
+
       <form action="/search" multipart="true", id="search_form" method="post">
 
 
@@ -25,7 +27,7 @@
       <div class="search-control">
 
         <div class="header-form-search">
-          <label class="control-label" for="profile[name]">Perfil </label>
+          <label class="control-label" for="profile[role]">Perfil </label>
         </div>
 
         <div class="body-form-search">
@@ -75,26 +77,14 @@
 
         <div class="body-form-search">
           <input type="hidden" name="profile[english_level]" value="">
-          <input type="checkbox"
-            value="No"
-            name="profile[english_level][1]"
+
+          <%= for key <- get_keys @fields do %>
+            <input type="checkbox"
+            value="<%= key %>"
+            name="profile[english_level][<%= key %>]"
             class="search-control-change"
-            <%= if is_checked?(@profile_params, "1", "No") do %> checked <%= end %>> No <br>
-          <input type="checkbox"
-            value="Basico"
-            name="profile[english_level][2]"
-            class="search-control-change"
-            <%= if is_checked?(@profile_params, "2", "Basico") do %> checked <%= end %>> Basico <br>
-          <input type="checkbox"
-            value="Intermedio"
-            name="profile[english_level][3]"
-            class="search-control-change"
-            <%= if is_checked?(@profile_params, "3", "Intermedio") do %> checked <%= end %>> Intermedio <br>
-          <input type="checkbox"
-            value="Avanzado"
-            name="profile[english_level][4]"
-            class="search-control-change"
-            <%= if is_checked?(@profile_params, "4", "Avanzado")do %> checked <%= end %>> Avanzado <br>
+            <%= if is_checked?(@profile_params, key, key) do %> checked <%= end %>> <%= key %> <br>
+          <%= end %>
 
         </div>
 
@@ -122,6 +112,7 @@
         <input type="hidden" name="profile[travel]" value="">
         <input type="hidden" name="_csrf_token" value="<%= @token %>">
         <input name="_utf8" type="hidden" value="✓">
+        <input type="hidden" name="profile[is_first]" value="false">
 
       </div><!-- /search-control -->
 
