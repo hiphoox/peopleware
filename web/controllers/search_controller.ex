@@ -5,7 +5,7 @@ defmodule Peopleware.SearchController do
   alias Peopleware.User
 
   @page 1
-  @count 2
+  @count 10
 
   plug :scrub_params, "profile" when action in [:create, :update]
 
@@ -111,6 +111,9 @@ defmodule Peopleware.SearchController do
 
   end
 
+  def search(conn, _params) do
+    redirect(conn, to: search_path(conn, :index))
+  end
   # Change the salary that comes in string format to integer
 
   defp change_salary_to_integer(%{"last_salary" => last_salary}) do

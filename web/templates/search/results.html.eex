@@ -212,13 +212,14 @@
 
       </div><!-- /profile-result -->
 
+      <%= pagination_links %Scrivener.Page {total_pages: @page.total_pages, page_number: @page.page_number} %>
+
       <% end %>
 
     <%= else %>
       <h2>No hay CV con los criterios seleccionados</h2>
     <%= end %>
 
-    <%= pagination_links %Scrivener.Page {total_pages: @page.total_pages, page_number: @page.page_number} %>
 
 
     </div><!-- /result-wrapper -->
