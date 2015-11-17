@@ -34,11 +34,10 @@
           <div class="collapse navbar-collapse navbar-collapse-1">
             <ul class="nav navbar-nav">
 
-            <li>
-              <p>Contáctanos: contacto@recluit.com, (55) 5393-4085, (55) 6840-2901, (55) 7030-5164</p>
-            </li>
+              <li>
+                <p>Contáctanos: contacto@recluit.com, (55) 5393-4085, (55) 6840-2901, (55) 7030-5164</p>
+              </li>
 
-            </li>
               <%= if Peopleware.LoginController.get_userid(@conn) do %>
                 <li><a href="/logout">Logout</a></li>
               <%= end %>

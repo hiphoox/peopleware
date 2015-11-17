@@ -169,7 +169,7 @@
             <h2><a href="javascript: void(0);" class="link-profile-name"><%= profile.name %> <%= profile.last_name %> <%= profile.second_surname %></a></h2>
 
             <div class="contact-info">
-              <span>Correo:</span> <%= profile.email %>
+              <span>Correo:</span> <a href="mailto:<%= profile.email %>"> <%= profile.email %></a>
               <%= if profile.tel != nil do %><span>Tel:</span> <%= profile.tel %><%= end %>
               <%= if profile.cel != nil do %><span>Cel:</span> <%= profile.cel %><%= end %>
             </div>
