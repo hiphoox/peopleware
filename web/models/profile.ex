@@ -22,6 +22,7 @@ defmodule Peopleware.Profile  do
     field       :travel,          :string
     field       :english_level,   :string
     field       :role,            :string
+    field       :created_by,      :string
     timestamps
   end
 
