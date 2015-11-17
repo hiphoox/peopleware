@@ -260,7 +260,7 @@ defmodule Peopleware.Profile  do
   end
 
   def idiom_levels do
-    ["No", "Basico", "intermedio", "avanzado"]
+    ["No", "Basico", "Intermedio", "Avanzado"]
   end
 
   def option_levels do
