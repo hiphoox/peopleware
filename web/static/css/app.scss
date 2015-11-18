@@ -478,6 +478,15 @@ input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
 
+.button-search {
+  margin: 150px auto 0;
+  height: 200px;
+  width: 450px;
+  font-size: 30px;
+  padding: 78px 50px;
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
 
   .navbar {

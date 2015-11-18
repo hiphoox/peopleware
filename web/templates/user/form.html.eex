@@ -72,7 +72,7 @@
 
   <div class="form-group col-sm-4">
     <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[last_salary]">Último salario libre de impuestos *</label>
-    <%= text_input f, :last_salary, class: "form-control last_salary", placeholder: "Último salario libre de impuestos percibido en la empresa anterior" %>
+    <%= text_input f, :last_salary, class: "form-control last_salary", placeholder: "Último salario libre de impuestos percibido en la empresa anterior", value: "0" %>
   </div>
 
   <div class="form-group col-sm-4">
