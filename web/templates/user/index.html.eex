@@ -1,39 +1,19 @@
-<h3>Lista de Usuarios</h3>
+<div class="row">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nombre(s)</th>
-      <th>Apellido Paterno</th>
-      <th>Apellido Materno</th>
-      <th>Correo</th>
-      <th>Confirmado</th>
-      <th>Staff</th>
-      <th>Activo</th>
-      <th>Superuser</th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="col-md-12 row-new-cv">
 
-  <tbody>
-  <%= for user <- @users do %>
-  <tr>
-    <td> <%= link user.name, to: user_path(@conn, :show, user) %> </td>
-    <td> <%= user.last_name %> </td>
-    <td> <%= user.second_surname %> </td>
-    <td> <%= user.email %> </td>
-    <td> <%= user.confirmed %> </td>
-    <td> <%= user.is_staff %> </td>
-    <td> <%= user.is_active %> </td>
-    <td> <%= user.is_superuser %> </td>
+  <div class="col-md-6">
 
-    <td class="text-right">
-      <%= link "Editar", to: user_path(@conn, :edit, user), class: "btn btn-info btn-xs" %>
-      <%= link "Borrar", to: user_path(@conn, :delete, user), method: :delete, class: "btn btn-danger btn-xs" %>
-    </td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
+  </div>
 
-<%= link "Agregar usuario", to: user_path(@conn, :new), class: "btn btn-primary btn-xs" %>
+  <div class="col-md-6">
+
+  </div>
+
+    <div class="form-group box-button-cv">
+      <%= link "Agregar usuario", to: user_path(@conn, :new), class: "button button-login" %>
+    </div>
+
+  </div>
+
+</div>

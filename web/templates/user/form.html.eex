@@ -1,72 +1,108 @@
-<%= form_for @changeset, @action, [class: "col-sm-12"], fn f -> %>
+<%= form_for @changeset, @action, [class: "col-sm-12", multipart: true], fn f -> %>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group box-button-cv">
+    <%= submit "Guardar", class: "button button-login" %>
+  </div>
+
+  <div class="col-xs-offset-0 form-group col-sm-3">
+        <label class="control-label" for="changeset[name]">Perfil </label>
+        <%= select f, :role, Peopleware.Catalog.roles, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-4" >
+    <label class="control-label" for="changeset[keywords]"> CV </label>
+    <%= if @changeset.model.cv_file_name != nil do %>
+    <td> <%= link @changeset.model.cv_file_name, to: "/profiles/cv/" <> to_string(@changeset.model.id), target: "_blank" %> </td>
+    <%= else %>
+    <td>  </td>
+    <%= end %>
+    <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
+  </div>
+
   <%= if @changeset.errors != [] do %>
-    <div class="alert alert-danger" role="alert">
-    <%= for {_, error} <- @changeset.errors do %>
-      <p> <%= error %> </p>
+    <div class="alert-cv alert-danger" role="alert">
+    <%= for error <- @changeset.errors do %>
+      <div><%= translate_error(error) %> </div>
     <% end %>
     </div>
+    <br />
   <% end %>
+
+  <div class="clearfix"></div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:name] do %> style="color: red" <% end %> for="changeset[name]">Nombre *</label>
+    <%= text_input f, :name, class: "form-control", autofocus: :autofocus%>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label"> Nombre </label>
-    <%= text_input f, :name, class: "form-control", autofocus: "autofocus" %>
+    <label class="control-label" <%= if @changeset.errors[:last_name] do %> style="color: red" <% end %> for="changeset[last_name]">Apellido Paterno *</label>
+    <%= text_input f, :last_name, class: "form-control"%>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label"> Apellido Paterno </label>
-    <%= text_input f, :last_name, class: "form-control" %>
+    <label class="control-label" for="changeset[second_surname]">Apellido Materno</label>
+    <%= text_input f, :second_surname, class: "form-control"%>
   </div>
 
   <div class="form-group col-sm-4">
-    <label class="control-label"> Apellido Materno </label>
-      <%= text_input f, :second_surname, class: "form-control" %>
-  </div>
-
-  <div class="form-group col-sm-4">
-    <label class="control-label"> Correo </label>
-    <%= text_input f, :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group col-sm-4">
-    <label class="control-label"> Contraseña </label>
-    <%= text_input f, :password, class: "form-control" %>
-  </div>
-
-  <div class="form-group col-sm-4">
-    <label class="control-label"> Confirmar Contraseña </label>
-    <%= text_input f, :password_conf, class: "form-control" %>
-  </div>
-
-  <div class="form-group col-sm-4">
-    <label class="control-label"> Token de Reset </label>
-    <%= text_input f, :reset_token, class: "form-control" %>
+    <label class="control-label" <%= if @changeset.errors[:email] do %> style="color: red" <% end %> for="changeset[email]">Correo electrónico *</label>
+    <%= email_input f, :email, class: "form-control", placeholder: "Correo principal"%>
   </div>
 
   <div class="form-group col-sm-2">
-    <label class="control-label"> Confirmado </label>
-    <%= checkbox f, :confirmed, class: "form-control" %>
+    <label class="control-label" <%= if @changeset.errors[:cel] do %> style="color: red" <% end %> for="changeset[cel]">Celular</label>
+    <%= text_input f, :cel, class: "form-control form-number phone", placeholder: "(555) 555-5555", onkeypress: "return isNumberKey(event)"%>
   </div>
 
   <div class="form-group col-sm-2">
-    <label class="control-label"> Staff </label>
-    <%= checkbox f, :is_staff, class: "form-control" %>
+    <label class="control-label" <%= if @changeset.errors[:tel] do %> style="color: red" <% end %> for="changeset[tel]">Teléfono de Casa</label>
+    <%= text_input f, :tel, class: "form-control form-number phone", placeholder: "(555) 555-5555", onkeypress: "return isNumberKey(event)"%>
   </div>
 
-  <div class="form-group col-sm-2">
-    <label class="control-label"> Activo </label>
-    <%= checkbox f, :is_active, class: "form-control" %>
+  <div class="form-group col-sm-4">
+    <label class="control-label" for="changeset[state]">Estado de Residencia</label>
+    <%= select f, :state, Peopleware.Catalog.states, class: "form-control btn-xs"%>
   </div>
 
-  <div class="form-group col-sm-2">
-    <label class="control-label"> Admin </label>
-    <%= checkbox f, :is_superuser, class: "form-control" %>
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:position] do %> style="color: red" <% end %> for="changeset[position]">Puesto en el último trabajo *</label>
+    <%= text_input f, :position, class: "form-control", placeholder: "Últmo puesto ocupado en la empresa anterior"%>
   </div>
 
-  <div class="form-group col-sm-1">
-    <%= submit "Salvar", class: "form-control btn-primary btn-xs" %>
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:last_salary] do %> style="color: red" <% end %> for="changeset[last_salary]">Último salario libre de impuestos *</label>
+    <%= text_input f, :last_salary, class: "form-control last_salary", placeholder: "Último salario libre de impuestos percibido en la empresa anterior" %>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:contract_schema] do %> style="color: red" <% end %> for="changeset[contract_schema]">Esquema de Contratación *</label>
+    <%= select f, :contract_schema, Peopleware.Catalog.contractings, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:residence] do %> style="color: red" <% end %> for="changeset[residence]">Cambiar de Residencia *</label>
+    <%= select f, :residence, Peopleware.Catalog.option_levels, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:travel] do %> style="color: red" <% end %> for="changeset[travel]">Disponibilidad para viajar *</label>
+    <%= select f, :travel, Peopleware.Catalog.option_levels, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-4">
+    <label class="control-label" <%= if @changeset.errors[:english_level] do %> style="color: red" <% end %> for="changeset[english_level]">Nivel de Ingles *</label>
+    <%= select f, :english_level, Peopleware.Catalog.idiom_levels, class: "form-control btn-xs"%>
+  </div>
+
+  <div class="form-group col-sm-12">
+    <label class="control-label" <%= if @changeset.errors[:keywords] do %> style="color: red" <% end %> for="changeset[keywords]">Palabras de búsqueda (El reclutador puede encontrar mas fácil tu CV a través de estás palabras) *</label>
+    <%= text_input f, :keywords, class: "form-control", placeholder: "Poner palabras separadas por comas, por las cuales quiera que puedan identificarlo: gerente, experto J2EE, etc."%>
+  </div>
+
+  <div class="form-group col-sm-12">
+    <label class="control-label" <%= if @changeset.errors[:resume] do %> style="color: red" <% end %> for="changeset[resume]">Resumen de experiencia profesional (Puedes copiar y pegar todo tu CV si así lo deseas o poner solo un resumen del mismo)</label>
+    <%= textarea f, :resume, class: "form-control", rows: "8", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
   </div>
 
 <% end %>
