@@ -79,18 +79,24 @@ defmodule Peopleware.UserController do
     end
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Repo.get(User, id)
-    changeset = User.changeset(user, user_params)
+  def update(conn, %{"id" => id, "profile" => profile_params}) do
+    profile = Profile.get_by_id(id)
+
+    last_salary = change_salary_to_integer(profile_params)
+    profile_params = Map.put(profile_params, "last_salary", last_salary)
+
+    changeset = Profile.changeset(profile, profile_params)
 
     if changeset.valid? do
-      Repo.update(changeset)
+
+      upload_file_and_save(changeset, profile,
+                           get_file_to_upload(profile_params))
 
       conn
       |> put_flash(:info, "User updated succesfully.")
       |> redirect(to: user_path(conn, :index))
     else
-      render conn, "edit.html", user: user, changeset: changeset
+      render conn, "edit.html", profile: profile, changeset: changeset
     end
   end
 
