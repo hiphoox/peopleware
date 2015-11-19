@@ -66,9 +66,17 @@ defmodule Peopleware.UserController do
   end
 
   def edit(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
-    changeset = User.changeset(user)
-    render conn, "edit.html", user: user, changeset: changeset
+
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+      profile = Repo.get(Profile, id)
+      changeset = Profile.changeset(profile)
+      render conn, "edit.html", profile: profile, changeset: changeset
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

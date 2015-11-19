@@ -157,6 +157,10 @@
               <p class="download-link-cv">No hay CV</p>
             <%= end %>
 
+             <div class="form-group">
+                <%= link "Editar", to: user_path(@conn, :edit, profile), class: "btn btn-primary button-edit" %>
+              </div>
+
         </div><!-- /cv-holder -->
 
         <div class="info-cv-wrapper">
