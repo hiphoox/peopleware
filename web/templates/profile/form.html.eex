@@ -105,4 +105,6 @@
     <%= textarea f, :resume, class: "form-control", rows: "8", cols: "50", placeholder: :"Poner un resumen de su CV en texto libre" %>
   </div>
 
+  <input type="hidden" name="profile[created_by]" value="web">
+
 <% end %>
