@@ -1,6 +1,5 @@
 defmodule Peopleware.SearchController do
   use Peopleware.Web, :controller
-  # require IEx
   alias Peopleware.Profile
   alias Peopleware.User
 
@@ -60,7 +59,6 @@ defmodule Peopleware.SearchController do
         schema_fields = get_session(conn, :schema_fields)
       end
 
-
       render conn, "results.html",
         profiles: profiles.entries,
         page: profiles,
@@ -84,7 +82,6 @@ defmodule Peopleware.SearchController do
     if user.is_staff do
 
       profile_params = get_session(conn, :profile_params)
-
       token = get_csrf_token
 
       profiles = Profile.search(page, @count, profile_params)
@@ -114,8 +111,8 @@ defmodule Peopleware.SearchController do
   def search(conn, _params) do
     redirect(conn, to: search_path(conn, :index))
   end
-  # Change the salary that comes in string format to integer
 
+  # Change the salary that comes in string format to integer
   defp change_salary_to_integer(%{"last_salary" => last_salary}) do
     if last_salary != "" do
       last_salary
@@ -127,11 +124,9 @@ defmodule Peopleware.SearchController do
   end
 
   # Methods to get fields
-
   defp get_english_fields(profile_entries) do
 
     fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
-
        %Peopleware.Profile{english_level: english_level} = x
        Map.put(acc, english_level , english_level)
     end)
@@ -142,7 +137,6 @@ defmodule Peopleware.SearchController do
   defp get_role_fields(profile_entries) do
 
     fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
-
        %Peopleware.Profile{role: role} = x
        Map.put(acc, role , role)
     end)
@@ -153,7 +147,6 @@ defmodule Peopleware.SearchController do
   defp get_state_fields(profile_entries) do
 
     fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
-
        %Peopleware.Profile{state: state} = x
        Map.put(acc, state , state)
     end)
@@ -164,13 +157,11 @@ defmodule Peopleware.SearchController do
   defp get_schema_fields(profile_entries) do
 
     fields = Enum.reduce(profile_entries, %{}, fn (x, acc) ->
-
        %Peopleware.Profile{contract_schema: contract_schema} = x
        Map.put(acc, contract_schema , contract_schema)
     end)
 
     fields
   end
-
 
 end
