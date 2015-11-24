@@ -212,7 +212,7 @@ defmodule Peopleware.ProfileController do
   end
 
   defp change_salary_to_integer(%{"last_salary" => last_salary}) do
-    if last_salary != "" do
+    if last_salary != nil do
       last_salary
       |> String.replace(",", "")
       |> String.to_integer
