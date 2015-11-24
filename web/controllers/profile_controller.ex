@@ -1,6 +1,5 @@
 defmodule Peopleware.ProfileController do
   use Peopleware.Web, :controller
-  # require IEx
   alias Peopleware.Profile
   alias Peopleware.User
 
@@ -10,11 +9,9 @@ defmodule Peopleware.ProfileController do
   It just returns the list of all curriculums
   """
   def index(conn, _params) do
-    # IEx.pry
     user_id = get_session(conn, :user_id)
     user = Repo.get(User, user_id)
     profiles = Profile.get_users_by_type(user)
-    # put_resp_header("Authorization: Token", "token=12345")
     render conn, "index.html", profiles: profiles
   end
 
@@ -24,12 +21,14 @@ defmodule Peopleware.ProfileController do
   def new(conn, _params) do
     user_id = get_session(conn, :user_id)
     user = Repo.get(User, user_id)
-    profile = %Profile{name: user.name,
-                       last_name: user.last_name,
-                       second_surname: user.second_surname,
-                       email: user.email,
-                       user: user,
-                       role: "Desarrollador"}
+    profile = %Profile{
+                name: user.name,
+                last_name: user.last_name,
+                second_surname: user.second_surname,
+                email: user.email,
+                user: user,
+                role: "Desarrollador"}
+
     changeset = Profile.changeset(profile)
     render conn, "new.html", changeset: changeset
   end
@@ -39,7 +38,9 @@ defmodule Peopleware.ProfileController do
   """
   def create(conn, %{"profile" => profile_params}) do
 
+    # Get the last salary in string and converted to integer
     last_salary = change_salary_to_integer(profile_params)
+    # Put the last salary into profile params
     profile_params = Map.put(profile_params, "last_salary", last_salary)
 
     user_id = get_session(conn, :user_id)
@@ -49,11 +50,12 @@ defmodule Peopleware.ProfileController do
       upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
 
+      # Get the path from the tmp file
       path = get_path_file(profile_params)
 
+      # Send a email to recluit to advice that a new user has been created
       Peopleware.Mailer.send_register_email_to_recluit(profile_params, path)
       render conn, "welcome.html"
-      # redirect(conn, to: profile_path(conn, :edit, profile.id))
     else
       render conn, "new.html", changeset: changeset
     end
@@ -73,7 +75,9 @@ defmodule Peopleware.ProfileController do
   def edit(conn, %{"id" => id}) do
     profile = Repo.get(Profile, id)
     changeset = Profile.changeset(profile)
-    render conn, "edit.html", profile: profile, changeset: changeset
+    render conn, "edit.html",
+      profile: profile,
+      changeset: changeset
   end
 
   @doc """
@@ -82,7 +86,9 @@ defmodule Peopleware.ProfileController do
   def update(conn, %{"id" => id, "profile" => profile_params}) do
     profile = Profile.get_by_id(id)
 
+    # Get the last salary in string and converted to integer
     last_salary = change_salary_to_integer(profile_params)
+    # Put the last salary into profile params
     profile_params = Map.put(profile_params, "last_salary", last_salary)
 
     changeset = Profile.changeset(profile, profile_params)
@@ -93,7 +99,6 @@ defmodule Peopleware.ProfileController do
                            get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
 
-      put_flash(conn, :info, "Perfil actualizado satisfactoriamente")
       render conn, "thanks.html"
     else
       render(conn, "edit.html", profile: profile, changeset: changeset)
@@ -131,7 +136,11 @@ defmodule Peopleware.ProfileController do
 
   # Da de alta un CV nuevo con archivo
   defp upload_file_and_save(changeset, nil, file) do
-    changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
+    changeset = Ecto.Changeset.put_change(
+                  changeset,
+                  :cv_file_name,
+                  file.file_name)
+
     {:ok, profile} = Repo.insert(changeset)
     file = %{file | profile_id: profile.id}
     Repo.insert(file)
@@ -145,7 +154,10 @@ defmodule Peopleware.ProfileController do
 
   # Actualiza un CV con archivo
   defp upload_file_and_save(changeset, profile, file) do
-    changeset = Ecto.Changeset.put_change(changeset, :cv_file_name, file.file_name)
+    changeset = Ecto.Changeset.put_change(
+                  changeset,
+                  :cv_file_name,
+                  file.file_name)
 
     if profile.cv_file do #El profile ya tiene un archivo asociado
       cv_file = %{profile.cv_file |
@@ -153,6 +165,7 @@ defmodule Peopleware.ProfileController do
                           file_size:    file.file_size,
                           content_type: file.content_type,
                           content:      file.content}
+
       {:ok, profile} = Repo.transaction(fn ->
         Repo.update(cv_file)
         Repo.update(changeset)
@@ -169,10 +182,19 @@ defmodule Peopleware.ProfileController do
   end
 
   defp get_file_to_upload(%{"cv_file" => file}) do
-    %Plug.Upload{path: path, content_type: content_type, filename: file_name} = file
+    %Plug.Upload{
+      path: path,
+      content_type: content_type,
+      filename: file_name} = file
+
     {:ok, %File.Stat{size: file_size}} = File.stat(path)
     {:ok, content} = File.read(path)
-    %Peopleware.File{file_name: file_name, file_size: file_size, content_type: content_type, content: content}
+
+    %Peopleware.File{
+      file_name: file_name,
+      file_size: file_size,
+      content_type: content_type,
+      content: content}
   end
 
   defp get_file_to_upload(_param) do
@@ -180,7 +202,7 @@ defmodule Peopleware.ProfileController do
   end
 
   defp get_path_file(%{"cv_file" => file}) do
-    %{path: path, content_type: content_type, filename: file_name} = file
+    %{path: path, content_type: _, filename: _} = file
     file_path = path
     file_path
   end

@@ -8,8 +8,10 @@ defmodule Peopleware.LoginController do
 
   @email_error_message "El correo ya se encuentra registrado, favor de registrarse con uno diferente"
 
-  # Check if the user is logged, if true send to profile, if false, send to
-  # sigin, the index template is not used
+  @doc """
+  Check if the user is logged, if true send to profile, if false, send to
+  sigin, the index template is not used
+  """
   def index(conn, _params) do
     user_id = get_session(conn, :user_id)
     if user_id do
@@ -33,7 +35,9 @@ defmodule Peopleware.LoginController do
     render conn, "thanks.html"
   end
 
-  # Create an user and generate a reset token for one use
+  @doc """
+  Create an user and generate a reset token for one use
+  """
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
 
@@ -90,7 +94,9 @@ defmodule Peopleware.LoginController do
 
   end
 
-  # When the user is logout from the site, is redirected to recluit main page
+  @doc """
+  When the user is logout from the site, is redirected to recluit main page
+  """
   def logout(conn, _params) do
     conn = put_session(conn, :user_id, nil)
     redirect(conn, external: "http://www.recluit.com")
