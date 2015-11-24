@@ -15,8 +15,8 @@ defmodule Peopleware.Profile  do
     field       :email,           :string
     field       :cel,             :string
     field       :tel,             :string
-    field       :state,           :string   # Lista de estados
-    field       :contract_schema, :string   #nómina, mixto, honorarios, facturación, asimilables a salarios, no estoy seguro
+    field       :state,           :string
+    field       :contract_schema, :string
     field       :cv_file_name,    :string
     field       :residence,       :string
     field       :travel,          :string
@@ -32,7 +32,6 @@ defmodule Peopleware.Profile  do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    # |> update_change(:email, &String.downcase/1)
     |> validate_format(:email, ~r/@/, message: "Formato Inválido")
     |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
     |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
@@ -141,7 +140,6 @@ defmodule Peopleware.Profile  do
 
   def has_role(query, %{"role" => role}) do
     if role != "" do
-
       # We need to check if the data is a map or just string
       if is_map(role) do
         # If is a map, then we need to get the values from keys and
@@ -257,7 +255,12 @@ defmodule Peopleware.Profile  do
   # Catalogs
   #####################
   def contractings do
-    ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
+    ["Nómina",
+     "Mixto",
+     "Honorarios",
+     "Facturación",
+     "Asimilables a asalariados",
+     "No estoy seguro"]
   end
 
   def idiom_levels do

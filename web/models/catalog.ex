@@ -3,7 +3,7 @@ defmodule Peopleware.Catalog do
   # Catalogs
   #####################
 
-  # For searching we need to set the empty string as the default value 
+  # For searching we need to set the empty string as the default value
   def search_contractings, do: [""| contractings]
   def search_idiom_levels, do: [""| idiom_levels]
   def search_option_levels, do: [""| option_levels]
@@ -11,11 +11,16 @@ defmodule Peopleware.Catalog do
   def search_roles, do: [""| roles]
 
   def contractings do
-    ["nómina", "mixto", "honorarios", "facturación", "asimilables a asalariados", "no estoy seguro"]
+    ["Nómina",
+     "Mixto",
+     "Honorarios",
+     "Facturación",
+     "Asimilables a asalariados",
+     "No estoy seguro"]
   end
 
   def idiom_levels do
-    ["No", "Basico", "intermedio", "avanzado"]
+    ["No", "Basico", "Intermedio", "Avanzado"]
   end
 
   def option_levels do

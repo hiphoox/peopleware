@@ -167,7 +167,7 @@ defmodule Peopleware.UserController do
   end
 
   defp get_path_file(%{"cv_file" => file}) do
-    %{path: path, content_type: content_type, filename: file_name} = file
+    %{path: path, content_type: _, filename: _} = file
     file_path = path
     file_path
   end
@@ -177,7 +177,7 @@ defmodule Peopleware.UserController do
   end
 
   defp change_salary_to_integer(%{"last_salary" => last_salary}) do
-    if last_salary != "" do
+    if last_salary != nil do
       last_salary
       |> String.replace(",", "")
       |> String.to_integer
