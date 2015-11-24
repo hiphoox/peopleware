@@ -8,6 +8,8 @@ defmodule Peopleware.LoginController do
 
   @email_error_message "El correo ya se encuentra registrado, favor de registrarse con uno diferente"
 
+  # Check if the user is logged, if true send to profile, if false, send to
+  # sigin, the index template is not used
   def index(conn, _params) do
     user_id = get_session(conn, :user_id)
     if user_id do
@@ -31,32 +33,50 @@ defmodule Peopleware.LoginController do
     render conn, "thanks.html"
   end
 
+  # Create an user and generate a reset token for one use
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
 
     if password_is_valid?(user_params) do
       if changeset.valid?  do
-        changeset = Ecto.Changeset.put_change(changeset, :reset_token, generate_token)
+        changeset = Ecto.Changeset.put_change(
+                      changeset,
+                      :reset_token,
+                      generate_token)
+
         {result, user} = Repo.insert(changeset)
 
+        # If the insert to repo is an error, then send to the signup page
+        # to use another email
         if result == :error do
-          changeset = Ecto.Changeset.add_error(changeset, :email, @email_error_message)
+          changeset = Ecto.Changeset.add_error(
+                        changeset,
+                        :email,
+                        @email_error_message)
           render conn, "signup.html", changeset: changeset
         end
 
+        # If the result is ok, then send an email to the user and sent to
+        # thanks page
         Peopleware.Mailer.send_welcome_email(user)
         redirect(conn, to: login_path(conn, :thanks))
+
       else
         render conn, "signup.html", changeset: changeset
       end
     else
-      changeset = Ecto.Changeset.add_error(changeset, :password, @password_error_message)
+      changeset = Ecto.Changeset.add_error(
+                    changeset,
+                    :password,
+                    @password_error_message)
+
       render conn, "signup.html", changeset: changeset
     end
   end
 
   def login(conn, %{"user" => user_params}) do
     alias Peopleware.Authentication, as: Auth
+
     %{"email" => email, "password" => password} = user_params
 
     if user = Auth.validate_credentials(email, password) do
@@ -67,8 +87,10 @@ defmodule Peopleware.LoginController do
       changeset = User.changeset(%User{}, user_params)
       render conn, "signin.html", changeset: changeset
     end
+
   end
 
+  # When the user is logout from the site, is redirected to recluit main page
   def logout(conn, _params) do
     conn = put_session(conn, :user_id, nil)
     redirect(conn, external: "http://www.recluit.com")
@@ -172,7 +194,6 @@ defmodule Peopleware.LoginController do
 
   defp generate_token do
     _token = SecureRandom.urlsafe_base64(64)
-    # {token, Comeonin.Bcrypt.hashpwsalt(token)}
   end
 
 end
