@@ -1,5 +1,6 @@
 defmodule Peopleware.Authentication  do
   import Plug.Conn
+  import Comeonin.Bcrypt, only: [checkpw: 2]
   alias Peopleware.User
 
   def authenticated?(conn) do
@@ -9,7 +10,7 @@ defmodule Peopleware.Authentication  do
 
   def validate_credentials(email, password) do
     if user = User.get_by_email(email) do
-      (user.password == password && user.is_active && user.confirmed) && user || nil
+      (checkpw(password, user.password) && user.is_active && user.confirmed) && user || nil
     else
       nil
     end
