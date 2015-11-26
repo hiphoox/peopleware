@@ -1,8 +1,10 @@
 defmodule Peopleware.User do
+  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
   use Peopleware.Web, :model
   alias Peopleware.Repo
   alias Peopleware.Profile
   alias Peopleware.User
+
 
   schema "users" do
     has_many  :profiles,       Profile
@@ -32,6 +34,7 @@ defmodule Peopleware.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> hash_password
     |> validate_format(:email, ~r/@/, message: "Formato Inválido")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
@@ -61,6 +64,16 @@ defmodule Peopleware.User do
       Enum.each(user.profiles, fn profile -> Profile.delete_profile(profile) end)
       Repo.delete(user)
     end)
+  end
+
+  # Created a password hashed to store in database
+  defp hash_password(changeset) do
+    if password = get_change(changeset, :password) do
+      changeset
+      |> put_change(:password, hashpwsalt(password))
+    else
+      changeset
+    end
   end
 
 end
