@@ -5,14 +5,14 @@
     <div class="col-md-6">
 
     <div class="form-group">
-        <%= link "Buscar", to: search_path(@conn, :index), class: "button button-login button-search" %>
+        <%= link "Buscar candidato", to: search_path(@conn, :index), class: "button button-login button-search" %>
       </div>
 
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-      <%= link "Agregar usuario", to: user_path(@conn, :new), class: "button button-login button-search" %>
+      <%= link "Agregar candidato", to: user_path(@conn, :new), class: "button button-login button-search" %>
         </div>
     </div>
 
