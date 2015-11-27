@@ -106,6 +106,7 @@ defmodule Peopleware.Profile  do
     |> can_travel(search_criteria)
     |> has_english_level(search_criteria)
     |> has_salary(search_criteria)
+    |> order_by_date(search_criteria)
     |> Repo.paginate(page: page, page_size: count)
   end
 
@@ -249,6 +250,11 @@ defmodule Peopleware.Profile  do
     else
       query
     end
+  end
+
+  def order_by_date(query, _) do
+    from p in query,
+    order_by: [desc: p.updated_at]
   end
 
   #####################

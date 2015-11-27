@@ -185,6 +185,7 @@
                 <p><span>Última posición:</span> <%= profile.position %></p>
                 <p><span>Esquema de Contratación:</span> <%= profile.contract_schema %></p>
                 <p><span>Rol:</span> <%= profile.role %></p>
+                <p><span>Última actualización:</span> <%= profile.updated_at %></p>
               </fieldset>
             </div>
 
