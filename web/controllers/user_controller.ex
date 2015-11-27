@@ -93,8 +93,8 @@ defmodule Peopleware.UserController do
                            get_file_to_upload(profile_params))
 
       conn
-      |> put_flash(:info, "User updated succesfully.")
-      |> redirect(to: user_path(conn, :index))
+      |> put_flash(:updated, "User updated succesfully.")
+      redirect(conn, to: search_path(conn, :search))
     else
       render conn, "edit.html", profile: profile, changeset: changeset
     end

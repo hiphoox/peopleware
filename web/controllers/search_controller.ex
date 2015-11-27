@@ -57,6 +57,7 @@ defmodule Peopleware.SearchController do
         role_fields = get_session(conn, :role_fields)
         state_fields = get_session(conn, :state_fields)
         schema_fields = get_session(conn, :schema_fields)
+        conn = put_session(conn, :profile_params, profile_params)
       end
 
       render conn, "results.html",
@@ -109,7 +110,42 @@ defmodule Peopleware.SearchController do
   end
 
   def search(conn, _params) do
-    redirect(conn, to: search_path(conn, :index))
+
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+
+      profile_params = get_session(conn, :profile_params)
+
+      if profile_params != nil do
+        token = get_csrf_token
+
+        profiles = Profile.search(@page, @count, profile_params)
+
+        # If the post come from the index search, we save the fields in
+        # the session, if not, then we get the fields from the session
+        english_fields = get_session(conn, :english_fields)
+        role_fields = get_session(conn, :role_fields)
+        state_fields = get_session(conn, :state_fields)
+        schema_fields = get_session(conn, :schema_fields)
+
+        render conn, "results.html",
+          profiles: profiles.entries,
+          page: profiles,
+          profile_params: profile_params,
+          token: token,
+          english_fields: english_fields,
+          role_fields: role_fields,
+          state_fields: state_fields,
+          schema_fields: schema_fields
+      else
+        redirect(conn, to: search_path(conn, :index))
+      end
+
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
   end
 
   # Change the salary that comes in string format to integer

@@ -1,5 +1,11 @@
 <div class="row">
 
+    <%= if get_flash(@conn, :updated) != nil do %>
+    <p class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= get_flash(@conn, :updated) %>
+    </p>
+    <%= end %>
   <div class="col-md-4 result-filter-wrapper">
 
     <div class="list-result-filter-container">
