@@ -5420,13 +5420,13 @@ main h3.password {
 
 /* line 302, stdin */
 .result-wrapper {
-  padding: 20px; }
+  margin-top: 45px; }
 
 /* line 306, stdin */
 .profile-result {
   border: 1px solid #e0e0e0;
-  min-height: 275px;
-  width: 80;
+  min-height: 300px;
+  width: 100%;
   margin-bottom: 20px; }
 
 /* line 313, stdin */
@@ -5447,7 +5447,7 @@ main h3.password {
 .info-cv-wrapper {
   margin: 10px;
   min-height: 160px;
-  min-width: 80%;
+  min-width: 75%;
   float: right; }
 
 /* line 335, stdin */

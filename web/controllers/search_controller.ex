@@ -41,23 +41,34 @@ defmodule Peopleware.SearchController do
 
       # If the post come from the index search, we save the fields in
       # the session, if not, then we get the fields from the session
-      if profile_params["is_first"] == "true" do
-        english_fields = get_english_fields(profiles.entries)
-        role_fields = get_role_fields(profiles.entries)
-        state_fields = get_state_fields(profiles.entries)
-        schema_fields = get_schema_fields(profiles.entries)
+      english_fields = get_english_fields(profiles.entries)
+      role_fields = get_role_fields(profiles.entries)
+      state_fields = get_state_fields(profiles.entries)
+      schema_fields = get_schema_fields(profiles.entries)
 
+      if profile_params["is_first"] == "true" do
         conn = put_session(conn, :english_fields, english_fields)
         conn = put_session(conn, :role_fields, role_fields)
         conn = put_session(conn, :state_fields, state_fields)
         conn = put_session(conn, :schema_fields, schema_fields)
         conn = put_session(conn, :profile_params, profile_params)
+        conn = put_session(conn, :keywords, profile_params["keywords"])
       else
-        english_fields = get_session(conn, :english_fields)
-        role_fields = get_session(conn, :role_fields)
-        state_fields = get_session(conn, :state_fields)
-        schema_fields = get_session(conn, :schema_fields)
-        conn = put_session(conn, :profile_params, profile_params)
+        if profile_params["keywords"] != get_session(conn, :keywords) do
+          conn = put_session(conn, :english_fields, english_fields)
+          conn = put_session(conn, :role_fields, role_fields)
+          conn = put_session(conn, :state_fields, state_fields)
+          conn = put_session(conn, :schema_fields, schema_fields)
+          conn = put_session(conn, :profile_params, profile_params)
+          conn = put_session(conn, :keywords, profile_params["keywords"])
+        else
+          english_fields = get_session(conn, :english_fields)
+          role_fields = get_session(conn, :role_fields)
+          state_fields = get_session(conn, :state_fields)
+          schema_fields = get_session(conn, :schema_fields)
+          conn = put_session(conn, :profile_params, profile_params)
+        end
+
       end
 
       render conn, "results.html",
