@@ -94,7 +94,7 @@ defmodule Peopleware.UserController do
 
       conn
       |> put_flash(:updated, "User updated succesfully.")
-      redirect(conn, to: search_path(conn, :search))
+      |> redirect(to: search_path(conn, :search))
     else
       render conn, "edit.html", profile: profile, changeset: changeset
     end
