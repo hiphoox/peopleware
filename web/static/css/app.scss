@@ -152,12 +152,85 @@ main h3.password {
 
 }
 
-.signin-box {
+.login-wrapper {
   margin: 0 auto;
-  text-align: center;
+  width: 80%;
 }
 
-.signin-box h3, .signup-box h3 {
+.info-box {
+  margin: 0 auto;
+}
+
+.info-box h1 {
+  font-size: 4em;
+  color: #00D8EB;
+  margin-bottom: 35px;
+}
+
+.info-box p {
+  font-size: 1.5em;
+  line-height: 23px;
+  margin-bottom: 30px;
+}
+
+.info-box p strong {
+  color: #00D8EB;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.contact-options {
+  border-top: 1px solid #aaaaaa;
+  padding-top: 40px;
+  margin-bottom: 80px;
+}
+
+.location-option {
+  background-image: url("../images/ubicacion.png");
+  background-repeat: no-repeat;
+  min-height: 83px;
+  height: auto!important;
+  padding-left: 6em;
+  margin-bottom: 2em;
+  font-size: 1.8em!important;
+  padding-top: 10px;
+}
+
+.phone-option {
+  background-image: url("../images/tel.png");
+  background-repeat: no-repeat;
+  min-height: 83px;
+  height: auto!important;
+  padding-left: 6em;
+  margin-bottom: 2em;
+  font-size: 1.8em!important;
+  padding-top: 25px;
+}
+
+.mail-option {
+  background-image: url("../images/mail.png");
+  background-repeat: no-repeat;
+  min-height: 83px;
+  height: auto!important;
+  padding-left: 6em;
+  margin-bottom: 2em;
+  font-size: 1.8em!important;
+  padding-top: 25px;
+}
+
+.signin-box {
+  margin: 0 auto;
+  background-color: #dddddd;
+  padding: 20px 13px 20px 0px;
+}
+
+.signin-box h4 {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.signup-box h3 {
   font-size: 2.5em;
 }
 
@@ -602,7 +675,6 @@ input[type=range]:focus::-ms-fill-upper {
 
   .signin-box {
     margin: 0 auto;
-    width: 30%;
   }
 
   .signup-box {
@@ -629,7 +701,7 @@ input[type=range]:focus::-ms-fill-upper {
 
   .login-box {
     margin: 10px auto;
-    width: 50%;
+
   }
 
   .login-box .form-group {
