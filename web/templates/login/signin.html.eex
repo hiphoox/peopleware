@@ -3,22 +3,21 @@
   <div class="login-wrapper">
 
     <div class="info-box col-md-8">
-      <h1>Conoce a RecluIT</h1>
 
       <div class="excerpt">
         <p>Contactamos profesionales de sistemas con empresas de todos los
           tamaños e industrias, incluyendo corporativos con presencia global.</p>
 
+          <p>En promedio logramos conseguirle un nuevo empleo a 2.3 profesionales
+          de Sistemas por día.</p>
+
         <p>Desarrollamos un portal de información, con temas de capital humano
         dirigido a la industria y áreas de Sistemas.</p>
-
-        <p>En promedio logramos conseguirle un nuevo empleo a 2.3 profesionales
-        de Sistemas por día.</p>
 
         <p>Te invitamos a ingresar tu CV, es fácil, práctico y no tiene costo.</p>
 
         <p><strong>Equipo de RecluIT</strong><br />
-        <em>Atracción de talento en IT</em>
+        <em>Atracción de talento en TI</em>
         </p>
       </div><!-- //excerpt -->
 

@@ -5188,7 +5188,7 @@ a, a:hover, a:visited, a:active, a:focus {
   color: #878787;
   font-weight: bold;
   font-size: 2em;
-  margin-left: 10%; }
+  margin-left: 5%; }
 
 /* line 62, stdin */
 .register span {
@@ -5283,8 +5283,8 @@ main h3.password {
 
 /* line 155, stdin */
 .login-wrapper {
-  margin: 0 auto;
-  width: 80%; }
+  margin: 35px auto 0px auto;
+  width: 90%; }
 
 /* line 160, stdin */
 .info-box {
