@@ -161,10 +161,9 @@ main h3.password {
   margin: 0 auto;
 }
 
-.info-box h1 {
-  font-size: 4em;
-  color: #00D8EB;
-  margin-bottom: 35px;
+.excerpt {
+  text-align: justify;
+  width: 85%;
 }
 
 .info-box p {
@@ -183,6 +182,8 @@ main h3.password {
   border-top: 1px solid #aaaaaa;
   padding-top: 40px;
   margin-bottom: 80px;
+  text-align: justify;
+  width: 85%;
 }
 
 .location-option {
