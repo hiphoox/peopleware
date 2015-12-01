@@ -5777,7 +5777,7 @@ input[type=range]:focus::-ms-fill-upper {
   /* line 677, stdin */
   .signin-box {
     margin: 0 auto;
-    margin-top: -75px; }
+    margin-top: -50px; }
   /* line 682, stdin */
   .signup-box {
     padding: 0 5em; }
