@@ -5776,69 +5776,70 @@ input[type=range]:focus::-ms-fill-upper {
     margin: 10px auto; }
   /* line 677, stdin */
   .signin-box {
-    margin: 0 auto; }
-  /* line 681, stdin */
+    margin: 0 auto;
+    margin-top: -75px; }
+  /* line 682, stdin */
   .signup-box {
     padding: 0 5em; }
-  /* line 685, stdin */
+  /* line 686, stdin */
   .signup-box h3 {
     margin-left: 1.5em; }
-  /* line 689, stdin */
+  /* line 690, stdin */
   .row-account {
     border-right: solid 2px #dadada; }
-  /* line 693, stdin */
+  /* line 694, stdin */
   .signup-box .form-group {
     margin: 0 auto;
     width: 75%; }
-  /* line 698, stdin */
+  /* line 699, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 40%; }
-  /* line 703, stdin */
+  /* line 704, stdin */
   .login-box {
     margin: 10px auto; }
-  /* line 708, stdin */
+  /* line 709, stdin */
   .login-box .form-group {
     margin-top: 15px;
     width: 300px; } }
 
 @media screen and (min-width: 1300px) {
-  /* line 719, stdin */
+  /* line 720, stdin */
   .navbar-brand {
     height: 7em; }
-  /* line 723, stdin */
+  /* line 724, stdin */
   .nav > li > a {
     font-size: 1.6em;
     padding: 35px;
     margin-top: 25px; }
-  /* line 729, stdin */
+  /* line 730, stdin */
   .btn-login {
     margin-left: 11em;
     width: 35%; }
-  /* line 734, stdin */
+  /* line 735, stdin */
   .button-login2 {
     margin-left: 40%; }
-  /* line 738, stdin */
+  /* line 739, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; } }
 
 @media screen and (min-width: 1900px) {
-  /* line 747, stdin */
+  /* line 748, stdin */
   .navbar-brand {
     height: 8em; }
-  /* line 751, stdin */
+  /* line 752, stdin */
   .btn-login {
     width: 24%; }
-  /* line 755, stdin */
+  /* line 756, stdin */
   .button-login2 {
     margin-left: 95%; }
-  /* line 760, stdin */
+  /* line 761, stdin */
   .nav > li > a {
     font-size: 2.5em;
     padding: 40px;
     margin-top: 25px; }
-  /* line 767, stdin */
+  /* line 768, stdin */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 22%; } }
