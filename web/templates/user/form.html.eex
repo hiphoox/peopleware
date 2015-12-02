@@ -16,7 +16,7 @@
     <%= else %>
     <td>  </td>
     <%= end %>
-    <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word"%>
+    <%= file_input f, :cv_file, class: "form-control", placeholder: "Archivo en formato PDF o Word", accept: "application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" %>
   </div>
 
   <%= if @changeset.errors != [] do %>
