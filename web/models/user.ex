@@ -35,7 +35,7 @@ defmodule Peopleware.User do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> hash_password
-    |> validate_format(:email, ~r/@/, message: "Formato Inválido")
+    |> validate_format(:email, ~r/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/, message: "Formato Inválido")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_format(:name, ~r/(?!^\d+$)^.+$/, message: "El nombre no debe contener solo números")
     |> validate_format(:last_name, ~r/(?!^\d+$)^.+$/, message: "El apellido no debe contener solo números")
