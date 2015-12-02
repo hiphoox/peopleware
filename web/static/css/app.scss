@@ -379,13 +379,12 @@ main h3.password {
 
 .profile-result {
   border: 1px solid #e0e0e0;
-  min-height: 300px;
+  min-height: 340px;
   width: 100%;
   margin-bottom: 20px;
 }
 
 .cv-holder {
-  margin: 10px;
   min-height: 160px;
   width: 160px;
   float: left;
@@ -393,21 +392,21 @@ main h3.password {
 }
 
 .download-link-cv {
-  font-size: 2.6em;
+  font-size: 2em;
   margin-top: 30px;
   display: block;
 }
 
 .info-cv-wrapper {
-  margin: 10px;
   min-height: 160px;
-  min-width: 75%;
+  width: 75%;
   float: right;
 }
 
 .link-profile-name, .link-profile-name:hover, .link-profile-name:visited,
 .link-profile-name:active, .link-profile-name:focus {
   color: #000000;
+  font-size: 0.9em;
 }
 
 .profile-salary {
@@ -416,7 +415,7 @@ main h3.password {
 }
 
 .salary {
-  font-size: 3em;
+  font-size: 2.8em;
 }
 
 .profile-resume {
@@ -710,8 +709,6 @@ input[type=range]:focus::-ms-fill-upper {
     margin-top: 15px;
     width: 300px;
   }
-
-
 }
 
 
@@ -739,6 +736,28 @@ input[type=range]:focus::-ms-fill-upper {
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%;
+  }
+
+  .profile-result {
+
+    min-height: 300px;
+  }
+
+  .cv-holder {
+    margin: 10px;
+  }
+
+  .download-link-cv {
+    font-size: 2.6em;
+    margin-top: 30px;
+    display: block;
+  }
+
+  .info-cv-wrapper {
+    margin: 10px;
+    min-height: 160px;
+    min-width: 75%;
+    float: right;
   }
 }
 
