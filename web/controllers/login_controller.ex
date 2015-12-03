@@ -15,6 +15,12 @@ defmodule Peopleware.LoginController do
   def index(conn, _params) do
     user_id = get_session(conn, :user_id)
     if user_id do
+      user = Repo.get(User, user_id)
+
+      if user.is_staff do
+        redirect(conn, to: user_path(conn, :index))
+      end
+
       redirect(conn, to: profile_path(conn, :index))
     else
       redirect(conn, to: login_path(conn, :signin))
@@ -189,7 +195,7 @@ defmodule Peopleware.LoginController do
         [] ->
           profile_path(conn, :new)
         [profile] ->
-          profile_path(conn, :edit, profile)
+          profile_path(conn, :edit)
       end
     end
   end

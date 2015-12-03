@@ -6,5 +6,4 @@
       changeset: @changeset,
       action: user_path(@conn, :update, @profile) %>
   </div>
-    <%= link "Regresar", to: user_path(@conn, :index) %>
 </div>

@@ -157,7 +157,7 @@
 
             <%= if profile.cv_file_name != nil do %>
 
-              <%= link "Descargar CV", to: "/profiles/cv/" <> to_string(profile.id), class: "download-link-cv", target: "_blank" %>
+              <%= link "Descargar CV", to: "/admin/profiles/cv/" <> to_string(profile.id), class: "download-link-cv", target: "_blank" %>
 
             <%= else %>
               <p class="download-link-cv">No hay CV</p>

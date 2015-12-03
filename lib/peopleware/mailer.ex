@@ -80,7 +80,12 @@ defmodule Peopleware.Mailer do
   and search words
   """
   def send_register_email_to_recluit(profile_params, path) do
-    name = profile_params["name"] <> " " <> profile_params["last_name"] <> " " <> profile_params["second_surname"]
+
+    if profile_params["second_surname"] == nil or profile_params["second_surname"] == "" do
+      name = profile_params["name"] <> " " <> profile_params["last_name"]
+    else
+      name = profile_params["name"] <> " " <> profile_params["last_name"] <> " " <> profile_params["second_surname"]
+    end
     email = profile_params["email"]
     cel = profile_params["cel"]
     tel = profile_params["tel"]

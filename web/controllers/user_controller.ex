@@ -49,7 +49,7 @@ defmodule Peopleware.UserController do
         upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
 
         conn
-        |> put_flash(:info, "User created succesfully.")
+        |> put_flash(:created, "Usuario creado satisfactoriamente.")
         |> redirect(to: user_path(conn, :index))
       else
         render conn, "new.html", changeset: changeset, user: user
@@ -61,8 +61,7 @@ defmodule Peopleware.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get(User, id)
-    render conn, "show.html", user: user
+    redirect(conn, to: user_path(conn, :index))
   end
 
   def edit(conn, %{"id" => id}) do
@@ -93,7 +92,7 @@ defmodule Peopleware.UserController do
                            get_file_to_upload(profile_params))
 
       conn
-      |> put_flash(:updated, "User updated succesfully.")
+      |> put_flash(:updated, "Usuario actualizado satisfactoriamente.")
       |> redirect(to: search_path(conn, :search))
     else
       render conn, "edit.html", profile: profile, changeset: changeset
@@ -106,6 +105,16 @@ defmodule Peopleware.UserController do
     conn
     |> put_flash(:info, "User deleted succesfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+
+  def getCV(conn, %{"id" => id}) do
+
+    document = Profile.get_file_by_id(id)
+
+    conn
+    |> put_resp_content_type(document.content_type)
+    |> put_resp_header("content-disposition", "filename=" <> document.file_name)
+    |> resp(200, document.content)
   end
 
   ######################################################

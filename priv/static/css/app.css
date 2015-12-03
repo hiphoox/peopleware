@@ -5437,8 +5437,8 @@ main h3.password {
 
 /* line 316, stdin */
 .alert-cv {
-  float: right;
-  width: 40%; }
+  width: 40%;
+  float: right; }
 
 /* line 322, stdin */
 .show-cv {

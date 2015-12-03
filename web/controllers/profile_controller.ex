@@ -61,6 +61,10 @@ defmodule Peopleware.ProfileController do
     end
   end
 
+  def create(conn, _params) do
+    render conn, "welcome.html"
+  end
+
   @doc """
   It shows the seleted curriculum
   """
@@ -72,8 +76,9 @@ defmodule Peopleware.ProfileController do
   @doc """
   It just returns the list of curriculums
   """
-  def edit(conn, %{"id" => id}) do
-    profile = Repo.get(Profile, id)
+  def edit(conn, _params) do
+    user_id = get_session(conn, :user_id)
+    profile = Profile.get_by_user(user_id)
     changeset = Profile.changeset(profile)
     render conn, "edit.html",
       profile: profile,
@@ -83,8 +88,10 @@ defmodule Peopleware.ProfileController do
   @doc """
   Invoked when the user selects the save button inside the edit.html
   """
-  def update(conn, %{"id" => id, "profile" => profile_params}) do
-    profile = Profile.get_by_id(id)
+  def update(conn, %{"profile" => profile_params}) do
+
+    user_id = get_session(conn, :user_id)
+    profile = Profile.get_by_user(user_id)
 
     # Get the last salary in string and converted to integer
     last_salary = change_salary_to_integer(profile_params)
@@ -98,12 +105,14 @@ defmodule Peopleware.ProfileController do
       upload_file_and_save(changeset, profile,
                            get_file_to_upload(profile_params))
       conn = put_session(conn, :user_id, nil)
-
       render conn, "thanks.html"
     else
       render(conn, "edit.html", profile: profile, changeset: changeset)
     end
+  end
 
+  def update(conn, _params) do
+      render conn, "thanks.html"
   end
 
   @doc """
@@ -117,7 +126,11 @@ defmodule Peopleware.ProfileController do
     |> redirect(to: profile_path(conn, :index))
   end
 
-  def getCV(conn, %{"id" => id}) do
+  def getCV(conn, _params) do
+    user_id = get_session(conn, :user_id)
+    profile = Profile.get_by_user(user_id)
+    id = profile.id
+
     document = Profile.get_file_by_id(id)
 
     conn

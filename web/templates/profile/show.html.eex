@@ -1,5 +1,5 @@
 <div class="col-xs-10 col-xs-offset-1 page-content">
-  <h3> <u>Curriculum #</u> <span><%= @profile.id %></span> </h3>
+  <h3> <u>Resumen de tu Curriculum</span> </h3>
 
   <ul>
   <li>
@@ -25,11 +25,6 @@
   <li>
     <strong>Último Puesto:</strong>
     <%= @profile.position %>
-  </li>
-
-  <li>
-    <strong>Resumen:</strong>
-    <%= @profile.resume %>
   </li>
 
   <li>

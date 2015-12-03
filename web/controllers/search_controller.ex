@@ -4,7 +4,7 @@ defmodule Peopleware.SearchController do
   alias Peopleware.User
 
   @page 1
-  @count 10
+  @count 20
 
   plug :scrub_params, "profile" when action in [:create, :update]
 

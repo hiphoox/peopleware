@@ -76,6 +76,12 @@ defmodule Peopleware.Profile  do
     Repo.get from(p in Peopleware.Profile, preload: [:cv_file]), id
   end
 
+  def get_by_user(id) do
+    query = from profile in Peopleware.Profile, preload: [:cv_file],
+    where: profile.user_id == ^id
+    Repo.one(query)
+  end
+
   def get_file_by_id(id) do
     query = from file in Peopleware.File,
     where: file.profile_id == ^id

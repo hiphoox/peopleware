@@ -13,7 +13,7 @@
   <div class="col-md-12 row-new-cv">
 
       <%= render "form.html", changeset: @changeset,
-                        action: profile_path(@conn, :update, @profile) %>
+                        action: "/profiles/update" %>
 
 </div>
 

@@ -43,14 +43,22 @@ defmodule Peopleware.Router do
     pipe_through :auth
 
     resources "/users",     UserController
+    get "/profiles/cv/:id",           UserController, :getCV, as: :cv
   end
 
   scope "/profiles", Peopleware do
     pipe_through :browser
     pipe_through :auth
 
-    resources "/",  ProfileController
-    get "/cv/:id",          ProfileController, :getCV, as: :cv
+    get "/",             ProfileController, :index
+    get "/new",          ProfileController, :new
+    post "/create",      ProfileController, :create
+    get "/create",       ProfileController, :create
+    get "/edit",         ProfileController, :edit
+    put "/update",       ProfileController, :update
+    get "/update",       ProfileController, :update
+    get "/cv",           ProfileController, :getCV, as: :cv
+
   end
 
   scope "/search", Peopleware do
