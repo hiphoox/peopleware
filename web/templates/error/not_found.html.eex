@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio de Captura de CVs">
+    <meta name="author" content="RecluIT">
+
+    <title>Error 404</title>
+    <link rel="stylesheet" href="/css/app.css">
+
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse-1">
+                    <span class="sr-only">RecluIT Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.recluit.com">
+              <img class="header-image" alt="RecluIT Log"
+                   src="/images/logo.png" %>
+            </a>
+          </div><!-- /navbar-header -->
+
+          <div class="collapse navbar-collapse navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+              <li>
+                <p>Contáctanos: contacto@recluit.com, (55) 5393-4085, (55) 6840-2901, (55) 7030-5164</p>
+              </li>
+
+            </ul>
+          </div>
+
+        </div><!-- /container-fluid -->
+      </nav><!-- /navbar navbar-default -->
+    </header>
+
+    <main>
+      &nbsp; &nbsp; &nbsp; <h2>&nbsp; &nbsp; &nbsp;Error 404 - Página no encontrada</h2>
+      &nbsp; &nbsp; &nbsp; <h3>&nbsp; &nbsp; &nbsp;Regresar al <a href="/">Inicio</a></h3>
+
+    </main>
+
+    <footer>
+    </footer>
+
+  </body>
+
+</html>
