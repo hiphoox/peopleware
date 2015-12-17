@@ -9,11 +9,21 @@ defmodule Peopleware.Mailer do
         mailgun_domain: "example.com",
         mailgun_key: "secret"
   """
-  use Mailgun.Client,
-    domain: Application.get_env(:peopleware, :mailgun_domain),
-    key: Application.get_env(:peopleware, :mailgun_key),
-    mode: Application.get_env(:peopleware, :mailgun_mode),
-    test_file_path: Application.get_env(:peopleware, :mailgun_test_file_path)
+  def deliver(email) do
+      Mailman.deliver(email, config)
+  end
+
+  def config do
+    %Mailman.Context{
+      config: %Mailman.SmtpConfig{
+        username: Application.get_env(:peopleware, :smtp_username),
+        password: Application.get_env(:peopleware, :smtp_password),
+        relay: Application.get_env(:peopleware, :smtp_domain),
+        port: 587,
+        tls: :always,
+        auth: :always}
+    }
+  end
 
 
   @doc """
@@ -28,12 +38,14 @@ defmodule Peopleware.Mailer do
     body = EEx.eval_file Application.get_env(:peopleware, :welcome_email_body) , [url: url]
     from = Application.get_env(:peopleware, :email_sender)
 
-    {:ok, _} = send_email(to: user.email,
-               from: from,
-               subject: subject,
-               html: body)
+    email = %Mailman.Email{
+      subject: subject,
+      from: from,
+      to: [user.email],
+      html: body }
 
-    Logger.info "Sent welcome email to #{user.email}"
+       Mailman.deliver(email, config)
+       Logger.info "Sent welcome email to #{user.email}"
   end
 
   @doc """
@@ -48,10 +60,13 @@ defmodule Peopleware.Mailer do
     body = EEx.eval_file Application.get_env(:peopleware, :change_pass_email_body) , [url: url]
     from = Application.get_env(:peopleware, :email_sender)
 
-    {:ok, _} = send_email(to: user.email,
-                from: from,
-                subject: subject,
-                html: body)
+    email = %Mailman.Email{
+      subject: subject,
+      from: from,
+      to: [user.email],
+      html: body }
+
+      Mailman.deliver(email, config)
 
     Logger.info "Sent password_reset email to #{user.email}"
   end
@@ -67,10 +82,13 @@ defmodule Peopleware.Mailer do
     body = Application.get_env(:peopleware, :new_email_address_email_body).(user, confirmation_token)
     from = Application.get_env(:peopleware, :email_sender)
 
-    {:ok, _} = send_email(to: user.unconfirmed_email,
-                from: from,
-                subject: subject,
-                html: body)
+    email = %Mailman.Email{
+      subject: subject,
+      from: from,
+      to: [user.email],
+      html: body }
+
+      Mailman.deliver(email, config)
 
     Logger.info "Sent new email address email to #{user.unconfirmed_email}"
   end
@@ -98,19 +116,23 @@ defmodule Peopleware.Mailer do
     file_path = path
 
     if file_path == "" || file_path == nil do
-      {:ok, _} = send_email(
-                  to: to,
-                  from: from,
-                  subject: subject,
-                  html: body)
+      email = %Mailman.Email{
+        subject: subject,
+        from: from,
+        to: [to],
+        html: body }
+
+        Mailman.deliver(email, config)
     else
-      {:ok, _} = send_email(
-                  to: to,
-                  from: from,
-                  subject: subject,
-                  html: body,
-                  attachments: [%{path: file_path,
-                  filename: "cv_" <> name}])
+      IO.puts "File path " <> file_path
+      email = %Mailman.Email{
+        subject: subject,
+        from: from,
+        to: [to],
+        html: body
+      }
+
+        Mailman.deliver(email, config)
     end
 
   end

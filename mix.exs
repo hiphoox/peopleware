@@ -24,13 +24,14 @@ defmodule Peopleware.Mixfile do
         :phoenix_ecto,
         :phoenix_html,
         :postgrex,
-        :mailgun,
         :secure_random,
         :comeonin,
         :inets,
         :ssl,
         :scrivener,
-        :scrivener_html]]
+        :scrivener_html,
+        :mailman,
+        :eiconv]]
   end
 
   # Specifies which paths to compile per environment
@@ -48,12 +49,13 @@ defmodule Peopleware.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: [:dev]},
      {:cowboy,        "~> 1.0"},
      {:excoveralls,   "~> 0.3", only: [:dev, :test]},
-     {:mailgun,       "~> 0.1.1"},
      {:secure_random, "~> 0.1"},
      {:comeonin,      "~> 1.1"},
      {:scrivener,     "~> 1.0"},
      {:scrivener_html, "~> 1.0"},
      {:shouldi, only: :test},
-     {:exrm,          "~>0.18.1"}]
+     {:exrm,          "~>0.18.1"},
+     {:mailman, "~> 0.1.0"},
+     {:eiconv, github: "zotonic/eiconv"}]
   end
 end
