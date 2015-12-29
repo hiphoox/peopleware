@@ -120,16 +120,19 @@ defmodule Peopleware.Mailer do
         subject: subject,
         from: from,
         to: [to],
-        html: body }
+        html: body
+      }
 
         Mailman.deliver(email, config)
     else
-      IO.puts "File path " <> file_path
       email = %Mailman.Email{
         subject: subject,
         from: from,
         to: [to],
-        html: body
+        html: body,
+        attachments: [
+          Mailman.Attachment.inline!(file_path)
+        ]
       }
 
         Mailman.deliver(email, config)

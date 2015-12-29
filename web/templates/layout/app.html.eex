@@ -59,7 +59,7 @@
     <hr class="line-title" /><div class="circle"></div>
 
     <main>
-      <%= @inner %>
+      <%= render @view_module, @view_template, assigns %>
     </main>
 
     <footer>

@@ -48,10 +48,10 @@ defmodule Peopleware.ProfileController do
 
     if changeset.valid? do
       upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
-      conn = put_session(conn, :user_id, nil)
-
       # Get the path from the tmp file
-      path = get_path_file(profile_params)
+      path = get_path_file(conn, profile_params)
+
+      conn = put_session(conn, :user_id, nil)
 
       # Send a email to recluit to advice that a new user has been created
       Peopleware.Mailer.send_register_email_to_recluit(profile_params, path)
@@ -214,9 +214,16 @@ defmodule Peopleware.ProfileController do
     nil
   end
 
-  defp get_path_file(%{"cv_file" => file}) do
-    %{path: path, content_type: _, filename: _} = file
-    file_path = path
+  defp get_path_file(conn, %{"cv_file" => file}) do
+    user_id = get_session(conn, :user_id)
+    profile = Profile.get_by_user(user_id)
+    id = profile.id
+
+    document = Profile.get_file_by_id(id)
+
+    File.write("/tmp/" <> document.file_name, document.content)
+    file_path = "/tmp/" <> document.file_name
+
     file_path
   end
 

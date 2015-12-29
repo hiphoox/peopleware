@@ -55,7 +55,7 @@ defmodule Peopleware.Mixfile do
      {:scrivener_html, "~> 1.0"},
      {:shouldi, only: :test},
      {:exrm,          "~>0.18.1"},
-     {:mailman, "~> 0.1.0"},
+     {:mailman, github: "kamilc/mailman"},
      {:eiconv, github: "zotonic/eiconv"}]
   end
 end
