@@ -8,7 +8,7 @@ defmodule Peopleware.Repo.Migrations.CreateProfiles do
       add :second_surname,  :string, size: 40
       add :last_salary,     :integer
       add :position,        :string, size: 50
-      add :resume,          :string, size: 12000
+      add :resume,          :string, size: 1000000
       add :keywords,        :string, size: 500
       add :email,           :string, size: 50
       add :tel,             :string, size: 15

@@ -39,7 +39,7 @@ defmodule Peopleware.Profile  do
     |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
-    |> validate_length(:resume, max: 12000, message: "Debe ser máximo de 12000 caracteres")
+    |> validate_length(:resume, max: 1000000, message: " Es demasiado extensa")
     |> validate_length(:keywords, max: 500, message: "Debe ser máximo de 500 caracteres")
     |> validate_length(:state, max: 20, message: "Debe ser máximo de 20 caracteres")
     |> validate_length(:contract_schema, max: 30, message: "Debe ser máximo de 30 caracteres")

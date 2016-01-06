@@ -34,7 +34,7 @@ defmodule Peopleware.ProfileView do
   end
 
   def translate_error({:resume, message}) do
-    "* El resumen " <> translate(message)
+    "* El contenido del resumen de experiencia profesional " <> translate(message)
   end
 
   def translate_error({:keywords, message}) do
