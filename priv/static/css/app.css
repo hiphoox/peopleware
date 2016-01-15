@@ -5277,32 +5277,41 @@ main h3.password {
   margin: 30px auto 10px; }
 
 /* line 155, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+a.button-login:hover {
+  text-decoration: none;
+  color: #3d3d3c; }
+
+/* line 160, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+a.button-login {
+  width: 18em; }
+
+/* line 164, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .login-wrapper {
   margin: 35px auto 0px auto;
   width: 90%; }
 
-/* line 160, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 169, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .info-box {
   margin: 0 auto; }
 
-/* line 164, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 173, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .excerpt {
   text-align: justify;
   width: 85%; }
 
-/* line 169, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 178, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .info-box p {
   font-size: 1.5em;
   line-height: 23px;
   margin-bottom: 30px; }
 
-/* line 175, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 184, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .info-box p strong {
   color: #00D8EB;
   font-weight: bold;
   font-size: 1.4em; }
 
-/* line 181, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 190, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .contact-options {
   border-top: 1px solid #aaaaaa;
   padding-top: 40px;
@@ -5310,7 +5319,7 @@ main h3.password {
   text-align: justify;
   width: 85%; }
 
-/* line 189, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 198, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .location-option {
   background-image: url("../images/ubicacion.png");
   background-repeat: no-repeat;
@@ -5321,7 +5330,7 @@ main h3.password {
   font-size: 1.8em !important;
   padding-top: 10px; }
 
-/* line 200, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 209, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .phone-option {
   background-image: url("../images/tel.png");
   background-repeat: no-repeat;
@@ -5332,7 +5341,7 @@ main h3.password {
   font-size: 1.8em !important;
   padding-top: 25px; }
 
-/* line 211, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 220, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .mail-option {
   background-image: url("../images/mail.png");
   background-repeat: no-repeat;
@@ -5343,42 +5352,42 @@ main h3.password {
   font-size: 1.8em !important;
   padding-top: 25px; }
 
-/* line 222, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 231, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .signin-box {
   margin: 0 auto;
   background-color: #dddddd;
   padding: 20px 13px 20px 0px; }
 
-/* line 228, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 237, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .signin-box h4 {
   font-size: 2.2em;
   font-weight: bold;
   margin-left: 30px; }
 
-/* line 234, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 243, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .signup-box h3 {
   font-size: 2.5em; }
 
-/* line 238, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 247, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .login-box {
   margin: 0 auto;
   width: 80%; }
 
-/* line 243, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 252, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .login-box .form-group {
   margin: 0 auto;
   width: 90%; }
 
-/* line 248, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 257, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .box-button-signup {
   margin: 0 auto 30px auto;
   width: 60%; }
 
-/* line 253, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 262, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .form-forget {
   padding: 10px; }
 
-/* line 257, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 266, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .form-forget input[type="email"],
 .login-box .form-group input[type="email"],
 .login-box .form-group input[type="password"],
@@ -5390,11 +5399,11 @@ main h3.password {
   padding: 6px;
   height: 3em; }
 
-/* line 269, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 278, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .input-group {
   width: 100%; }
 
-/* line 273, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 282, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .input-group-addon {
   border: solid 2px #000;
   border-radius: 0;
@@ -5402,49 +5411,49 @@ main h3.password {
   background-repeat: no-repeat;
   width: 45px; }
 
-/* line 281, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 290, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .email-control {
   background-image: url("../images/email-1.png"); }
 
-/* line 285, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 294, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .email-control2 {
   background-image: url("../images/email-2.png"); }
 
-/* line 289, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 298, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .password-control {
   background-image: url("../images/password.png"); }
 
-/* line 293, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 302, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .user-control {
   background-image: url("../images/user.png"); }
 
 /* Profile css */
-/* line 299, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 308, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .row-new-cv h3 {
   margin-left: 3em;
   margin-top: -50px;
   font-size: 2em;
   font-weight: bold; }
 
-/* line 306, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 315, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .row-new-cv p {
   font-size: 1.5em; }
 
-/* line 311, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 320, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .alert {
   margin: 0 auto;
   width: 50%; }
 
-/* line 316, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 325, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .alert-cv {
   width: 40%;
   float: right; }
 
-/* line 322, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 331, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .show-cv {
   padding: 60px; }
 
-/* line 326, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 335, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .button-cv-add {
   background-color: #ededed;
   border-radius: 20px;
@@ -5458,139 +5467,139 @@ main h3.password {
   font-size: 1.5em;
   text-align: center; }
 
-/* line 340, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 349, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .button-cv-add:hover {
   text-decoration: none;
   color: #3d3d3c; }
 
-/* line 346, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 355, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .alert {
   margin: 0 auto; }
 
-/* line 350, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 359, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .privacity {
   width: 80%;
   margin: 0 auto;
   font-size: 1.3em; }
 
-/* line 356, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 365, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .headline2 {
   text-align: center;
   margin-bottom: 2em; }
 
 /* Search css */
-/* line 363, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 372, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .result-filter-wrapper {
   padding: 10px 20px 20px 20px; }
 
-/* line 367, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 376, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .list-result-filter-container {
   margin-left: 38px; }
 
-/* line 371, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 380, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .header-form-search {
   font-size: 1.3em;
   margin-top: 10px; }
 
-/* line 376, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 385, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .result-wrapper {
   margin-top: 45px; }
 
-/* line 380, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 389, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .profile-result {
   border: 1px solid #e0e0e0;
   min-height: 340px;
   width: 100%;
   margin-bottom: 20px; }
 
-/* line 387, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 396, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .cv-holder {
   min-height: 160px;
   width: 160px;
   float: left;
   text-align: center; }
 
-/* line 394, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 403, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .download-link-cv {
   font-size: 2em;
   margin-top: 30px;
   display: block; }
 
-/* line 400, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 409, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .info-cv-wrapper {
   min-height: 160px;
   width: 75%;
   float: right; }
 
-/* line 406, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 415, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .link-profile-name, .link-profile-name:hover, .link-profile-name:visited,
 .link-profile-name:active, .link-profile-name:focus {
   color: #000000;
   font-size: 0.9em; }
 
-/* line 412, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 421, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .profile-salary {
   float: right;
   padding: 10px; }
 
-/* line 417, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 426, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .salary {
   font-size: 2.8em; }
 
-/* line 421, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 430, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .profile-resume {
   min-height: 160px;
   clear: both;
   width: 98%;
   margin: 0 auto 5px; }
 
-/* line 429, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 438, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .contact-info {
   font-size: 15px;
   margin-bottom: 15px; }
 
-/* line 434, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 443, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .contact-info span {
   font-weight: bold; }
 
-/* line 438, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 447, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .job-info {
   float: left;
   width: 45%; }
 
-/* line 443, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 452, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .job-info span {
   font-weight: bold; }
 
-/* line 447, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 456, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .other-info {
   float: right;
   width: 45%; }
 
-/* line 452, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 461, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .other-info span {
   font-weight: bold; }
 
-/* line 456, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 465, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .more-info {
   text-align: center;
   clear: both; }
 
-/* line 461, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 470, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .profile-resume {
   display: none; }
 
-/* line 465, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 474, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
   width: 100%; }
 
-/* line 470, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 479, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]:focus {
   outline: none; }
 
-/* line 473, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 482, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
@@ -5601,7 +5610,7 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 1.3px;
   border: 0.2px solid #010101; }
 
-/* line 483, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 492, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
@@ -5613,11 +5622,11 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -14px; }
 
-/* line 494, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 503, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #367ebd; }
 
-/* line 497, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 506, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-moz-range-track {
   width: 100%;
   height: 8.4px;
@@ -5628,7 +5637,7 @@ input[type=range]::-moz-range-track {
   border-radius: 1.3px;
   border: 0.2px solid #010101; }
 
-/* line 507, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 516, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
@@ -5638,7 +5647,7 @@ input[type=range]::-moz-range-thumb {
   background: #ffffff;
   cursor: pointer; }
 
-/* line 516, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 525, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-ms-track {
   width: 100%;
   height: 8.4px;
@@ -5649,21 +5658,21 @@ input[type=range]::-ms-track {
   border-width: 16px 0;
   color: transparent; }
 
-/* line 526, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 535, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-ms-fill-lower {
   background: #2a6495;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
 
-/* line 532, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 541, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-ms-fill-upper {
   background: #3071a9;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
 
-/* line 538, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 547, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]::-ms-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
@@ -5673,15 +5682,15 @@ input[type=range]::-ms-thumb {
   background: #ffffff;
   cursor: pointer; }
 
-/* line 547, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 556, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]:focus::-ms-fill-lower {
   background: #3071a9; }
 
-/* line 550, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 559, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd; }
 
-/* line 554, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 563, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .button-search {
   margin: 150px auto 0;
   height: 200px;
@@ -5690,151 +5699,151 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 78px 50px;
   text-align: center; }
 
-/* line 563, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+/* line 572, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
 .button-edit {
   margin-top: 50px; }
 
 @media screen and (min-width: 768px) {
-  /* line 569, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 578, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar {
     border-radius: 0; }
-  /* line 573, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 582, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-brand {
     height: 5em; }
-  /* line 578, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 587, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 584, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 593, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .nav > li > a {
     font-size: 1.2em;
     padding: 5px;
     margin-top: 30px; }
-  /* line 590, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 599, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .nav > li > p {
     margin-top: 85px; }
-  /* line 594, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 603, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   hr.line-title {
     width: 55%; }
-  /* line 598, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 607, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .btn-login {
     width: 35%; }
-  /* line 602, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 611, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; }
-  /* line 607, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 616, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .box-button-cv {
     float: right;
     width: 50%;
     margin-top: -90px; }
-  /* line 614, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 623, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .input-group-addon {
     padding: 6px 20px; } }
 
 /* Customize container */
 @media screen and (min-width: 970px) {
-  /* line 624, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 633, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar {
     border-radius: 0; }
-  /* line 628, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 637, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-brand {
     height: 5.5em; }
-  /* line 633, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 642, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-nav {
     letter-spacing: 2px;
     font-weight: italic;
     float: right; }
-  /* line 639, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 648, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .nav > li > a {
     font-size: 1.3em;
     padding: 30px;
     margin-top: 25px; }
-  /* line 645, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 654, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .register {
     font-size: 4em; }
-  /* line 649, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 658, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   hr.line-title {
     width: 55%; }
-  /* line 653, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 662, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   main h3.password {
     font-size: 2.5em;
     margin-left: 3em;
     text-align: left; }
-  /* line 659, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 668, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .form-forget {
     margin-left: 7em; }
-  /* line 663, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 672, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .form-forget input[type="email"] {
     width: 300px; }
-  /* line 667, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 676, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .btn-login {
     width: 66%; }
-  /* line 671, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 680, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .button-login2 {
     margin: 10px auto; }
-  /* line 676, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 685, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .signin-box {
     margin: 0 auto;
     margin-top: -50px; }
-  /* line 681, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 690, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .signup-box {
     padding: 0 5em; }
-  /* line 685, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 694, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .signup-box h3 {
     margin-left: 1.5em; }
-  /* line 689, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 698, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .row-account {
     border-right: solid 2px #dadada; }
-  /* line 693, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 702, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .signup-box .form-group {
     margin: 0 auto;
     width: 75%; }
-  /* line 698, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 707, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 40%; }
-  /* line 703, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 712, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .login-box {
     margin: 10px auto; }
-  /* line 708, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 717, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .login-box .form-group {
     margin-top: 15px;
     width: 300px; } }
 
 @media screen and (min-width: 1300px) {
-  /* line 717, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 726, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-brand {
     height: 7em; }
-  /* line 721, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 730, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .nav > li > a {
     font-size: 1.6em;
     padding: 35px;
     margin-top: 25px; }
-  /* line 727, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 736, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .btn-login {
     margin-left: 11em;
     width: 35%; }
-  /* line 732, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 741, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .button-login2 {
     margin-left: 40%; }
-  /* line 736, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 745, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 30%; }
-  /* line 741, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 750, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .profile-result {
     min-height: 300px; }
-  /* line 746, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 755, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .cv-holder {
     margin: 10px; }
-  /* line 750, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 759, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .download-link-cv {
     font-size: 2.6em;
     margin-top: 30px;
     display: block; }
-  /* line 756, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 765, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .info-cv-wrapper {
     margin: 10px;
     min-height: 160px;
@@ -5842,21 +5851,21 @@ input[type=range]:focus::-ms-fill-upper {
     float: right; } }
 
 @media screen and (min-width: 1900px) {
-  /* line 767, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 776, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .navbar-brand {
     height: 8em; }
-  /* line 771, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 780, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .btn-login {
     width: 24%; }
-  /* line 775, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 784, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .button-login2 {
     margin-left: 95%; }
-  /* line 780, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 789, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .nav > li > a {
     font-size: 2.5em;
     padding: 40px;
     margin-top: 25px; }
-  /* line 787, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
+  /* line 796, /Users/Giovanni/Code/Work/peopleware/web/static/css/app.scss */
   .box-button-signup {
     margin: 0 auto 30px auto;
     width: 22%; } }

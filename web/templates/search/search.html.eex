@@ -56,4 +56,10 @@
   <div class="form-group col-sm-2 ">
     <%= submit "Buscar", class: "button button-login" %>
   </div>
+
+  <div class="form-group col-sm-3">
+    <a href="admin/users" class="button button-login">Volver al inicio</a>
+  </div>
 <% end %>
+
+

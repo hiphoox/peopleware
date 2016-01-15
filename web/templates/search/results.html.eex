@@ -134,6 +134,8 @@
 
       </div><!-- /search-control -->
 
+        <a href="/admin/users" class="button button-login">Volver al inicio</a>
+
   <div class="clearfix"></div>
 
     </form>
