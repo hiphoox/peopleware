@@ -44,6 +44,8 @@ defmodule Peopleware.Router do
 
     resources "/users",     UserController
     get "/profiles/cv/:id",           UserController, :getCV, as: :cv
+    get "/search",   UserController, :search
+    post "search/applicant", UserController, :search_applicant
   end
 
   scope "/profiles", Peopleware do

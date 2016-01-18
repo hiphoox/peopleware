@@ -19,7 +19,7 @@
 
     <div class="col-md-6">
         <div class="form-group">
-      <%= link "Agregar candidato", to: user_path(@conn, :new), class: "button button-login button-search" %>
+      <%= link "Agregar candidato", to: user_path(@conn, :search), class: "button button-login button-search" %>
         </div>
     </div>
 

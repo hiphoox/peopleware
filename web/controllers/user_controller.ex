@@ -24,7 +24,10 @@ defmodule Peopleware.UserController do
     user = Repo.get(User, user_id)
 
     if user.is_staff do
-      changeset = Profile.changeset(%Profile{})
+
+      email = get_session(conn, :email_profile)
+      changeset = Profile.changeset(%Profile{email: email})
+
       render conn, "new.html",
         changeset: changeset
     else
@@ -49,6 +52,7 @@ defmodule Peopleware.UserController do
         upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
 
         conn
+        |> put_session(:email, nil)
         |> put_flash(:created, "Usuario creado satisfactoriamente.")
         |> redirect(to: user_path(conn, :index))
       else
@@ -115,6 +119,38 @@ defmodule Peopleware.UserController do
     |> put_resp_content_type(document.content_type)
     |> put_resp_header("content-disposition", "filename=" <> document.file_name)
     |> resp(200, document.content)
+  end
+
+  def search(conn, _params) do
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+      token = get_csrf_token
+      profile = get_session(conn, :profile)
+
+      render conn, "search.html",
+        token: token,
+        profile: profile
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
+  end
+
+  def search_applicant(conn, %{"email" => email}) do
+
+    profile = Profile.get_by_email(email)
+
+    if profile == nil do
+      conn
+      |> put_session(:email_profile, email)
+      |> redirect(to: user_path(conn, :new))
+    else
+      conn
+      |> put_session(:profile, profile.id)
+      |> put_flash(:updated, "Ya existe un candidato con el email " <> profile.email)
+      |> redirect(to: user_path(conn, :search))
+    end
   end
 
   ######################################################
