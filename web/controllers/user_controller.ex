@@ -139,6 +139,22 @@ defmodule Peopleware.UserController do
 
   def search_applicant(conn, %{"email" => email}) do
 
+    if email == nil or email == "" do
+      conn
+      |> put_flash(:no_email, "Debe introducir un email")
+      |> redirect(to: user_path(conn, :search))
+    end
+
+    # Validate email
+    case Regex.run(~r/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/, email) do
+      nil ->
+        conn
+        |> put_flash(:no_email, "Formato inválido")
+        |> redirect(to: user_path(conn, :search))
+      _ ->
+        email = email
+    end
+
     profile = Profile.get_by_email(email)
 
     if profile == nil do
