@@ -270,6 +270,19 @@ defmodule Peopleware.Profile  do
     order_by: [desc: p.updated_at]
   end
 
+  def get_by_reclu(date1, date2) do
+
+    {:ok, d1} = Ecto.DateTime.cast(date1)
+    {:ok, d2} = Ecto.DateTime.cast(date2)
+
+    query = from p in Peopleware.Profile,
+    where: p.inserted_at >= ^d1 and p.inserted_at <= ^d2,
+    group_by: p.created_by,
+    select: {p.created_by, count(p.created_by)}
+
+    Repo.all(query)
+  end
+
   #####################
   # Catalogs
   #####################

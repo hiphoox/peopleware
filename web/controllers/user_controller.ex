@@ -137,6 +137,44 @@ defmodule Peopleware.UserController do
     end
   end
 
+  def reclu_data(conn, %{"date1" => date1, "date2" => date2}) do
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+      token = get_csrf_token
+      data =  Peopleware.Profile.get_by_reclu(date1 <> " 00:00:01", date2 <> " 23:59:59")
+
+      users = Peopleware.User.get_staff
+
+      render conn, "reclu-data.html",
+        data: data,
+        token: token,
+        date1: date1,
+        date2: date2,
+        users: users
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
+  end
+
+  def reclu_data(conn, _) do
+    user_id = get_session(conn, :user_id)
+    user = Repo.get(User, user_id)
+
+    if user.is_staff do
+      token = get_csrf_token
+      render conn, "reclu-data.html",
+      data: [],
+      token: token,
+      date1: nil,
+      date2: nil,
+      users: nil
+    else
+      redirect(conn, to: profile_path(conn, :index))
+    end
+  end
+
   def search_applicant(conn, %{"email" => email}) do
 
     if email == nil or email == "" do

@@ -8,6 +8,7 @@
     <meta name="author" content="RecluIT">
 
     <title>Captura de Curriculums</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/jquery-ui.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
     <script>tinymce.init({selector:'textarea'});</script>
@@ -70,6 +71,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/jquery.mask.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery-ui.js") %>"></script>
     <script>require("web/static/js/app")</script>
 
     <script type="text/javascript">
@@ -77,6 +79,10 @@
       $(document).ready(function(){
         $('.phone').mask('(000) 000-0000');
         $('.last_salary').mask('#,##0', {reverse: true});
+      });
+
+      $(function() {
+        $( ".datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
       });
 
       $('.profile-result').click(function(){

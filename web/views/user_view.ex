@@ -64,4 +64,16 @@ defmodule Peopleware.UserView do
           m -> m
     end
   end
+
+  def render_tuple(tuple, place) do
+    elem(tuple, place)
+  end
+
+  def date_human(date) do
+    date
+    |> String.split("-")
+    |> Enum.reverse
+    |> Enum.join("-")
+  end
+
 end

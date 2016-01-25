@@ -66,6 +66,13 @@ defmodule Peopleware.User do
     end)
   end
 
+  def get_staff do
+    query = from p in Peopleware.User,
+    where: p.is_staff == true
+
+    Repo.all(query)
+  end
+
   # Created a password hashed to store in database
   defp hash_password(changeset) do
     if password = get_change(changeset, :password) do
