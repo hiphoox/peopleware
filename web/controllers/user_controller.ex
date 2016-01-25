@@ -143,6 +143,15 @@ defmodule Peopleware.UserController do
 
     if user.is_staff do
       token = get_csrf_token
+
+      if date1 == nil or date1 == "" do
+        date1 = "2014-01-01"
+      end
+
+      if date2 == nil or date2 == "" do
+        date2 = "2020-12-31"
+      end
+
       data =  Peopleware.Profile.get_by_reclu(date1 <> " 00:00:01", date2 <> " 23:59:59")
 
       users = Peopleware.User.get_staff
