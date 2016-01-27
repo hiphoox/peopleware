@@ -46,6 +46,17 @@ defmodule Peopleware.ProfileController do
     user_id = get_session(conn, :user_id)
     changeset = Profile.changeset(%Profile{user_id: user_id}, profile_params)
 
+    if profile_params["cv_file"] != nil do
+      %Plug.Upload{path: _, content_type: _, filename: file_name} = profile_params["cv_file"]
+
+      if String.length(file_name) > 150 do
+          changeset = Ecto.Changeset.add_error(
+                        changeset,
+                        :cv_file_name,
+                        "es demasiado largo")
+      end
+    end
+
     if changeset.valid? do
       upload_file_and_save(changeset, nil, get_file_to_upload(profile_params))
       # Get the path from the tmp file
@@ -99,6 +110,17 @@ defmodule Peopleware.ProfileController do
     profile_params = Map.put(profile_params, "last_salary", last_salary)
 
     changeset = Profile.changeset(profile, profile_params)
+
+    if profile_params["cv_file"] != nil do
+      %Plug.Upload{path: _, content_type: _, filename: file_name} = profile_params["cv_file"]
+
+      if String.length(file_name) > 150 do
+          changeset = Ecto.Changeset.add_error(
+                        changeset,
+                        :cv_file_name,
+                        "es demasiado largo")
+      end
+    end
 
     if changeset.valid? do
 

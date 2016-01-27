@@ -28,6 +28,7 @@ defmodule Peopleware.UserController do
       email = get_session(conn, :email_profile)
       changeset = Profile.changeset(%Profile{email: email})
 
+
       render conn, "new.html",
         changeset: changeset
     else
@@ -46,6 +47,17 @@ defmodule Peopleware.UserController do
     profile_params =  Map.put(profile_params, "created_by", user.email)
 
     changeset = Profile.changeset(%Profile{user_id: nil}, profile_params)
+
+    if profile_params["cv_file"] != nil do
+      %Plug.Upload{path: _, content_type: _, filename: file_name} = profile_params["cv_file"]
+
+      if String.length(file_name) > 150 do
+          changeset = Ecto.Changeset.add_error(
+                        changeset,
+                        :cv_file_name,
+                        "es demasiado largo")
+      end
+    end
 
     if user.is_staff do
       if changeset.valid? do
@@ -89,6 +101,17 @@ defmodule Peopleware.UserController do
     profile_params = Map.put(profile_params, "last_salary", last_salary)
 
     changeset = Profile.changeset(profile, profile_params)
+
+    if profile_params["cv_file"] != nil do
+      %Plug.Upload{path: _, content_type: _, filename: file_name} = profile_params["cv_file"]
+
+      if String.length(file_name) > 150 do
+          changeset = Ecto.Changeset.add_error(
+                        changeset,
+                        :cv_file_name,
+                        "es demasiado largo")
+      end
+    end
 
     if changeset.valid? do
 

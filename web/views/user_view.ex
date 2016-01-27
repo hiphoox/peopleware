@@ -45,6 +45,10 @@ defmodule Peopleware.UserView do
     "* El Archivo " <> translate_plural(message)
   end
 
+  def translate_error({:cv_file_name, message}) do
+    "* El nombre del archivo " <> translate_plural(message)
+  end
+
   def translate_error(message) do
     "* Error desconocido: " <> (IO.inspect message)
   end

@@ -38,6 +38,7 @@ defmodule Peopleware.Profile  do
     |> validate_format(:second_surname, ~r/(?!^\d+$)^.+$/, message: "El segundo apellido no debe contener solo números")
     |> validate_format(:position, ~r/(?!^\d+$)^.+$/, message: " de trabajo no debe contener solo números")
     |> validate_length(:email, max: 50, message: "Debe ser máximo de 50 caracteres")
+    |> validate_length(:cv_file_name, max: 100, message: "Debe ser máximo de 100 caracteres")
     |> validate_length(:position, max: 50, message: "Debe ser máximo de 50 caracteres")
     |> validate_length(:resume, max: 1000000, message: " Es demasiado extensa")
     |> validate_length(:keywords, max: 500, message: "Debe ser máximo de 500 caracteres")

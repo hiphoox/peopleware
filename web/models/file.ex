@@ -23,5 +23,6 @@ defmodule Peopleware.File do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_length(:file_name, max: 100, message: "Debe ser máximo de 100 caracteres")
   end
 end
