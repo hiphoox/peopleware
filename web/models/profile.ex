@@ -110,7 +110,7 @@ defmodule Peopleware.Profile  do
   # Search
   ###########################################
 
-  def search(page, count, search_criteria) do
+  def search(search_criteria) do
     Peopleware.Profile
     |> has_keywords(search_criteria)
     |> has_role(search_criteria)
@@ -121,7 +121,6 @@ defmodule Peopleware.Profile  do
     |> has_english_level(search_criteria)
     |> has_salary(search_criteria)
     |> order_by_date(search_criteria)
-    |> Repo.paginate(page: page, page_size: count)
   end
 
   def has_keywords(query, %{"keywords" => keywords}) do
@@ -130,7 +129,7 @@ defmodule Peopleware.Profile  do
       resume_criteria  = build_criteria(keywords)        # We use AND inside the resume field
       from p in query,
       where: fragment("to_tsvector('spanish', keywords) @@ to_tsquery('spanish', ?)", ^keyword_criteria) or
-             fragment("to_tsvector('spanish', resume) @@ to_tsquery('spanish', ?)", ^resume_criteria)
+             fragment("tsv @@ to_tsquery('spanish', ?)", ^resume_criteria)
     else
       query
     end

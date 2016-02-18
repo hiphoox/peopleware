@@ -37,14 +37,18 @@ defmodule Peopleware.SearchController do
 
       token = get_csrf_token
 
-      profiles = Profile.search(@page, @count, profile_params)
+      profiles_query = Profile.search(profile_params)
+      profiles = Repo.all(profiles_query)
+      profiles_page = Repo.paginate(profiles_query, page: @page, page_size: @count)
 
       # If the post come from the index search, we save the fields in
       # the session, if not, then we get the fields from the session
-      english_fields = get_english_fields(profiles.entries)
-      role_fields = get_role_fields(profiles.entries)
-      state_fields = get_state_fields(profiles.entries)
-      schema_fields = get_schema_fields(profiles.entries)
+      english_fields = get_english_fields(profiles)
+      role_fields = get_role_fields(profiles)
+      state_fields = get_state_fields(profiles)
+      schema_fields = get_schema_fields(profiles)
+
+      IO.puts profile_params["keywords"]
 
       if profile_params["is_first"] == "true" do
         conn = put_session(conn, :english_fields, english_fields)
@@ -72,8 +76,8 @@ defmodule Peopleware.SearchController do
       end
 
       render conn, "results.html",
-        profiles: profiles.entries,
-        page: profiles,
+        profiles: profiles_page.entries,
+        page: profiles_page,
         profile_params: profile_params,
         token: token,
         english_fields: english_fields,
@@ -96,7 +100,9 @@ defmodule Peopleware.SearchController do
       profile_params = get_session(conn, :profile_params)
       token = get_csrf_token
 
-      profiles = Profile.search(page, @count, profile_params)
+      profiles_query = Profile.search(profile_params)
+      profiles = Repo.all(profiles_query)
+      profiles_page = Repo.paginate(profiles_query, page: page, page_size: @count)
 
       # If the post come from the index search, we save the fields in
       # the session, if not, then we get the fields from the session
@@ -106,8 +112,8 @@ defmodule Peopleware.SearchController do
       schema_fields = get_session(conn, :schema_fields)
 
       render conn, "results.html",
-        profiles: profiles.entries,
-        page: profiles,
+        profiles: profiles_page.entries,
+        page: profiles_page,
         profile_params: profile_params,
         token: token,
         english_fields: english_fields,
@@ -132,7 +138,9 @@ defmodule Peopleware.SearchController do
       if profile_params != nil do
         token = get_csrf_token
 
-        profiles = Profile.search(@page, @count, profile_params)
+        profiles_query = Profile.search(profile_params)
+        profiles = Repo.all(profiles_query)
+        profiles_page = Repo.paginate(profiles_query, page: @page, page_size: @count)
 
         # If the post come from the index search, we save the fields in
         # the session, if not, then we get the fields from the session
@@ -142,8 +150,8 @@ defmodule Peopleware.SearchController do
         schema_fields = get_session(conn, :schema_fields)
 
         render conn, "results.html",
-          profiles: profiles.entries,
-          page: profiles,
+          profiles: profiles_page.entries,
+          page: profiles_page,
           profile_params: profile_params,
           token: token,
           english_fields: english_fields,
