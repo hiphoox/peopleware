@@ -25,7 +25,7 @@
           <input type="text" name="profile[keywords]"
             class= "form-control search-control-change"
             placeholder="Poner palabras separadas por comas."
-            value=<%= @profile_params["keywords"] %> >
+            value='<%= @profile_params["keywords"] %>' >
         </div>
 
       </div><!-- /search-control -->
