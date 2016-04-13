@@ -81,7 +81,8 @@ defmodule Peopleware.Profile  do
     query = from profile in Peopleware.Profile,
     where: profile.email == ^email
 
-    Repo.one(query)
+    profiles = Repo.all(query)
+    profile = hd(profiles)
   end
 
   def get_by_user(id) do
