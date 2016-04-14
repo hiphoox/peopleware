@@ -82,7 +82,11 @@ defmodule Peopleware.Profile  do
     where: profile.email == ^email
 
     profiles = Repo.all(query)
-    profile = hd(profiles)
+    if profiles == [] do
+      nil
+    else
+      profile = hd(profiles)
+    end
   end
 
   def get_by_user(id) do
